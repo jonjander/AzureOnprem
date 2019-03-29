@@ -1,0 +1,161 @@
+fileFormatVersion: 2
+guid: 6a573bb611a46b0459526b81a8a01533
+SketchUpImporter:
+  generateBackFace: 0
+  mergeCoplanarFaces: 0
+  selectedNodes: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a000000
+  assetHash:
+    serializedVersion: 2
+    Hash: a41141ca2c1ab5c939db1c4247174f9e
+  longitude: -105.242139
+  latitude: 40.018309
+  northCorrection: -0
+  fileUnit: 0
+  sketchUpImportData:
+    defaultCamera:
+      position: {x: -16.106178, y: 10.130264, z: 19.426975}
+      lookAt: {x: -8.86848, y: 2.8082335, z: 10.078806}
+      up: {x: 0.3223369, y: 0.8501585, z: -0.41632855}
+      fov: 35
+      aspectRatio: 0
+      orthoSize: 1
+      isPerspective: 1
+    scenes: []
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Component#1
+    100002: Component#2
+    100004: Component#3
+    100006: Component#4
+    100008: Group 1
+    100010: //RootNode
+    100012: 1UNetwork
+    100014: 1UServer
+    100016: 2UServer
+    100018: 2UStorage
+    100020: 3UBackup
+    400000: Component#1
+    400002: Component#2
+    400004: Component#3
+    400006: Component#4
+    400008: Group 1
+    400010: //RootNode
+    400012: 1UNetwork
+    400014: 1UServer
+    400016: 2UServer
+    400018: 2UStorage
+    400020: 3UBackup
+    2100000: _defaultMat
+    2300000: Component#1
+    2300002: Component#2
+    2300004: Component#3
+    2300006: Component#4
+    2300008: Group 1
+    2300010: 1UNetwork
+    2300012: 1UServer
+    2300014: 2UServer
+    2300016: 2UStorage
+    2300018: 3UBackup
+    3300000: Component#1
+    3300002: Component#2
+    3300004: Component#3
+    3300006: Component#4
+    3300008: Group 1
+    3300010: 1UNetwork
+    3300012: 1UServer
+    3300014: 2UServer
+    3300016: 2UStorage
+    3300018: 3UBackup
+    4300000: Mesh Group 1
+    4300002: Mesh Component#1
+    4300004: Mesh Component#2
+    4300006: Mesh Component#3
+    4300008: Mesh Component#4
+    4300010: Mesh 2UServer
+    4300012: Mesh 1UNetwork
+    4300014: Mesh 2UStorage
+    4300016: Mesh 1UServer
+    4300018: Mesh 3UBackup
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 2
+    materialSearch: 0
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.0254
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,271 @@
+fileFormatVersion: 2
+guid: b4d3dd7a035cc2348a6721662f48a6f5
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: _fan blade.43ee7e77-6719-44de-8539-578765e3fc9c v1
+    100002: _fan blade.43ee7e77-6719-44de-8539-578765e3fc9c v1 1
+    100004: _fan blade.43ee7e77-6719-44de-8539-578765e3fc9c v1 2
+    100006: _fan blade.43ee7e77-6719-44de-8539-578765e3fc9c v1 3
+    100008: _fan blade.43ee7e77-6719-44de-8539-578765e3fc9c v1:1
+    100010: _fan blade.43ee7e77-6719-44de-8539-578765e3fc9c v1:1 1
+    100012: _fan blade.43ee7e77-6719-44de-8539-578765e3fc9c v1:1 2
+    100014: _fan blade.43ee7e77-6719-44de-8539-578765e3fc9c v1:1 3
+    100016: Body1
+    100018: Body1 1
+    100020: Body1 10
+    100022: Body1 11
+    100024: Body1 12
+    100026: Body1 13
+    100028: Body1 14
+    100030: Body1 15
+    100032: Body1 2
+    100034: Body1 3
+    100036: Body1 4
+    100038: Body1 5
+    100040: Body1 6
+    100042: Body1 7
+    100044: Body1 8
+    100046: Body1 9
+    100048: Body2
+    100050: Body3
+    100052: Body4
+    100054: Body5
+    100056: Body6
+    100058: Body7
+    100060: Box
+    100062: Box:1
+    100064: controller
+    100066: controller:1
+    100068: Fan
+    100070: Fan 1
+    100072: Fan 2
+    100074: Fan 3
+    100076: Fan:1
+    100078: Fan:2
+    100080: Fan:3
+    100082: Fan:4
+    100084: //RootNode
+    100086: lid
+    100088: lid 1
+    100090: lid 2
+    100092: lid 3
+    100094: lid 4
+    100096: lid 5
+    100098: lid 6
+    100100: lid 7
+    100102: lid:1
+    100104: lid:2
+    100106: lid:3
+    100108: lid:4
+    100110: lid:5
+    100112: lid:6
+    100114: lid:7
+    100116: lid:8
+    100118: outbox
+    100120: outbox:1
+    100122: pipe
+    100124: pipe:1
+    400000: _fan blade.43ee7e77-6719-44de-8539-578765e3fc9c v1
+    400002: _fan blade.43ee7e77-6719-44de-8539-578765e3fc9c v1 1
+    400004: _fan blade.43ee7e77-6719-44de-8539-578765e3fc9c v1 2
+    400006: _fan blade.43ee7e77-6719-44de-8539-578765e3fc9c v1 3
+    400008: _fan blade.43ee7e77-6719-44de-8539-578765e3fc9c v1:1
+    400010: _fan blade.43ee7e77-6719-44de-8539-578765e3fc9c v1:1 1
+    400012: _fan blade.43ee7e77-6719-44de-8539-578765e3fc9c v1:1 2
+    400014: _fan blade.43ee7e77-6719-44de-8539-578765e3fc9c v1:1 3
+    400016: Body1
+    400018: Body1 1
+    400020: Body1 10
+    400022: Body1 11
+    400024: Body1 12
+    400026: Body1 13
+    400028: Body1 14
+    400030: Body1 15
+    400032: Body1 2
+    400034: Body1 3
+    400036: Body1 4
+    400038: Body1 5
+    400040: Body1 6
+    400042: Body1 7
+    400044: Body1 8
+    400046: Body1 9
+    400048: Body2
+    400050: Body3
+    400052: Body4
+    400054: Body5
+    400056: Body6
+    400058: Body7
+    400060: Box
+    400062: Box:1
+    400064: controller
+    400066: controller:1
+    400068: Fan
+    400070: Fan 1
+    400072: Fan 2
+    400074: Fan 3
+    400076: Fan:1
+    400078: Fan:2
+    400080: Fan:3
+    400082: Fan:4
+    400084: //RootNode
+    400086: lid
+    400088: lid 1
+    400090: lid 2
+    400092: lid 3
+    400094: lid 4
+    400096: lid 5
+    400098: lid 6
+    400100: lid 7
+    400102: lid:1
+    400104: lid:2
+    400106: lid:3
+    400108: lid:4
+    400110: lid:5
+    400112: lid:6
+    400114: lid:7
+    400116: lid:8
+    400118: outbox
+    400120: outbox:1
+    400122: pipe
+    400124: pipe:1
+    2100000: Steel - Satin
+    2300000: Body1
+    2300002: Body1 1
+    2300004: Body1 10
+    2300006: Body1 11
+    2300008: Body1 12
+    2300010: Body1 13
+    2300012: Body1 14
+    2300014: Body1 15
+    2300016: Body1 2
+    2300018: Body1 3
+    2300020: Body1 4
+    2300022: Body1 5
+    2300024: Body1 6
+    2300026: Body1 7
+    2300028: Body1 8
+    2300030: Body1 9
+    2300032: Body2
+    2300034: Body3
+    2300036: Body4
+    2300038: Body5
+    2300040: Body6
+    2300042: Body7
+    3300000: Body1
+    3300002: Body1 1
+    3300004: Body1 10
+    3300006: Body1 11
+    3300008: Body1 12
+    3300010: Body1 13
+    3300012: Body1 14
+    3300014: Body1 15
+    3300016: Body1 2
+    3300018: Body1 3
+    3300020: Body1 4
+    3300022: Body1 5
+    3300024: Body1 6
+    3300026: Body1 7
+    3300028: Body1 8
+    3300030: Body1 9
+    3300032: Body2
+    3300034: Body3
+    3300036: Body4
+    3300038: Body5
+    3300040: Body6
+    3300042: Body7
+    4300000: Body1
+    4300002: Body1
+    4300004: Body1
+    4300006: Body1
+    4300008: Body1
+    4300010: Body1
+    4300012: Body2
+    4300014: Body3
+    4300016: Body4
+    4300018: Body5
+    4300020: Body6
+    4300022: Body7
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 10
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
