@@ -1,0 +1,154 @@
+fileFormatVersion: 2
+guid: 2065935dd76c6ad4aafb46e1f94eb24f
+SketchUpImporter:
+  generateBackFace: 0
+  mergeCoplanarFaces: 0
+  selectedNodes: 000000000100000002000000030000000400000005000000060000000700000008000000090000000a0000000b0000000c0000000d0000000e0000000f00000010000000
+  assetHash:
+    serializedVersion: 2
+    Hash: 2b4a53cdad7124f5a5fa51a81ea50204
+  longitude: -105.242139
+  latitude: 40.018309
+  northCorrection: -0
+  fileUnit: 0
+  sketchUpImportData:
+    defaultCamera:
+      position: {x: 6.397099, y: 5.3300376, z: -14.40101}
+      lookAt: {x: 5.169886, y: 3.0450673, z: -0.73874164}
+      up: {x: -0.014700147, y: 0.9864084, z: 0.16365322}
+      fov: 35
+      aspectRatio: 0
+      orthoSize: 1
+      isPerspective: 1
+    scenes: []
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: 3UServer
+    100002: 4UServer
+    100004: 8UBlade
+    100006: //RootNode
+    100008: 1UNetwork
+    100010: 1UServer
+    100012: 2UServer
+    100014: 2UStorage
+    100016: 3UBackup
+    400000: 3UServer
+    400002: 4UServer
+    400004: 8UBlade
+    400006: //RootNode
+    400008: 1UNetwork
+    400010: 1UServer
+    400012: 2UServer
+    400014: 2UStorage
+    400016: 3UBackup
+    2100000: _defaultMat
+    2300000: 3UServer
+    2300002: 4UServer
+    2300004: 8UBlade
+    2300006: 1UNetwork
+    2300008: 1UServer
+    2300010: 2UServer
+    2300012: 2UStorage
+    2300014: 3UBackup
+    3300000: 3UServer
+    3300002: 4UServer
+    3300004: 8UBlade
+    3300006: 1UNetwork
+    3300008: 1UServer
+    3300010: 2UServer
+    3300012: 2UStorage
+    3300014: 3UBackup
+    4300000: Mesh 3UServer
+    4300002: Mesh 4UServer
+    4300004: Mesh 8UBlade
+    4300006: Mesh 3UBackup
+    4300008: Mesh 1UNetwork
+    4300010: Mesh 2UServer
+    4300012: Mesh 1UServer
+    4300014: Mesh 2UStorage
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 2
+    materialSearch: 0
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.0254
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
