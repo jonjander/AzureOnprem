@@ -1,3 +1,7 @@
+## 0.1.
+* Code refactoring
+* Added help text to login screen
+
 ## 0.1.4
 * Removed dev servers
 

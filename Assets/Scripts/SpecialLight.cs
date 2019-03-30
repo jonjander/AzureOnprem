@@ -1,76 +1,72 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SpecialLight : MonoBehaviour {
 
-    public Light led;
-    public Color ledColor;
+    public Light Led;
+    public Color LedColor;
     public LightModes Mode;
-
     public float RandomMin = 0.04f;
     public float RandomMax = 0.9f;
-
     public float IntervalOff = 0.9f;
     public float IntervalOn = 0.02f;
-
-    float flip = 0;
-    float ledFlip = 0;
     public string TagName = "";
     public bool TagValue = false;
-
     public SpecialLight SyncLed;
 
+    public float Flip = 0;
+    public float LedFlip = 0;
     // Use this for initialization
     void Start () {
-        led = GetComponent<Light>();
-        led.color = ledColor;
-        ledFlip = UnityEngine.Random.Range(RandomMin, RandomMax);
+        Led = GetComponent<Light>();
+        Led.color = LedColor;
+        LedFlip = UnityEngine.Random.Range(RandomMin, RandomMax);
         
     }
 	
 	// Update is called once per frame
 	void Update () {
         var microRandom = UnityEngine.Random.Range(0.001f, 0.04f);
-        flip += Time.deltaTime;
+        Flip += Time.deltaTime;
         switch (Mode)
         {
             case LightModes.Static:
-                led.enabled = true;
-                led.color = ledColor;
+                Led.enabled = true;
+                Led.color = LedColor;
                 break;
             case LightModes.Random:
-                if (flip > ledFlip)
+                if (Flip > LedFlip)
                 {
-                    flip = 0;
-                    ledFlip = UnityEngine.Random.Range(RandomMin, RandomMax);
-                    led.enabled = !led.enabled;
+                    Flip = 0;
+                    LedFlip = UnityEngine.Random.Range(RandomMin, RandomMax);
+                    Led.enabled = !Led.enabled;
                 }
                 break;
             case LightModes.Interval:
-                if (flip > ledFlip)
+                if (Flip > LedFlip)
                 {
-                    if (led.enabled)
+                    if (Led.enabled)
                     {
-                        led.enabled = false;
-                        ledFlip = IntervalOff + microRandom;
-                        flip = 0;
+                        Led.enabled = false;
+                        LedFlip = IntervalOff + microRandom;
+                        Flip = 0;
                     } else
                     {
-                        led.enabled = true;
-                        ledFlip = IntervalOn + microRandom;
-                        flip = 0;
+                        Led.enabled = true;
+                        LedFlip = IntervalOn + microRandom;
+                        Flip = 0;
                     }
                 }
                 break;
             case LightModes.Tag:
-                led.enabled = TagValue;
+                Led.enabled = TagValue;
                 break;
             case LightModes.Sync:
-                led.enabled = SyncLed.led.enabled;
+                Led.enabled = SyncLed.Led.enabled;
                 break;
             case LightModes.Off:
-                led.enabled = false;
+                Led.enabled = false;
                 break;
             default:
                 break;
