@@ -1,4 +1,4 @@
-﻿using Assets.Azure.Resource;
+using Assets.Azure.Resource;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,16 +8,15 @@ using UnityEngine;
 
 public class Resource : MonoBehaviour {
 
-    public int uSize = 2;
+    public int USize = 2;
     public List<string> Types;
     public int Capacity = 1;
-    public List<ResourceObject> refObject = new List<ResourceObject>();
-    MeshRenderer MR;
-
-    public List<TextMesh> DisplayText = new List<TextMesh>();
-    private AudioSource audioSource;
-
+    public List<ResourceObject> RefObject = new List<ResourceObject>();
     public List<AudioClip> ServerSounds;
+    public List<TextMesh> DisplayText = new List<TextMesh>();
+
+    private AudioSource audioSource;
+    private MeshRenderer resourceMeshRenderer;
     
     // Use this for initialization
     void Start () {
@@ -54,13 +53,13 @@ public class Resource : MonoBehaviour {
             DisplayText = GetComponentsInChildren<TextMesh>().ToList();
             for (int i = 0; i < DisplayText.Count(); i++)
             {
-                if (refObject.Count < i + 1)
+                if (RefObject.Count < i + 1)
                 {
                     DisplayText[i].text = "";
                 } else 
                 {
                     var maxLenFromExistingText = DisplayText[i].text.Length;
-                    DisplayText[i].text = refObject[i].name.Substring(0, Math.Min(maxLenFromExistingText, refObject[i].name.Length));
+                    DisplayText[i].text = RefObject[i].Name.Substring(0, Math.Min(maxLenFromExistingText, RefObject[i].Name.Length));
                 }
             }
         }
@@ -80,15 +79,14 @@ public class Resource : MonoBehaviour {
         try
         {
             Regex ledRegex = new Regex("LED(\\w+)\\s?\\((\\d+)\\)");
-            var Leds = GetComponentsInChildren<Light>()
+            var leds = GetComponentsInChildren<Light>()
                 .Where(s => ledRegex.IsMatch(s.name));
 
-            foreach (var item in Leds)
+            foreach (var item in leds)
             {
                 var match = ledRegex.Match(item.name);
-                int ledIndex;
-                int.TryParse(match.Groups[2].Value, out ledIndex);
-                if (refObject.Count >= ledIndex + 1) {
+                int.TryParse(match.Groups[2].Value, out int ledIndex);
+                if (RefObject.Count >= ledIndex + 1) {
                     //on now used untill refresh
                 } else
                 {
@@ -96,7 +94,7 @@ public class Resource : MonoBehaviour {
                     switch (match.Groups[1].Value.ToLower())
                     {
                         case "pwr":
-                            script.ledColor = new Color(1, 1, 51/255f);
+                            script.LedColor = new Color(1, 1, 51/255f);
                             break;
                         case "hdd":
                             script.enabled = false;

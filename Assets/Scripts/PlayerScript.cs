@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,7 +24,7 @@ public class PlayerScript : MonoBehaviour {
     IEnumerator Login()
     {
         yield return new WaitForSeconds(UseSoundHit.length);
-        GenerationScript.doLogin();
+        GenerationScript.DoLogin();
     }
 
     // Update is called once per frame
@@ -113,11 +113,10 @@ public class PlayerScript : MonoBehaviour {
     private bool IsNearComputerScreen()
     {
         int layerMask = 1 << LayerMask.NameToLayer("Login");
-        RaycastHit hit;
-        var RayIsHit = Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity, layerMask);
-        
-        var Result = RayIsHit && hit.distance < 1.6f;
-        if (!Result)
+        bool rayIsHit = Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, Mathf.Infinity, layerMask);
+
+        bool result = rayIsHit && hit.distance < 1.6f;
+        if (!result)
         {
             audioSource.clip = UseSoundMiss;
             audioSource.Play();
@@ -126,6 +125,6 @@ public class PlayerScript : MonoBehaviour {
             audioSource.clip = UseSoundHit;
             audioSource.Play();
         }
-        return Result;
+        return result;
     }
 }

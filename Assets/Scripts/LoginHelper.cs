@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -10,17 +10,19 @@ namespace Assets
 {
     public static class LoginHelper
     {
-        public static string GetToken(string Tenant = null)
+        public static string GetToken(string tenant = null)
         {
-            var process = new Process();
-            process.EnableRaisingEvents = false;
+            Process process = new Process
+            {
+                EnableRaisingEvents = false
+            };
             process.StartInfo.FileName = Application.dataPath + "/StreamingAssets/VDC.Login.exe";
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
             process.StartInfo.RedirectStandardInput = true;
-            if (Tenant != null)
+            if (tenant != null)
             {
-                process.StartInfo.Arguments = Tenant;
+                process.StartInfo.Arguments = tenant;
             }
             process.Start();
             var output = process.StandardOutput.ReadToEnd();

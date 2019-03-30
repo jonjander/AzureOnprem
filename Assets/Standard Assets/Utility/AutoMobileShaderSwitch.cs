@@ -69,14 +69,18 @@ namespace UnityStandardAssets.Utility
         [Serializable]
         public class ReplacementDefinition
         {
+#pragma warning disable IDE1006 // Naming Styles
             public Shader original = null;
             public Shader replacement = null;
+#pragma warning restore IDE1006 // Naming Styles
         }
 
         [Serializable]
         public class ReplacementList
         {
+#pragma warning disable IDE1006 // Naming Styles
             public ReplacementDefinition[] items = new ReplacementDefinition[0];
+#pragma warning restore IDE1006 // Naming Styles
         }
     }
 }
@@ -87,8 +91,10 @@ namespace UnityStandardAssets.Utility.Inspector
     [CustomPropertyDrawer(typeof (AutoMobileShaderSwitch.ReplacementList))]
     public class ReplacementListDrawer : PropertyDrawer
     {
+#pragma warning disable IDE1006 // Naming Styles
         const float k_LineHeight = 18;
         const float k_Spacing = 4;
+#pragma warning restore IDE1006 // Naming Styles
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
@@ -99,13 +105,15 @@ namespace UnityStandardAssets.Utility.Inspector
             float inspectorWidth = position.width;
 
             // Don't make child fields be indented
-            var indent = EditorGUI.indentLevel;
+            int indent = EditorGUI.indentLevel;
             EditorGUI.indentLevel = 0;
 
+#pragma warning disable IDE0008 // Use explicit type
             var items = property.FindPropertyRelative("items");
             var titles = new string[] {"Original", "Replacement", ""};
             var props = new string[] {"original", "replacement", "-"};
             var widths = new float[] {.45f, .45f, .1f};
+#pragma warning restore IDE0008 // Use explicit type
             const float lineHeight = 18;
             bool changedLength = false;
             if (items.arraySize > 0)

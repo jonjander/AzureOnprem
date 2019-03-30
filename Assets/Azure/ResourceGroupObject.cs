@@ -1,4 +1,5 @@
-﻿using Assets.Azure.Resource;
+using Assets.Azure.Resource;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,16 @@ namespace Assets.Azure
     [Serializable]
     public class ResourceGroupObject
     {
-        public string id { get; set; }
-        public string name { get; set; }
-        public string location { get; set; }
-        public ResourceGroupProperties properties { get; set; }
-        public Tags tags { get; set; }
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
+        [JsonProperty(PropertyName = "name")]
+        public string Name { get; set; }
+        [JsonProperty(PropertyName = "location")]
+        public string Location { get; set; }
+        [JsonProperty(PropertyName = "properties")]
+        public ResourceGroupProperties Properties { get; set; }
+        [JsonProperty(PropertyName = "tags")]
+        public Tags Tags { get; set; }
 
         
         public ResourceGroupObject()
