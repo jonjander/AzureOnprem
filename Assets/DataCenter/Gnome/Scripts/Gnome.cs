@@ -1,4 +1,4 @@
-﻿using Assets.Tools;
+using Assets.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,48 +19,41 @@ public enum GnomeStates
 
 class Gnome : MonoBehaviour
 {
-    NavMeshAgent agent;
-    BoxCollider textureCollider;
-    SpriteRenderer spriteRenderer;
-    float checkSeen = 0f;
-    float targetAlpha = 0f;
-    Vector3 StartPos;
-    public bool isVisible = false;
-    public bool offScreenReset = false;
-    public GnomeStates State;
-    public float FreezPosition;
-
-    public List<AudioClip> Voices;
-    AudioSource audioSource;
-
-    public FluorescentLamp SyncLamp;
-    bool lampTest = false;
-    public float lampHide = 0;
-
+    private NavMeshAgent agent;
+    private BoxCollider textureCollider;
+    private SpriteRenderer spriteRenderer;
+    private float checkSeen = 0f;
+    private float targetAlpha = 0f;
+    private Vector3 startPos;
+    private AudioSource audioSource;
     private GameObject newHide;
     private float agentSpeed;
-
-    public float RangeThreshold;
-    public float cameraAngle;
-    public float cameraDistance;
     private Earthquake eqScript;
-
     private FluorescentLamp currentLamp;
     private FluorescentLamp previusLamp;
+
+    public bool IsVisible = false;
+    public bool OffScreenReset = false;
+    public GnomeStates State;
+    public float FreezPosition;
+    public List<AudioClip> Voices;
+    public FluorescentLamp SyncLamp;
+    public float LampHide = 0;
+    public float RangeThreshold;
+    public float CameraAngle;
+    public float CameraDistance;
+
 
     bool ImInCamera()
     {
         Plane[] planes = GeometryUtility.CalculateFrustumPlanes(Camera.main);
-        if (GeometryUtility.TestPlanesAABB(planes, textureCollider.bounds))
-            return true;
-        else
-            return false;
+        return GeometryUtility.TestPlanesAABB(planes, textureCollider.bounds) ? true : false;
     }
 
     bool ImBehindObject()
     {
 
-        var GnomePos = textureCollider.transform.position;
+        Vector3 gnomePos = textureCollider.transform.position;
 
         Vector3 size = textureCollider.size;
 
@@ -82,7 +75,7 @@ class Gnome : MonoBehaviour
 
         float rayLength = size.y / 2;
 
-        var RayTargets = new List<Vector3>(){
+        var rayTargets = new List<Vector3>(){
             textureCollider.transform.TransformPoint(vertex1),
             textureCollider.transform.TransformPoint(vertex2),
             textureCollider.transform.TransformPoint(vertex3),
@@ -95,13 +88,12 @@ class Gnome : MonoBehaviour
             textureCollider.transform.TransformPoint(vertex10),
         };
 
-        var CamPos = Camera.main.transform.position;
+        Vector3 camPos = Camera.main.transform.position;
 
-        var hits = RayTargets.Where(tar =>
+        var hits = rayTargets.Where(tar =>
         {
-            RaycastHit hit;
-            var heading = tar - CamPos;
-            var isHit = Physics.Raycast(CamPos, heading, out hit);
+            Vector3 heading = tar - camPos;
+            bool isHit = Physics.Raycast(camPos, heading, out RaycastHit hit);
             
             if (!isHit)
             {
@@ -113,10 +105,10 @@ class Gnome : MonoBehaviour
                 var dwarfHit = hit.collider.gameObject.layer == LayerMask.NameToLayer("Gnome");
                 if (dwarfHit)
                 {
-                    Debug.DrawRay(CamPos, heading, Color.green);
+                    Debug.DrawRay(camPos, heading, Color.green);
                 } else
                 {
-                    Debug.DrawRay(CamPos, heading, Color.red);
+                    Debug.DrawRay(camPos, heading, Color.red);
                 }
                 return dwarfHit;
             }
@@ -130,29 +122,29 @@ class Gnome : MonoBehaviour
         if (other.tag == "Bullet")
         {
             eqScript.StartEarthQuake(UnityEngine.Random.Range(2, 14));
-            isVisible = false;
+            IsVisible = false;
         }
     }
 
-    public float AngelAlpha(float CameraAngle)
+    public float AngelAlpha(float cameraAngle)
     {
-        var MappedAlpha = Utils.Remap(CameraAngle, 40, 60, 0, 1);
-        return (float)Utils.flattern(MappedAlpha);
+        double mappedAlpha = Utils.Remap(cameraAngle, 40, 60, 0, 1);
+        return (float)Utils.flattern(mappedAlpha);
     }
 
-    public float DistanceAlpha(float CameraDistance)
+    public float DistanceAlpha(float cameraDistance)
     {
-        var DistanceAlpha = Utils.Remap(CameraDistance, 9, 7.9f, 1, 0);
-        return (float)Utils.flattern(DistanceAlpha);
+        double distanceAlpha = Utils.Remap(cameraDistance, 9, 7.9f, 1, 0);
+        return (float)Utils.flattern(distanceAlpha);
     }
 
-    public float DistanceAlpha(float CameraDistance, float max, float min)
+    public float DistanceAlpha(float cameraDistance, float max, float min)
     {
-        var DistanceAlpha = Utils.Remap(CameraDistance, max, min, 1, 0);
-        return (float)Utils.flattern(DistanceAlpha);
+        var distanceAlpha = Utils.Remap(cameraDistance, max, min, 1, 0);
+        return (float)Utils.flattern(distanceAlpha);
     }
 
-    public float CameraAngle()
+    private float GetCameraAngle()
     {
         Vector3 v3_Dir = transform.position - Camera.main.transform.position;
         float f_AngleBetween = Vector3.Angle(transform.forward, v3_Dir); // Returns an angle between 0 and 180
@@ -160,7 +152,7 @@ class Gnome : MonoBehaviour
         return Mathf.Abs(f_AngleBetween - 90);
     }
 
-    float CameraDistance()
+    private float GetCameraDistance()
     {
         return Vector3.Distance(transform.position, Camera.main.transform.position);
     }
@@ -187,7 +179,7 @@ class Gnome : MonoBehaviour
 
     private void Start()
     {
-        StartPos = transform.localPosition;
+        startPos = transform.localPosition;
         textureCollider = GetComponent<BoxCollider>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
@@ -198,13 +190,11 @@ class Gnome : MonoBehaviour
         eqScript = GameObject.FindObjectOfType<Earthquake>();
     }
 
-    private bool move()
+    private bool Move()
     {
         try
         {
-            List<GameObject> hidePlaces = new List<GameObject>();
-            hidePlaces.AddRange(GameObject.FindGameObjectsWithTag("HideLeft").ToList());
-            hidePlaces.AddRange(GameObject.FindGameObjectsWithTag("HideRight").ToList());
+            List<GameObject> hidePlaces = GameObject.FindGameObjectsWithTag("Hide").ToList();
 
             newHide = hidePlaces.Select(s =>
             {
@@ -223,7 +213,7 @@ class Gnome : MonoBehaviour
         }
     }
 
-    float minAlpha(List<float> inputList)
+    float MinAlpha(List<float> inputList)
     {
         return inputList.Min();
     }
@@ -246,7 +236,7 @@ class Gnome : MonoBehaviour
     private void Update()
     {
         var cLamp = FindClosestLamp();
-        if (cLamp != currentLamp && !eqScript.activeEarthquake)
+        if (cLamp != currentLamp && !eqScript.ActiveEarthquake)
         {
             //Change lamp
             if (currentLamp == null)
@@ -263,8 +253,8 @@ class Gnome : MonoBehaviour
             }
         }
 
-        cameraAngle = CameraAngle();
-        cameraDistance = CameraDistance();
+        CameraAngle = GetCameraAngle();
+        CameraDistance = GetCameraDistance();
 
         if (newHide == null)
         {
@@ -276,7 +266,7 @@ class Gnome : MonoBehaviour
             audioSource.clip = Voices
                 .OrderBy(s => Guid.NewGuid())
                 .FirstOrDefault();
-            if (isVisible)
+            if (IsVisible)
             {
                 audioSource.Play();
             }
@@ -286,9 +276,9 @@ class Gnome : MonoBehaviour
         switch (State)
         {
             case GnomeStates.FindHide:
-                if (!move())
+                if (!Move())
                 {
-                    isVisible = false;
+                    IsVisible = false;
                     break;
                 }
                 State = GnomeStates.Flee;
@@ -309,31 +299,31 @@ class Gnome : MonoBehaviour
                     }
                 }
 
-                if (FreezPosition - CameraDistance() > 0.1f)
+                if (FreezPosition - GetCameraDistance() > 0.1f)
                 {
                     State = GnomeStates.FindHide;
                 }
                 break;
             case GnomeStates.Visible:
-                isVisible = true;
+                IsVisible = true;
                 if (ImInCamera())
                 {
-                    FreezPosition = CameraDistance();
+                    FreezPosition = GetCameraDistance();
                     State = GnomeStates.PlayerContact;
                 }
                 break;
             case GnomeStates.Flee:
                 //Become invisible
-                if (!move())
+                if (!Move())
                 {
-                    isVisible = false;
+                    IsVisible = false;
                     break;
                 }
-                var change = FreezPosition - CameraDistance();
+                var change = FreezPosition - GetCameraDistance();
                 agent.speed += change;
                 if (!ImInCamera() || !spriteRenderer.isVisible || ImBehindObject())
                 {
-                    isVisible = false;
+                    IsVisible = false;
                     State = GnomeStates.MoveHidden;
                     agent.speed = agentSpeed;
                 }
@@ -341,21 +331,21 @@ class Gnome : MonoBehaviour
                 break;
             case GnomeStates.InHideHidden:
 
-                if (!ImInCamera() && !isVisible && cameraDistance > RangeThreshold )
+                if (!ImInCamera() && !IsVisible && CameraDistance > RangeThreshold )
                 {
-                    if (!offScreenReset)
+                    if (!OffScreenReset)
                     {
                         //Chans to spawn
                         if (UnityEngine.Random.Range(0,3) == 1)
                         {
-                            isVisible = true;
+                            IsVisible = true;
                             State = GnomeStates.Visible;
                         }
                     }
-                    offScreenReset = true;
+                    OffScreenReset = true;
                 } else if (ImInCamera())
                 {
-                    offScreenReset = false;
+                    OffScreenReset = false;
                 }
                 break;
             default:
@@ -363,7 +353,7 @@ class Gnome : MonoBehaviour
         }
         var a = 1;
 
-        spriteRenderer.enabled = isVisible;
+        spriteRenderer.enabled = IsVisible;
         var camRot = Camera.main.transform.rotation;
         transform.rotation = Quaternion.Euler(0, camRot.eulerAngles.y, 0);
 

@@ -1,4 +1,4 @@
-﻿using Assets.Azure.Subscription;
+using Assets.Azure.Subscription;
 using Assets.Scripts;
 using System;
 using System.Collections;
@@ -7,52 +7,51 @@ using System.Linq;
 using UnityEngine;
 
 public class AdminScreen : MonoBehaviour {
-
-    TextMesh ComputerOutputText;
-    List<Subscription> AvalibleSubscriptions;
-    string selectedSubscriptionId;
-    private bool loggedIn;
-
-    public bool IsCrashed { get; private set; }
-
     public delegate void LoginAction(string selectedSubscriptionId);
     public static event LoginAction OnComputerLogin;
 
-    float promptBlinker = 0;
+    public bool IsCrashed;
+ 
+    private bool loggedIn;
+    private float promptBlinker = 0;
+    private TextMesh computerOutputText;
+    private List<Subscription> avalibleSubscriptions;
+    private string selectedSubscriptionId;
+    private bool cursorFlip;
 
     // Use this for initialization
     void Start () {
-        ComputerOutputText = GetComponentInChildren<TextMesh>();
-        ComputerOutputText.text = ">_";
+        computerOutputText = GetComponentInChildren<TextMesh>();
+        computerOutputText.text = ">_";
         AzureManagementAPIHelper.OnSubscriptionLoaded += DisplaySubscriptions;
         PlayerScript.OnComputerScreenInput += KeyInput;
     }
 
     void DisplaySubscriptions(List<Subscription> userSubscriptions)
     {
-        selectedSubscriptionId = userSubscriptions.FirstOrDefault().subscriptionId;
-        AvalibleSubscriptions = userSubscriptions;
+        selectedSubscriptionId = userSubscriptions.FirstOrDefault().SubscriptionId;
+        avalibleSubscriptions = userSubscriptions;
         loggedIn = true;
     }
 
     void KeyInput(KeyCode key)
     {
-        var selectedSubscription = AvalibleSubscriptions
-                .Where(o => o.subscriptionId == selectedSubscriptionId)
+        var selectedSubscription = avalibleSubscriptions
+                .Where(o => o.SubscriptionId == selectedSubscriptionId)
                 .FirstOrDefault();
         int index = 0;
         if (key == KeyCode.Y)
         {
-            index = AvalibleSubscriptions.IndexOf(selectedSubscription) - 1;
+            index = avalibleSubscriptions.IndexOf(selectedSubscription) - 1;
             index = LoopIndex(index);
-            selectedSubscriptionId = AvalibleSubscriptions[index].subscriptionId;
+            selectedSubscriptionId = avalibleSubscriptions[index].SubscriptionId;
 
         }
         else if (key == KeyCode.H)
         {
-            index = AvalibleSubscriptions.IndexOf(selectedSubscription) + 1;
+            index = avalibleSubscriptions.IndexOf(selectedSubscription) + 1;
             index = LoopIndex(index);
-            selectedSubscriptionId = AvalibleSubscriptions[index].subscriptionId;
+            selectedSubscriptionId = avalibleSubscriptions[index].SubscriptionId;
         }
         else if (key == KeyCode.Return)
         {
@@ -66,9 +65,9 @@ public class AdminScreen : MonoBehaviour {
     {
         if (index < 0)
         {
-            index = AvalibleSubscriptions.Count() - 1;
+            index = avalibleSubscriptions.Count() - 1;
         }
-        else if (index > AvalibleSubscriptions.Count() - 1)
+        else if (index > avalibleSubscriptions.Count() - 1)
         {
             index = 0;
         }
@@ -81,10 +80,10 @@ public class AdminScreen : MonoBehaviour {
     void Update () {
         if (loggedIn)
         {
-            var SubscriptionOutput = AvalibleSubscriptions.Select(s =>
+            var subscriptionOutput = avalibleSubscriptions.Select(s =>
             {
-                var shortDisplayName = s.displayName.Substring(0, Math.Min(24, s.displayName.Length));
-                if (s.subscriptionId == selectedSubscriptionId)
+                var shortDisplayName = s.DisplayName.Substring(0, Math.Min(24, s.DisplayName.Length));
+                if (s.SubscriptionId == selectedSubscriptionId)
                 {
                     return shortDisplayName + " <-- (Y = Up, H = Down)";
                 }
@@ -93,11 +92,11 @@ public class AdminScreen : MonoBehaviour {
                     return shortDisplayName;
                 }
             });
-            ComputerOutputText.text = string.Join(Environment.NewLine, SubscriptionOutput);
+            computerOutputText.text = string.Join(Environment.NewLine, subscriptionOutput);
             
         } else if (IsCrashed)
         {
-            ComputerOutputText.text = ":(" + Environment.NewLine
+            computerOutputText.text = ":(" + Environment.NewLine
                 + "0x00000FF2";
         } else
         {
@@ -105,12 +104,15 @@ public class AdminScreen : MonoBehaviour {
             if (promptBlinker > 0.5f)
             {
                 promptBlinker = 0;
-                if (ComputerOutputText.text == ">_") {
-                    ComputerOutputText.text = ">";
-                } else if (ComputerOutputText.text == ">")
+                if (cursorFlip) {
+                    computerOutputText.text = "Press E to login" + Environment.NewLine;
+                    computerOutputText.text += ">";
+                } else
                 {
-                    ComputerOutputText.text = ">_";
+                    computerOutputText.text = "Press E to login" + Environment.NewLine;
+                    computerOutputText.text += ">_";
                 }
+                cursorFlip = !cursorFlip;
             }
             
         }

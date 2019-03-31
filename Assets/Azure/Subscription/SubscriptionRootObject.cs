@@ -1,14 +1,16 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Assets.Azure.Subscription
 {
     
     public class SubscriptionRootObject
     {
-        public List<Subscription> value { get; set; }
+        [JsonProperty(PropertyName = "value")]
+        public List<Subscription> Value { get; set; }
     }
 }

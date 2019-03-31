@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,32 +6,34 @@ using UnityEngine;
 
 public class Earthquake : MonoBehaviour {
 
-    public bool activeEarthquake = false;
-    public bool quaking = false;
-    public float magnitude = 0.001f;
-    private float startMagnitude = 0f;
-    Vector3 start;
-    float signal = 0f;
-
-    Rigidbody rb;
-    GameObject player;
-    private bool blackout;
-    private FluorescentLamp[] allStripLights;
-    bool[] originalLampStates;
-
+    public bool ActiveEarthquake = false;
+    public bool Quaking = false;
+    public float Magnitude;
     public AudioClip AlarmClip;
     public AudioClip QuakeClip;
     public AudioClip VoiceClip;
 
-    float quakeCoolDown = 25f;
-    float quakeCoolDownTimer = 0f;
-    float quakeForSec = 20;
+    private float startMagnitude = 0f;
+    private Vector3 start;
+    private float signal = 0f;
+    private Rigidbody rb;
+    private GameObject player;
+    private bool blackout;
+    private FluorescentLamp[] allStripLights;
+    private bool[] originalLampStates;
+    private float quakeCoolDown;
+    private float quakeCoolDownTimer;
+    private float quakeForSec;
 
     // Use this for initialization
     void Start () {
+        quakeCoolDown = 25f;
+        quakeCoolDownTimer = 0f;
+        quakeForSec = 20;
+        Magnitude = 0.3f;
         quakeForSec = 20;
         blackout = false;
-        startMagnitude = magnitude;
+        startMagnitude = Magnitude;
         quakeCoolDownTimer = quakeCoolDown;
         rb = GetComponent<Rigidbody>();
         start = transform.position;
@@ -39,39 +41,38 @@ public class Earthquake : MonoBehaviour {
         allStripLights = GameObject.FindObjectsOfType<FluorescentLamp>();
     }
 
-    public void StartEarthQuake(float Secunds)
+    public void StartEarthQuake(float secunds)
     {
-        quakeForSec = Secunds;
-        activeEarthquake = true;
+        quakeForSec = secunds;
+        ActiveEarthquake = true;
     }
 	
 	// Update is called once per frame
 	void Update () {
         quakeForSec -= Time.deltaTime;
-        if (activeEarthquake && quakeForSec <= 0)
+        if (ActiveEarthquake && quakeForSec <= 0)
         {
-            activeEarthquake = false;
+            ActiveEarthquake = false;
             quakeForSec = 20;
         }
 
-
-        if (activeEarthquake)
+        if (ActiveEarthquake)
         {
-            if (!quaking)
+            if (!Quaking)
             {
-                magnitude = startMagnitude;
+                Magnitude = startMagnitude;
                 Blackout();
                 StartSound();
                 StartAlarmLight();
-                quaking = true;
+                Quaking = true;
             } 
             Quake();
         } else
         {
-            if (quaking)
+            if (Quaking)
             {
                 quakeCoolDownTimer -= Time.deltaTime;
-                coolDownQuake();
+                CoolDownQuake();
                 Quake();
             }
 
@@ -80,39 +81,39 @@ public class Earthquake : MonoBehaviour {
                 RestoreLights();
             }
 
-            if (quakeCoolDownTimer <= 0 && quaking)
+            if (quakeCoolDownTimer <= 0 && Quaking)
             {
                 quakeCoolDownTimer = quakeCoolDown;
                 
                 StopSound();
                 StopAlarmLight();
-                quaking = false;
+                Quaking = false;
             }
         }
 	}
 
-    private void coolDownQuake()
+    private void CoolDownQuake()
     {
-        magnitude = startMagnitude * (quakeCoolDownTimer / quakeCoolDown);
-        var audioSources = GetComponentsInChildren<AudioSource>();
+        Magnitude = startMagnitude * (quakeCoolDownTimer / quakeCoolDown);
+        AudioSource[] audioSources = GetComponentsInChildren<AudioSource>();
         audioSources[1].volume = (quakeCoolDownTimer / quakeCoolDown);
     }
 
     private void StartAlarmLight()
     {
-        var AlertLight = GetComponentInChildren<SpecialLight>();
-        AlertLight.Mode = SpecialLight.LightModes.Interval;
+        SpecialLight alertLight = GetComponentInChildren<SpecialLight>();
+        alertLight.Mode = SpecialLight.LightModes.Interval;
     }
 
     private void StopAlarmLight()
     {
-        var AlertLight = GetComponentInChildren<SpecialLight>();
-        AlertLight.Mode = SpecialLight.LightModes.Off;
+        SpecialLight alertLight = GetComponentInChildren<SpecialLight>();
+        alertLight.Mode = SpecialLight.LightModes.Off;
     }
 
     private void StartSound()
     {
-        var audioSources = GetComponentsInChildren<AudioSource>();
+        AudioSource[] audioSources = GetComponentsInChildren<AudioSource>();
         //Alarm
         audioSources[0].clip = AlarmClip;
         audioSources[0].loop = true;
@@ -136,7 +137,7 @@ public class Earthquake : MonoBehaviour {
 
     private void StopSound()
     {
-        var audioSources = GetComponentsInChildren<AudioSource>();
+        AudioSource[] audioSources = GetComponentsInChildren<AudioSource>();
         //Alarm
         audioSources[0].Stop();
 
@@ -147,7 +148,7 @@ public class Earthquake : MonoBehaviour {
         audioSources[2].Stop();
     }
 
-    float sinusGen(float magnitude, float frequency)
+    float SinusGen(float magnitude, float frequency)
     {
         signal += Time.deltaTime;
         return magnitude * Mathf.Sin((float)System.Math.PI * signal * frequency);
@@ -185,10 +186,10 @@ public class Earthquake : MonoBehaviour {
 
     private void Quake()
     {
-        var mag = (float)Assets.Tools.Utils.Remap(magnitude, 0, 1, 0, 0.05f);
-        player.transform.rotation = Quaternion.Euler(player.transform.rotation.eulerAngles.x, player.transform.rotation.eulerAngles.y, sinusGen(80f * mag, 400f));
+        float mag = (float)Assets.Tools.Utils.Remap(Magnitude, 0, 1, 0, 0.05f);
+        player.transform.rotation = Quaternion.Euler(player.transform.rotation.eulerAngles.x, player.transform.rotation.eulerAngles.y, SinusGen(80f * mag, 400f));
 
-        var newPos = start - new Vector3(sinusGen(mag, 531f), 0, sinusGen(mag, 418f));
+        Vector3 newPos = start - new Vector3(SinusGen(mag, 531f), 0, SinusGen(mag, 418f));
         rb.MovePosition(newPos);
     }
 }
