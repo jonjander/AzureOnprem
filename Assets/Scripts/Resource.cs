@@ -46,11 +46,41 @@ public class Resource : MonoBehaviour {
         }
     }
 
+    private int GetTextLength(TextMesh textMesh)
+    {
+        char[] arr = textMesh.text.ToCharArray();
+        Font myFont = textMesh.font;
+        int totalLength = 0;
+        foreach (char c in arr)
+        {
+            myFont.GetCharacterInfo(c, out CharacterInfo characterInfo, textMesh.fontSize);
+
+            totalLength += characterInfo.advance;
+        }
+        return totalLength;
+    }
+
+    private int GetTextLength(TextMesh textMesh, string alternativeText)
+    {
+        char[] arr = alternativeText.ToCharArray();
+        Font myFont = textMesh.font;
+        int totalLength = 0;
+        foreach (char c in arr)
+        {
+            myFont.GetCharacterInfo(c, out CharacterInfo characterInfo, textMesh.fontSize);
+
+            totalLength += characterInfo.advance;
+        }
+        return totalLength;
+    }
+
+
     void SetText()
     {
         try
         {
             DisplayText = GetComponentsInChildren<TextMesh>().ToList();
+
             for (int i = 0; i < DisplayText.Count(); i++)
             {
                 if (RefObject.Count < i + 1)
@@ -58,8 +88,28 @@ public class Resource : MonoBehaviour {
                     DisplayText[i].text = "";
                 } else 
                 {
-                    var maxLenFromExistingText = DisplayText[i].text.Length;
-                    DisplayText[i].text = RefObject[i].Name.Substring(0, Math.Min(maxLenFromExistingText, RefObject[i].Name.Length));
+                    
+                    int baseLen = GetTextLength(DisplayText[i]);
+                    int targetLen = GetTextLength(DisplayText[i], RefObject[i].Name);
+                    int orgCharCount = RefObject[i].Name.Length;
+                    string newText = RefObject[i].Name;
+                    int newTextLen = targetLen;
+                    int newTextCount = orgCharCount;
+                    if (targetLen > baseLen)
+                    { //Text too long
+
+                        while (newTextLen >= baseLen)
+                        {
+                            newTextCount--;
+                            newText = RefObject[i].Name.Substring(0, Math.Min(newTextCount, RefObject[i].Name.Length));
+                            newTextLen = GetTextLength(DisplayText[i], newText);
+                        }
+                        DisplayText[i].text = newText;
+                    }
+                    else
+                    {
+                        DisplayText[i].text = RefObject[i].Name;
+                    }
                 }
             }
         }
