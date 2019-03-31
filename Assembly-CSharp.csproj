@@ -8,8 +8,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{76CA0D1A-C873-31AF-8F3E-F11FA9179252}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -92,12 +91,10 @@
     <Compile Include="Assets\Scripts\SpecialLight.cs" />
     <Compile Include="Assets\Scripts\Weapon.cs" />
     <Compile Include="Assets\Tools\Utils.cs" />
-    <None Include=".editorconfig" />
     <None Include="Assets\JsonDotNet\link.xml" />
     <None Include="Assets\StreamingAssets\Microsoft.IdentityModel.Clients.ActiveDirectory.xml" />
     <None Include="Assets\Audit report.txt" />
     <None Include="Assets\DataCenter\Gnome\Shader\GnomeShader.shader" />
-    <None Include="ChangeLog.md" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Git/VDC/VDC/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
