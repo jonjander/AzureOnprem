@@ -56,7 +56,6 @@ public class Earthquake : MonoBehaviour {
             quakeForSec = 20;
         }
 
-
         if (ActiveEarthquake)
         {
             if (!Quaking)
