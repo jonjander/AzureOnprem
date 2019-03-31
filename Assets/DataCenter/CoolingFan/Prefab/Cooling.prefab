@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Led: {fileID: 0}
-  LedColor: {r: 0, g: 0, b: 0, a: 0}
+  LedColor: {r: 0.1764706, g: 1, b: 0, a: 0}
   Mode: 0
   RandomMin: 0.04
   RandomMax: 0.9
@@ -1647,7 +1647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Led: {fileID: 0}
-  LedColor: {r: 0, g: 0, b: 0, a: 0}
+  LedColor: {r: 0.1764706, g: 1, b: 0, a: 0}
   Mode: 0
   RandomMin: 0.04
   RandomMax: 0.9
@@ -2992,7 +2992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Led: {fileID: 0}
-  LedColor: {r: 0, g: 0, b: 0, a: 0}
+  LedColor: {r: 0.1764706, g: 1, b: 0, a: 0}
   Mode: 2
   RandomMin: 0.04
   RandomMax: 0.9
@@ -3410,7 +3410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Led: {fileID: 0}
-  LedColor: {r: 0, g: 0, b: 0, a: 0}
+  LedColor: {r: 1, g: 0.13725491, b: 0, a: 0}
   Mode: 2
   RandomMin: 0.04
   RandomMax: 0.9
