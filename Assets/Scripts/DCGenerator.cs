@@ -15,10 +15,7 @@ public class DCGenerator : MonoBehaviour {
 
     public List<GameObject> Racks;
     public GameObject RackTemplate;
-    public int Col = 4;
-    public int Row = 0;
-    public float XOffset = 4f;
-    public float ZOffset = 3f;
+    
     public string AccessToken = "";
     public string Subscription = "";
     public List<GameObject> ServerKinds;
@@ -32,10 +29,18 @@ public class DCGenerator : MonoBehaviour {
 
     private AzureManagementAPIHelper azureManagementAPIHelper;
     private List<ResourceGroupObject> resoruceGroups;
+    private int col;
+    private int row;
+    private float xOffset;
+    private float zOffset;
     // Use this for initialization
     void Start () {
         azureManagementAPIHelper = new AzureManagementAPIHelper();
         AdminScreen.OnComputerLogin += GenerateDataCenterResources;
+        col = 6;
+        row = 10;
+        xOffset = 1.04f;
+        zOffset = 2.84f;
     }
 
     Vector3[] GetRackBounds()
@@ -98,7 +103,7 @@ public class DCGenerator : MonoBehaviour {
 
         //Lights
         start = bounds[0]; //Reset start
-        for (int z = 0; z < Row + 2; z++)
+        for (int z = 0; z < row + 2; z++)
         {
             if (z % 1 == 0)
             {
@@ -107,11 +112,11 @@ public class DCGenerator : MonoBehaviour {
                 x = (bounds[1].x + bounds[0].x) / 2;
                 Mesh mesh = tempLight.GetComponentInChildren<MeshFilter>().mesh;
                 var exrents = mesh.bounds.extents;
-                tempLight.transform.position = new Vector3(x + exrents.x, 3, start.z + (ZOffset / 2) + (ZOffset / 4));
+                tempLight.transform.position = new Vector3(x + exrents.x, 3, start.z + (zOffset / 2) + (zOffset / 4));
                 var lampScript = tempLight.GetComponent<FluorescentLamp>();
-                lampScript.isBroken = !!(UnityEngine.Random.Range(0, Row + 3) == 1);
+                lampScript.isBroken = !!(UnityEngine.Random.Range(0, row + 3) == 1);
             }
-            start += new Vector3(0, 0, ZOffset);
+            start += new Vector3(0, 0, zOffset);
         }
 
         //CableLadder
@@ -151,14 +156,14 @@ public class DCGenerator : MonoBehaviour {
             foreach (var item in resoruceGroups)
             {
 
-                if (iCol == Col)
+                if (iCol == col)
                 {
                     iCol = 0;
                     iRow++;
-                    Row = iRow;
+                    row = iRow;
                 }
                 var tmp = Instantiate(RackTemplate);
-                tmp.transform.position = new Vector3(iCol * XOffset, 0, iRow * ZOffset);
+                tmp.transform.position = new Vector3(iCol * xOffset, 0, iRow * zOffset);
 
 
                 if (iRow % 2 == 0)
