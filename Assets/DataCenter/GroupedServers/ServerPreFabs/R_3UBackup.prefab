@@ -53,14 +53,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea9a9d4abf6053459525feb58ef8aa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uSize: 3
+  USize: 3
   Types:
   - Microsoft.RecoveryServices/vaults
   Capacity: 1
-  refObject: []
-  DisplayText: []
+  RefObject: []
   ServerSounds:
   - {fileID: 8300000, guid: d299b19fd22428a42b2be83ee2907246, type: 3}
+  DisplayText: []
 --- !u!54 &54053160742716124
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -306,8 +306,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317fadcfad9d6854c8491b70855c21c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  led: {fileID: 0}
-  ledColor: {r: 0.1764706, g: 1, b: 0, a: 0}
+  Led: {fileID: 0}
+  LedColor: {r: 0.1764706, g: 1, b: 0, a: 0}
   Mode: 0
   RandomMin: 0.04
   RandomMax: 0.9
@@ -316,6 +316,8 @@ MonoBehaviour:
   TagName: 
   TagValue: 0
   SyncLed: {fileID: 0}
+  Flip: 0
+  LedFlip: 0
 --- !u!1 &1820120657095360
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,8 +527,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317fadcfad9d6854c8491b70855c21c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  led: {fileID: 0}
-  ledColor: {r: 0.1764706, g: 1, b: 0, a: 0}
+  Led: {fileID: 0}
+  LedColor: {r: 0.1764706, g: 1, b: 0, a: 0}
   Mode: 2
   RandomMin: 0.04
   RandomMax: 0.9
@@ -535,6 +537,8 @@ MonoBehaviour:
   TagName: 
   TagValue: 0
   SyncLed: {fileID: 0}
+  Flip: 0
+  LedFlip: 0
 --- !u!1 &9132595725853466382
 GameObject:
   m_ObjectHideFlags: 0

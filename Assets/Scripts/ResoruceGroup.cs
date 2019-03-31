@@ -1,4 +1,4 @@
-﻿using Assets.Azure;
+using Assets.Azure;
 using Assets.Azure.Resource;
 using Newtonsoft.Json;
 using System;
@@ -13,115 +13,114 @@ public class ResoruceGroup : MonoBehaviour
 {
     public string Id;
     public string Location;
-    public ResourceGroupProperties properties;
-    private TextMesh Textmesh;
-    public Tags tags { get; set; }
-
-    private List<GameObject> Resources;
-    public List<List<ResourceObject>> Servers { get; set; }
-
+    public ResourceGroupProperties Properties;
+    public Tags Tags;
+    public List<List<ResourceObject>> Servers;
     public bool ResourcesObjectsLoaded = false;
 
-    float Top = 1.9f;
-    float Step = 0.071f;
-
-    int maxUSize = 25;
-
-    private Rigidbody RGRigidbody;
+    private List<GameObject> resources;
+    private float top;
+    private float step;
+    private int maxUSize;
+    private TextMesh textmesh;
+    private Rigidbody resourceGroupRigidbody;
     public void SetInfo(ResourceGroupObject rg)
     {
-        name = rg.name;
-        Id = rg.id;
-        Location = rg.location;
+        name = rg.Name;
+        Id = rg.Id;
+        Location = rg.Location;
     }
 
     public ResoruceGroup()
     {
-
+        //non parameter constructor for json
     }
 
     public void SetText()
     {
-        Textmesh = GetComponentInChildren<TextMesh>();
-        Textmesh.text = name;
+        textmesh = GetComponentInChildren<TextMesh>();
+        textmesh.text = name;
     }
 
 
 
     private void Start()
     {
-        RGRigidbody = GetComponent<Rigidbody>();
+        maxUSize = 25;
+        top = 1.9f;
+        step = 0.071f;
+        resourceGroupRigidbody = GetComponent<Rigidbody>();
     }
 
-    public void InstanciateResources(List<GameObject> ResourceTemplates)
+    public void InstanciateResources(List<GameObject> resourceTemplates)
     {
         if (ResourcesObjectsLoaded)
         {
-            Resources = new List<GameObject>();
+            resources = new List<GameObject>();
 
             var i = 0;
             foreach (var item in Servers)
             {
-                GameObject ResourceTemplate = FindServerTemplate(ResourceTemplates, item);
+                GameObject resourceTemplate = FindServerTemplate(resourceTemplates, item);
 
                 //Test if fit
-                var templateSize = ResourceTemplate.GetComponent<Resource>().uSize;
+                var templateSize = resourceTemplate.GetComponent<Resource>().USize;
                 if (templateSize + i > maxUSize)
                 {
                     Debug.LogError("Cannot fit server into rack");
                 }
                 else
                 {
-                    var tempResource = Instantiate(ResourceTemplate);
+                    var tempResource = Instantiate(resourceTemplate);
                     var script = tempResource.GetComponent<Resource>();
 
-                    tempResource.transform.position = transform.position + new Vector3(0, Top - (script.uSize * Step) - (Step * i), 0);
+                    tempResource.transform.position = transform.position + new Vector3(0, top - (script.USize * step) - (step * i), 0);
                     tempResource.transform.rotation = transform.rotation;
-                    tempResource.name = item.First().name;
+                    tempResource.name = item.First().Name;
 
-                    script.refObject.AddRange(item);
+                    script.RefObject.AddRange(item);
                     script.Load();
 
                     List<Rigidbody> poles = GetComponentsInChildren<Rigidbody>().Where(s => s.gameObject.tag == "Pole")
                         .ToList();
-                    var FJs = tempResource.GetComponentsInChildren<FixedJoint>();
-                    for (int f = 0; f < FJs.Length; f++)
+                    var polesFixedJoints = tempResource.GetComponentsInChildren<FixedJoint>();
+                    for (int f = 0; f < polesFixedJoints.Length; f++)
                     {
-                        FJs[f].connectedBody = poles[f];
+                        polesFixedJoints[f].connectedBody = poles[f];
                     }
 
-                    Resources.Add(tempResource);
-                    i += script.uSize;
+                    resources.Add(tempResource);
+                    i += script.USize;
                 }
             }
         }
         
     }
 
-    private int GetTotalUSize(List<GameObject> ResourceTemplates, List<List<ResourceObject>> ResourceItems)
+    private int GetTotalUSize(List<GameObject> resourceTemplates, List<List<ResourceObject>> resourceItems)
     {
         var totalUs = 0;
-        foreach (var serverResources in ResourceItems)
+        foreach (var serverResources in resourceItems)
         {
-            var serverTemplate = FindServerTemplate(ResourceTemplates, serverResources);
+            var serverTemplate = FindServerTemplate(resourceTemplates, serverResources);
             var serverScript = serverTemplate.GetComponent<Resource>();
-            totalUs += serverScript.uSize;
+            totalUs += serverScript.USize;
         }
 
         return totalUs;
     }
 
-    private static GameObject FindServerTemplate(List<GameObject> ResourceTemplates, List<ResourceObject> ResourceItems)
+    private static GameObject FindServerTemplate(List<GameObject> resourceTemplates, List<ResourceObject> resourceItems)
     {
         //Find blades > 10
 
         //Select type
-        var ResourceTemplate = ResourceTemplates
+        GameObject resourceTemplate = resourceTemplates
             .Where(s =>
             {
                 var resourceScript = s.GetComponent<Resource>();
-                var matchingType = resourceScript.Types.Any(u => u == ResourceItems.First().type);
-                var matchingCapacity = resourceScript.Capacity >= ResourceItems.Count();
+                var matchingType = resourceScript.Types.Any(u => u == resourceItems.First().Type);
+                var matchingCapacity = resourceScript.Capacity >= resourceItems.Count();
                 return matchingType && matchingCapacity;
             })
             .OrderBy(s=> {
@@ -129,14 +128,14 @@ public class ResoruceGroup : MonoBehaviour
                 return resourceScript.Capacity;
             })
             .FirstOrDefault();
-        if (ResourceTemplate == null) //If type not exist
+        if (resourceTemplate == null) //If type not exist
         {
-            ResourceTemplate = ResourceTemplates
+            resourceTemplate = resourceTemplates
             .Where(s =>
             {
                 var resourceScript = s.GetComponent<Resource>();
                 var matchingType = resourceScript.Types.Any(u => u == "Dummy");
-                var matchingCapacity = resourceScript.Capacity >= ResourceItems.Count();
+                var matchingCapacity = resourceScript.Capacity >= resourceItems.Count();
                 return matchingType && matchingCapacity;
             })
             .OrderBy(s => {
@@ -145,10 +144,10 @@ public class ResoruceGroup : MonoBehaviour
             })
             .FirstOrDefault();
         }
-        if (ResourceTemplate == null) //if still null take biggest
+        if (resourceTemplate == null) //if still null take biggest
         {
             Debug.LogError("Groups to big");
-            ResourceTemplate = ResourceTemplates
+            resourceTemplate = resourceTemplates
             .Where(s =>
             {
                 var resourceScript = s.GetComponent<Resource>();
@@ -162,25 +161,25 @@ public class ResoruceGroup : MonoBehaviour
             .FirstOrDefault();
         }
 
-        return ResourceTemplate;
+        return resourceTemplate;
     }
 
-    IEnumerator GetResoruceGroupResources(string UserAccessToken, string subscription, List<GameObject> ServerKinds)
+    IEnumerator GetResoruceGroupResources(string userAccessToken, string subscription, List<GameObject> serverKinds)
     {
-        string AzureUrl = "https://management.azure.com/subscriptions/" + subscription + "/resourceGroups/" + name + "/resources?api-version=2017-05-10";
-        UnityWebRequest Request = UnityWebRequest.Get(AzureUrl);
+        string azureUrl = "https://management.azure.com/subscriptions/" + subscription + "/resourceGroups/" + name + "/resources?api-version=2017-05-10";
+        UnityWebRequest request = UnityWebRequest.Get(azureUrl);
 
-        Request.method = UnityWebRequest.kHttpVerbGET;
-        Request.SetRequestHeader("Content-Type", "application/json; utf-8");
-        Request.SetRequestHeader("Authorization", UserAccessToken);
+        request.method = UnityWebRequest.kHttpVerbGET;
+        request.SetRequestHeader("Content-Type", "application/json; utf-8");
+        request.SetRequestHeader("Authorization", userAccessToken);
 
-        yield return Request.SendWebRequest();
-        var JsonString = Request.downloadHandler.text;
-        var resources = JsonConvert.DeserializeObject<ResourceObjectRootObject>(JsonString).value;
-        Servers = ConvertResourcesToServers(ServerKinds, resources);
+        yield return request.SendWebRequest();
+        var jsonString = request.downloadHandler.text;
+        var resources = JsonConvert.DeserializeObject<ResourceObjectRootObject>(jsonString).Value;
+        Servers = ConvertResourcesToServers(serverKinds, resources);
 
         ResourcesObjectsLoaded = true;
-        InstanciateResources(ServerKinds);
+        InstanciateResources(serverKinds);
     }
 
     private List<List<ResourceObject>> ConvertResourcesToServers(List<GameObject> serverKinds, List<ResourceObject> resourceObects)
@@ -197,17 +196,17 @@ public class ResoruceGroup : MonoBehaviour
 
         var tmpServerResources = new List<List<ResourceObject>>();
 
-        var GroupedResources = resourceObects
-            .Where(r => groupableResources.Any(s => s == r.type))
-            .GroupBy(t=>t.type, (key, g) => new { KeyType = key, Resources = g.ToList() });
+        var groupedResources = resourceObects
+            .Where(r => groupableResources.Any(s => s == r.Type))
+            .GroupBy(t=>t.Type, (key, g) => new { KeyType = key, Resources = g.ToList() });
 
-        var NormalResources = resourceObects
-            .Where(r => !groupableResources.Any(s => s == r.type));
+        var normalResources = resourceObects
+            .Where(r => !groupableResources.Any(s => s == r.Type));
         
-        var ExtractedGroupedResources = GroupedResources
+        var extractedGroupedResources = groupedResources
             .Select(g => g.Resources).ToList();
 
-        var ExtractedNormalResources = NormalResources.Select(res => {
+        var extractedNormalResources = normalResources.Select(res => {
             return new List<ResourceObject>
             {
                 res
@@ -215,19 +214,19 @@ public class ResoruceGroup : MonoBehaviour
         });
 
         //Add grouped lists
-        tmpServerResources.AddRange(ExtractedGroupedResources);
-        tmpServerResources.AddRange(ExtractedNormalResources);
+        tmpServerResources.AddRange(extractedGroupedResources);
+        tmpServerResources.AddRange(extractedNormalResources);
 
         //Test max size
         if (GetTotalUSize(serverKinds, tmpServerResources) > maxUSize)
         {
             //Group all
             var allTypesGrouped = resourceObects
-            .GroupBy(t => t.type, (key, g) => new { KeyType = key, Resources = g.ToList() });
-            ExtractedGroupedResources = GroupedResources
+            .GroupBy(t => t.Type, (key, g) => new { KeyType = key, Resources = g.ToList() });
+            extractedGroupedResources = groupedResources
                 .Select(g => g.Resources).ToList();
             var tempReturn = new List<List<ResourceObject>>();
-            tempReturn.AddRange(ExtractedGroupedResources);
+            tempReturn.AddRange(extractedGroupedResources);
             return tempReturn;
         }
         else
@@ -238,8 +237,8 @@ public class ResoruceGroup : MonoBehaviour
 
     public void RemoveHides()
     {
-        var Hides = GetComponentsInChildren<HideArea>().ToList();
-        foreach (var item in Hides)
+        var hides = GetComponentsInChildren<HideArea>().ToList();
+        foreach (var item in hides)
         {
             item.DestroyHide();
         }
@@ -250,9 +249,9 @@ public class ResoruceGroup : MonoBehaviour
                 
     }
 
-    internal void Load(string AccessToken, string Subscription, List<GameObject> ServerKinds)
+    internal void Load(string accessToken, string subscription, List<GameObject> serverKinds)
     {
-        StartCoroutine(GetResoruceGroupResources(AccessToken, Subscription, ServerKinds));
+        StartCoroutine(GetResoruceGroupResources(accessToken, subscription, serverKinds));
     }
 }
 
