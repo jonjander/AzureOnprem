@@ -1,6 +1,9 @@
-## Develop
+## 0.1.7
 * Code refactoring
 * Added help text to login screen
+* Added NIC leds to 8U blade resource
+* Fixed resource name lenght
+* Fixed missplaced NIC LEDs on storage
 
 ## 0.1.4
 * Removed dev servers
