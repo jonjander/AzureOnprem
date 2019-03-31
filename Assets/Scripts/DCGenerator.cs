@@ -199,14 +199,14 @@ public class DCGenerator : MonoBehaviour {
         {
             //Connect Cables
             var cable = Instantiate(Cable);
-            var cabelGeneratorScript = cable.GetComponent<cabelGenerator>();
-            cabelGeneratorScript.startPoint.GetComponent<Rigidbody>().isKinematic = true;
+            var cabelGeneratorScript = cable.GetComponent<CabelGenerator>();
+            cabelGeneratorScript.StartPoint.GetComponent<Rigidbody>().isKinematic = true;
             var closestConnector = FindClosestCableConnection(item.transform);
-            cabelGeneratorScript.startPoint.transform.position = closestConnector.transform.position;
-            var endConnectionJoint = cabelGeneratorScript.endPoint.GetComponent<ConfigurableJoint>();
+            cabelGeneratorScript.StartPoint.transform.position = closestConnector.transform.position;
+            var endConnectionJoint = cabelGeneratorScript.EndPoint.GetComponent<ConfigurableJoint>();
             GameObject topOfRack = new List<GameObject>(GameObject.FindGameObjectsWithTag("RackTop")).Find(g => g.transform.IsChildOf(item.transform));
             GameObject topOfRackConnector = new List<GameObject>(GameObject.FindGameObjectsWithTag("CabelConnector")).Find(g => g.transform.IsChildOf(item.transform));
-            cabelGeneratorScript.endPoint.transform.position = topOfRackConnector.transform.position;
+            cabelGeneratorScript.EndPoint.transform.position = topOfRackConnector.transform.position;
             endConnectionJoint.connectedBody = topOfRack.GetComponent<Rigidbody>();
             endConnectionJoint.anchor = Vector3.zero;
         }

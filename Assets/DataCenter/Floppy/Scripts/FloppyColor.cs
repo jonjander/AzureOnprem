@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +11,12 @@ public class FloppyColor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        List<MeshRenderer> PlasitcBodys = GetComponentsInChildren<MeshRenderer>()
+        List<MeshRenderer> plasitcBodys = GetComponentsInChildren<MeshRenderer>()
             .Where(s => s.name == "Body6" || s.name == "Body7")
             .ToList();
 
         var randomMaterial = Materials.OrderBy(s => Guid.NewGuid()).FirstOrDefault();
-        foreach (var body in PlasitcBodys)
+        foreach (var body in plasitcBodys)
         {
             body.material = randomMaterial;
         }

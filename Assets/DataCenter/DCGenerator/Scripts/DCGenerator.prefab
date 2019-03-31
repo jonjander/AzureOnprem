@@ -46,10 +46,6 @@ MonoBehaviour:
   Racks: []
   RackTemplate: {fileID: 1614352423607702, guid: e46e1b52cd3d9a945b7a4e904cd1d886,
     type: 3}
-  Col: 4
-  Row: 0
-  XOffset: 4
-  ZOffset: 3
   AccessToken: 
   Subscription: 
   ServerKinds:
