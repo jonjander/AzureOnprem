@@ -709,6 +709,26 @@ PrefabInstance:
       propertyPath: NavMeshSurface
       value: 
       objectReference: {fileID: 513710341}
+    - target: {fileID: 114878057305174422, guid: 7501cedea49898644a9bdaafe7b9d833,
+        type: 3}
+      propertyPath: Col
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114878057305174422, guid: 7501cedea49898644a9bdaafe7b9d833,
+        type: 3}
+      propertyPath: Row
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114878057305174422, guid: 7501cedea49898644a9bdaafe7b9d833,
+        type: 3}
+      propertyPath: XOffset
+      value: 1.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 114878057305174422, guid: 7501cedea49898644a9bdaafe7b9d833,
+        type: 3}
+      propertyPath: ZOffset
+      value: 2.84
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7501cedea49898644a9bdaafe7b9d833, type: 3}
 --- !u!1001 &683067382
