@@ -580,7 +580,7 @@ GameObject:
   - component: {fileID: 114419584190264564}
   m_Layer: 0
   m_Name: Hide (1)
-  m_TagString: HideRight
+  m_TagString: Hide
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -806,7 +806,7 @@ GameObject:
   - component: {fileID: 114467249899932638}
   m_Layer: 0
   m_Name: Hide
-  m_TagString: HideRight
+  m_TagString: Hide
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

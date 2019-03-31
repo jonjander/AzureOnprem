@@ -82,8 +82,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317fadcfad9d6854c8491b70855c21c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  led: {fileID: 0}
-  ledColor: {r: 0.1764706, g: 1, b: 0, a: 0}
+  Led: {fileID: 0}
+  LedColor: {r: 0.1764706, g: 1, b: 0, a: 0}
   Mode: 2
   RandomMin: 0.04
   RandomMax: 0.9
@@ -92,6 +92,8 @@ MonoBehaviour:
   TagName: 
   TagValue: 0
   SyncLed: {fileID: 0}
+  Flip: 0
+  LedFlip: 0
 --- !u!1 &1149184959726534
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,8 +176,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317fadcfad9d6854c8491b70855c21c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  led: {fileID: 0}
-  ledColor: {r: 0.1764706, g: 1, b: 0, a: 0}
+  Led: {fileID: 0}
+  LedColor: {r: 0.1764706, g: 1, b: 0, a: 0}
   Mode: 2
   RandomMin: 0.04
   RandomMax: 0.9
@@ -184,6 +186,8 @@ MonoBehaviour:
   TagName: 
   TagValue: 0
   SyncLed: {fileID: 0}
+  Flip: 0
+  LedFlip: 0
 --- !u!1 &1184003993068394
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,8 +270,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317fadcfad9d6854c8491b70855c21c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  led: {fileID: 0}
-  ledColor: {r: 0.1764706, g: 1, b: 0, a: 0}
+  Led: {fileID: 0}
+  LedColor: {r: 0.1764706, g: 1, b: 0, a: 0}
   Mode: 2
   RandomMin: 0.04
   RandomMax: 0.9
@@ -276,6 +280,8 @@ MonoBehaviour:
   TagName: 
   TagValue: 0
   SyncLed: {fileID: 0}
+  Flip: 0
+  LedFlip: 0
 --- !u!1 &1188375669225058
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,8 +364,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317fadcfad9d6854c8491b70855c21c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  led: {fileID: 0}
-  ledColor: {r: 0.1764706, g: 1, b: 0, a: 0}
+  Led: {fileID: 0}
+  LedColor: {r: 0.1764706, g: 1, b: 0, a: 0}
   Mode: 2
   RandomMin: 0.04
   RandomMax: 0.9
@@ -368,6 +374,8 @@ MonoBehaviour:
   TagName: 
   TagValue: 0
   SyncLed: {fileID: 0}
+  Flip: 0
+  LedFlip: 0
 --- !u!1 &1239799008084774
 GameObject:
   m_ObjectHideFlags: 0
@@ -432,15 +440,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea9a9d4abf6053459525feb58ef8aa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uSize: 1
+  USize: 2
   Types:
   - Microsoft.Network/virtualNetworks
   - Microsoft.Network/routeTables
   Capacity: 1
-  refObject: []
-  DisplayText: []
+  RefObject: []
   ServerSounds:
   - {fileID: 8300000, guid: d299b19fd22428a42b2be83ee2907246, type: 3}
+  DisplayText: []
 --- !u!54 &54725295902053066
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -595,8 +603,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317fadcfad9d6854c8491b70855c21c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  led: {fileID: 0}
-  ledColor: {r: 0.1764706, g: 1, b: 0, a: 0}
+  Led: {fileID: 0}
+  LedColor: {r: 0.1764706, g: 1, b: 0, a: 0}
   Mode: 0
   RandomMin: 0.04
   RandomMax: 0.9
@@ -605,6 +613,8 @@ MonoBehaviour:
   TagName: 
   TagValue: 0
   SyncLed: {fileID: 0}
+  Flip: 0
+  LedFlip: 0
 --- !u!1 &1244338162443378
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,8 +697,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317fadcfad9d6854c8491b70855c21c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  led: {fileID: 0}
-  ledColor: {r: 0.1764706, g: 1, b: 0, a: 0}
+  Led: {fileID: 0}
+  LedColor: {r: 0.1764706, g: 1, b: 0, a: 0}
   Mode: 2
   RandomMin: 0.04
   RandomMax: 0.9
@@ -697,6 +707,8 @@ MonoBehaviour:
   TagName: 
   TagValue: 0
   SyncLed: {fileID: 0}
+  Flip: 0
+  LedFlip: 0
 --- !u!1 &1282554494306712
 GameObject:
   m_ObjectHideFlags: 0
@@ -779,8 +791,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317fadcfad9d6854c8491b70855c21c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  led: {fileID: 0}
-  ledColor: {r: 0.1764706, g: 1, b: 0, a: 0}
+  Led: {fileID: 0}
+  LedColor: {r: 0.1764706, g: 1, b: 0, a: 0}
   Mode: 2
   RandomMin: 0.04
   RandomMax: 0.9
@@ -789,6 +801,8 @@ MonoBehaviour:
   TagName: 
   TagValue: 0
   SyncLed: {fileID: 0}
+  Flip: 0
+  LedFlip: 0
 --- !u!1 &1399749698301876
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,8 +885,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317fadcfad9d6854c8491b70855c21c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  led: {fileID: 0}
-  ledColor: {r: 0.1764706, g: 1, b: 0, a: 0}
+  Led: {fileID: 0}
+  LedColor: {r: 0.1764706, g: 1, b: 0, a: 0}
   Mode: 2
   RandomMin: 0.04
   RandomMax: 0.9
@@ -881,6 +895,8 @@ MonoBehaviour:
   TagName: 
   TagValue: 0
   SyncLed: {fileID: 0}
+  Flip: 0
+  LedFlip: 0
 --- !u!1 &1446182434388538
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,8 +979,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317fadcfad9d6854c8491b70855c21c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  led: {fileID: 0}
-  ledColor: {r: 0.1764706, g: 1, b: 0, a: 0}
+  Led: {fileID: 0}
+  LedColor: {r: 0.1764706, g: 1, b: 0, a: 0}
   Mode: 2
   RandomMin: 0.04
   RandomMax: 0.9
@@ -973,6 +989,8 @@ MonoBehaviour:
   TagName: 
   TagValue: 0
   SyncLed: {fileID: 0}
+  Flip: 0
+  LedFlip: 0
 --- !u!1 &1577477242289966
 GameObject:
   m_ObjectHideFlags: 0
@@ -1055,8 +1073,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317fadcfad9d6854c8491b70855c21c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  led: {fileID: 0}
-  ledColor: {r: 0.1764706, g: 1, b: 0, a: 0}
+  Led: {fileID: 0}
+  LedColor: {r: 0.1764706, g: 1, b: 0, a: 0}
   Mode: 2
   RandomMin: 0.04
   RandomMax: 0.9
@@ -1065,6 +1083,8 @@ MonoBehaviour:
   TagName: 
   TagValue: 0
   SyncLed: {fileID: 0}
+  Flip: 0
+  LedFlip: 0
 --- !u!1 &1615940154155886
 GameObject:
   m_ObjectHideFlags: 0
@@ -1147,8 +1167,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317fadcfad9d6854c8491b70855c21c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  led: {fileID: 0}
-  ledColor: {r: 0.1764706, g: 1, b: 0, a: 0}
+  Led: {fileID: 0}
+  LedColor: {r: 0.1764706, g: 1, b: 0, a: 0}
   Mode: 2
   RandomMin: 0.04
   RandomMax: 0.9
@@ -1157,6 +1177,8 @@ MonoBehaviour:
   TagName: 
   TagValue: 0
   SyncLed: {fileID: 0}
+  Flip: 0
+  LedFlip: 0
 --- !u!1 &1621295733979642
 GameObject:
   m_ObjectHideFlags: 0
@@ -1330,8 +1352,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317fadcfad9d6854c8491b70855c21c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  led: {fileID: 0}
-  ledColor: {r: 0.1764706, g: 1, b: 0, a: 0}
+  Led: {fileID: 0}
+  LedColor: {r: 0.1764706, g: 1, b: 0, a: 0}
   Mode: 2
   RandomMin: 0.04
   RandomMax: 0.9
@@ -1340,6 +1362,8 @@ MonoBehaviour:
   TagName: 
   TagValue: 0
   SyncLed: {fileID: 0}
+  Flip: 0
+  LedFlip: 0
 --- !u!1 &1774752155056098
 GameObject:
   m_ObjectHideFlags: 0
@@ -1513,8 +1537,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317fadcfad9d6854c8491b70855c21c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  led: {fileID: 0}
-  ledColor: {r: 0.1764706, g: 1, b: 0, a: 0}
+  Led: {fileID: 0}
+  LedColor: {r: 0.1764706, g: 1, b: 0, a: 0}
   Mode: 2
   RandomMin: 0.04
   RandomMax: 0.9
@@ -1523,6 +1547,8 @@ MonoBehaviour:
   TagName: 
   TagValue: 0
   SyncLed: {fileID: 0}
+  Flip: 0
+  LedFlip: 0
 --- !u!1 &1999675578065090
 GameObject:
   m_ObjectHideFlags: 0

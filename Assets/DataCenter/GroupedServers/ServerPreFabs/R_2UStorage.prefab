@@ -153,7 +153,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1110346177438564}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.795, y: 0.023, z: 0.010099411}
+  m_LocalPosition: {x: -0.5900001, y: 0.023, z: 0.010099411}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4162422185922966}
@@ -209,8 +209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317fadcfad9d6854c8491b70855c21c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  led: {fileID: 0}
-  ledColor: {r: 0.1764706, g: 1, b: 0, a: 0}
+  Led: {fileID: 0}
+  LedColor: {r: 0.1764706, g: 1, b: 0, a: 0}
   Mode: 2
   RandomMin: 0.04
   RandomMax: 0.9
@@ -219,6 +219,8 @@ MonoBehaviour:
   TagName: 
   TagValue: 0
   SyncLed: {fileID: 0}
+  Flip: 0
+  LedFlip: 0
 --- !u!1 &1264145100620852
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,7 +247,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1264145100620852}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.851, y: 0.023, z: 0.010099411}
+  m_LocalPosition: {x: -0.646, y: 0.023, z: 0.010099411}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4162422185922966}
@@ -301,8 +303,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317fadcfad9d6854c8491b70855c21c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  led: {fileID: 0}
-  ledColor: {r: 0.1764706, g: 1, b: 0, a: 0}
+  Led: {fileID: 0}
+  LedColor: {r: 0.1764706, g: 1, b: 0, a: 0}
   Mode: 0
   RandomMin: 0.04
   RandomMax: 0.9
@@ -311,6 +313,8 @@ MonoBehaviour:
   TagName: 
   TagValue: 0
   SyncLed: {fileID: 0}
+  Flip: 0
+  LedFlip: 0
 --- !u!1 &1321233360388588
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,14 +372,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea9a9d4abf6053459525feb58ef8aa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uSize: 2
+  USize: 2
   Types:
   - Microsoft.Storage/storageAccounts
   Capacity: 1
-  refObject: []
-  DisplayText: []
+  RefObject: []
   ServerSounds:
   - {fileID: 8300000, guid: d299b19fd22428a42b2be83ee2907246, type: 3}
+  DisplayText: []
 --- !u!54 &54193656523817406
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -565,7 +569,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1447169565795066}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.56019443, y: 0.081, z: -1.0024071}
+  m_LocalPosition: {x: -0.46219438, y: 0.081, z: -1.0024071}
   m_LocalScale: {x: 1.2820513, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4162422185922966}
@@ -621,8 +625,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317fadcfad9d6854c8491b70855c21c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  led: {fileID: 0}
-  ledColor: {r: 0.1764706, g: 1, b: 0, a: 0}
+  Led: {fileID: 0}
+  LedColor: {r: 0.1764706, g: 1, b: 0, a: 0}
   Mode: 2
   RandomMin: 0.04
   RandomMax: 0.9
@@ -631,6 +635,8 @@ MonoBehaviour:
   TagName: 
   TagValue: 0
   SyncLed: {fileID: 0}
+  Flip: 0
+  LedFlip: 0
 --- !u!1 &1601919413168424
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,7 +754,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883073475984170}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.35719383, y: 0.081, z: -1.0024071}
+  m_LocalPosition: {x: -0.25919378, y: 0.081, z: -1.0024071}
   m_LocalScale: {x: 1.2820513, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4162422185922966}
@@ -804,8 +810,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317fadcfad9d6854c8491b70855c21c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  led: {fileID: 0}
-  ledColor: {r: 0.1764706, g: 1, b: 0, a: 0}
+  Led: {fileID: 0}
+  LedColor: {r: 0.1764706, g: 1, b: 0, a: 0}
   Mode: 2
   RandomMin: 0.04
   RandomMax: 0.9
@@ -814,6 +820,8 @@ MonoBehaviour:
   TagName: 
   TagValue: 0
   SyncLed: {fileID: 0}
+  Flip: 0
+  LedFlip: 0
 --- !u!1 &1926085849781394
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,7 +848,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1926085849781394}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.323, y: 0.081, z: -1.0024071}
+  m_LocalPosition: {x: -0.225, y: 0.081, z: -1.0024071}
   m_LocalScale: {x: 1.2820513, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4162422185922966}
@@ -896,8 +904,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317fadcfad9d6854c8491b70855c21c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  led: {fileID: 0}
-  ledColor: {r: 0.1764706, g: 1, b: 0, a: 0}
+  Led: {fileID: 0}
+  LedColor: {r: 0.1764706, g: 1, b: 0, a: 0}
   Mode: 2
   RandomMin: 0.04
   RandomMax: 0.9
@@ -906,6 +914,8 @@ MonoBehaviour:
   TagName: 
   TagValue: 0
   SyncLed: {fileID: 0}
+  Flip: 0
+  LedFlip: 0
 --- !u!1 &1941082203323908
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,7 +942,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1941082203323908}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.526, y: 0.081, z: -1.0024071}
+  m_LocalPosition: {x: -0.42799997, y: 0.081, z: -1.0024071}
   m_LocalScale: {x: 1.2820513, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4162422185922966}
@@ -988,8 +998,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317fadcfad9d6854c8491b70855c21c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  led: {fileID: 0}
-  ledColor: {r: 0.1764706, g: 1, b: 0, a: 0}
+  Led: {fileID: 0}
+  LedColor: {r: 0.1764706, g: 1, b: 0, a: 0}
   Mode: 2
   RandomMin: 0.04
   RandomMax: 0.9
@@ -998,3 +1008,5 @@ MonoBehaviour:
   TagName: 
   TagValue: 0
   SyncLed: {fileID: 0}
+  Flip: 0
+  LedFlip: 0
