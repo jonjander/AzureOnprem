@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea9a9d4abf6053459525feb58ef8aa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  USize: 2
+  USize: 8
   Types:
   - Dummy
   - Microsoft.Compute/virtualMachines
