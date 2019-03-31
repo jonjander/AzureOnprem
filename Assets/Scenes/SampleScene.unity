@@ -6289,5 +6289,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6539717522987194044, guid: e17a4c54fa2111c47a669fb048877c39,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.62352943
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539717522987194044, guid: e17a4c54fa2111c47a669fb048877c39,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 0.015686275
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539717522987194044, guid: e17a4c54fa2111c47a669fb048877c39,
+        type: 3}
+      propertyPath: LedColor.b
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e17a4c54fa2111c47a669fb048877c39, type: 3}
