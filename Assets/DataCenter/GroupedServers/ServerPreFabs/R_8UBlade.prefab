@@ -112,15 +112,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ea9a9d4abf6053459525feb58ef8aa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uSize: 8
+  USize: 2
   Types:
   - Dummy
   - Microsoft.Compute/virtualMachines
   Capacity: 20
-  refObject: []
-  DisplayText: []
+  RefObject: []
   ServerSounds:
   - {fileID: 8300000, guid: 08a992ee3c300ee4981921bb5341a9f7, type: 3}
+  DisplayText: []
 --- !u!54 &54979829120937398
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1968,6 +1968,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6690411149489373837}
   - component: {fileID: 3409948216595341481}
+  - component: {fileID: 7864574211424431756}
   m_Layer: 0
   m_Name: ScreenLight
   m_TagString: Untagged
@@ -2027,6 +2028,30 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &7864574211424431756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8420807683189777712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317fadcfad9d6854c8491b70855c21c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Led: {fileID: 0}
+  LedColor: {r: 0, g: 0, b: 0, a: 0}
+  Mode: 0
+  RandomMin: 0.04
+  RandomMax: 0.9
+  IntervalOff: 0.9
+  IntervalOn: 0.02
+  TagName: 
+  TagValue: 0
+  SyncLed: {fileID: 0}
+  Flip: 0
+  LedFlip: 0
 --- !u!1 &8427289320051412910
 GameObject:
   m_ObjectHideFlags: 0
@@ -2446,6 +2471,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
 --- !u!4 &4958558114298395 stripped
@@ -2509,6 +2544,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
 --- !u!4 &4958558025238369 stripped
@@ -2571,6 +2616,16 @@ PrefabInstance:
     - target: {fileID: 4958558129738106, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
         type: 3}
@@ -2647,6 +2702,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
         type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
       propertyPath: Mode
       value: 1
       objectReference: {fileID: 0}
@@ -2717,6 +2782,16 @@ PrefabInstance:
     - target: {fileID: 4958558129738106, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
         type: 3}
@@ -2793,6 +2868,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
         type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
       propertyPath: Mode
       value: 1
       objectReference: {fileID: 0}
@@ -2864,6 +2949,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
 --- !u!4 &4958558554412410 stripped
@@ -2927,6 +3022,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
 --- !u!4 &4958558759810880 stripped
@@ -2989,6 +3094,16 @@ PrefabInstance:
     - target: {fileID: 4958558129738106, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
         type: 3}
@@ -3063,6 +3178,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
 --- !u!4 &4958558907811447 stripped
@@ -3125,6 +3250,16 @@ PrefabInstance:
     - target: {fileID: 4958558129738106, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
@@ -3189,6 +3324,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
 --- !u!4 &4958559052372001 stripped
@@ -3251,6 +3396,16 @@ PrefabInstance:
     - target: {fileID: 4958558129738106, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
         type: 3}
@@ -3327,6 +3482,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
         type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
       propertyPath: Mode
       value: 1
       objectReference: {fileID: 0}
@@ -3398,6 +3563,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
 --- !u!4 &4958558963604131 stripped
@@ -3460,6 +3635,16 @@ PrefabInstance:
     - target: {fileID: 4958558129738106, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
         type: 3}
@@ -3534,6 +3719,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
 --- !u!4 &4958556956098086 stripped
@@ -3596,6 +3791,16 @@ PrefabInstance:
     - target: {fileID: 4958558129738106, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
         type: 3}
@@ -3672,6 +3877,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
         type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
       propertyPath: Mode
       value: 1
       objectReference: {fileID: 0}
@@ -3743,6 +3958,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
 --- !u!4 &4958557408134511 stripped
@@ -3805,6 +4030,16 @@ PrefabInstance:
     - target: {fileID: 4958558129738106, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
         type: 3}
@@ -3879,6 +4114,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
 --- !u!4 &4958557388903080 stripped
@@ -3941,6 +4186,16 @@ PrefabInstance:
     - target: {fileID: 4958558129738106, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
         type: 3}
@@ -4015,6 +4270,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
 --- !u!4 &4958557571843769 stripped
@@ -4078,6 +4343,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
 --- !u!4 &4958557545621490 stripped
@@ -4140,6 +4415,16 @@ PrefabInstance:
     - target: {fileID: 4958558129738106, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
         type: 3}
@@ -4216,6 +4501,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
         type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
       propertyPath: Mode
       value: 1
       objectReference: {fileID: 0}
@@ -4287,6 +4582,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
 --- !u!4 &4958557651747841 stripped
@@ -4349,6 +4654,16 @@ PrefabInstance:
     - target: {fileID: 4958558129738106, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
         type: 3}
@@ -4425,6 +4740,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
         type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
       propertyPath: Mode
       value: 1
       objectReference: {fileID: 0}
@@ -4495,6 +4820,16 @@ PrefabInstance:
     - target: {fileID: 4958558129738106, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
         type: 3}
@@ -4571,6 +4906,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
         type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
       propertyPath: Mode
       value: 1
       objectReference: {fileID: 0}
@@ -4642,6 +4987,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
 --- !u!4 &4958557800617595 stripped
@@ -4704,6 +5059,16 @@ PrefabInstance:
     - target: {fileID: 4958558129738106, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
@@ -4768,6 +5133,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
 --- !u!4 &4958557778398340 stripped
@@ -4831,6 +5206,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
 --- !u!4 &4958557775801040 stripped
@@ -4893,6 +5278,16 @@ PrefabInstance:
     - target: {fileID: 4958558129738106, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
         type: 3}
@@ -4967,6 +5362,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
 --- !u!4 &4958557869800293 stripped
@@ -5029,6 +5434,16 @@ PrefabInstance:
     - target: {fileID: 4958558129738106, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
         type: 3}
@@ -5102,6 +5517,16 @@ PrefabInstance:
     - target: {fileID: 4958558129738106, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.r
+      value: 0.1764706
+      objectReference: {fileID: 0}
+    - target: {fileID: 114892517039948786, guid: 6bbbd563c9db6894694f0f75770ce52f,
+        type: 3}
+      propertyPath: LedColor.g
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bbbd563c9db6894694f0f75770ce52f, type: 3}

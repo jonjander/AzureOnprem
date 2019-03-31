@@ -17,6 +17,8 @@ public class AdminScreen : MonoBehaviour {
     private TextMesh computerOutputText;
     private List<Subscription> avalibleSubscriptions;
     private string selectedSubscriptionId;
+    private bool CursorFlip;
+
     // Use this for initialization
     void Start () {
         computerOutputText = GetComponentInChildren<TextMesh>();
@@ -102,7 +104,7 @@ public class AdminScreen : MonoBehaviour {
             if (promptBlinker > 0.5f)
             {
                 promptBlinker = 0;
-                if (computerOutputText.text.Substring(1,1) == "_") {
+                if (CursorFlip) {
                     computerOutputText.text = "Press E to login" + Environment.NewLine;
                     computerOutputText.text += ">";
                 } else
@@ -110,6 +112,7 @@ public class AdminScreen : MonoBehaviour {
                     computerOutputText.text = "Press E to login" + Environment.NewLine;
                     computerOutputText.text += ">_";
                 }
+                CursorFlip = !CursorFlip;
             }
             
         }
