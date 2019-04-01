@@ -366,6 +366,24 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 14
       objectReference: {fileID: 0}
+    - target: {fileID: 4077461861539672, guid: 91f5773662437494b94bcdebdae46233, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077461861539672, guid: 91f5773662437494b94bcdebdae46233, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 153571219966152404, guid: 91f5773662437494b94bcdebdae46233,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -8.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 153571219966152404, guid: 91f5773662437494b94bcdebdae46233,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 153620314743017658, guid: 91f5773662437494b94bcdebdae46233,
         type: 3}
       propertyPath: m_ConnectedBody
@@ -385,24 +403,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: 0.21038927
-      objectReference: {fileID: 0}
-    - target: {fileID: 4077461861539672, guid: 91f5773662437494b94bcdebdae46233, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 7.96
-      objectReference: {fileID: 0}
-    - target: {fileID: 4077461861539672, guid: 91f5773662437494b94bcdebdae46233, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 153571219966152404, guid: 91f5773662437494b94bcdebdae46233,
-        type: 3}
-      propertyPath: m_ConnectedAnchor.x
-      value: -8.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 153571219966152404, guid: 91f5773662437494b94bcdebdae46233,
-        type: 3}
-      propertyPath: m_ConnectedAnchor.y
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91f5773662437494b94bcdebdae46233, type: 3}
@@ -820,6 +820,16 @@ PrefabInstance:
     - target: {fileID: 4212939399454076, guid: 3c637ce7e7e6bf54689cc8ce5ce73068, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031425495842920832, guid: 3c637ce7e7e6bf54689cc8ce5ce73068,
+        type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031425495842920832, guid: 3c637ce7e7e6bf54689cc8ce5ce73068,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c637ce7e7e6bf54689cc8ce5ce73068, type: 3}
@@ -5732,6 +5742,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1581731637 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1317375622391978, guid: 8555cbe8adf1aff4bb3cfe235cc31d57,
+    type: 3}
+  m_PrefabInstance: {fileID: 599147098}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &1581731638
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581731637}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 7, y: 1, z: 7}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1746930995
 GameObject:
   m_ObjectHideFlags: 0
@@ -6293,6 +6325,16 @@ PrefabInstance:
         type: 3}
       propertyPath: LedColor.b
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582451015601051260, guid: e17a4c54fa2111c47a669fb048877c39,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 6582451015601051260, guid: e17a4c54fa2111c47a669fb048877c39,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.57
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e17a4c54fa2111c47a669fb048877c39, type: 3}

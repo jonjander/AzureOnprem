@@ -93,7 +93,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CollitionEffect: {fileID: 8649664516093514578, guid: 6abd7af53de9f7e47b94a2863ea8b160,
     type: 3}
-  damage: 0
+  Damage: 0
+  ImpactSound: {fileID: 8300000, guid: fa6ac397fcced364fba03a63a9a51458, type: 3}
 --- !u!1001 &1448685298377274965
 PrefabInstance:
   m_ObjectHideFlags: 0

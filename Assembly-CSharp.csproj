@@ -70,7 +70,7 @@
     <Compile Include="Assets\Azure\Subscription\SubscriptionPolicies.cs" />
     <Compile Include="Assets\Azure\Subscription\SubscriptionRootObject.cs" />
     <Compile Include="Assets\Azure\Tags.cs" />
-    <Compile Include="Assets\DataCenter\Cable\Scripts\cabelGenerator.cs" />
+    <Compile Include="Assets\DataCenter\Cable\Scripts\CabelGenerator.cs" />
     <Compile Include="Assets\DataCenter\Cable\Scripts\CableSegment.cs" />
     <Compile Include="Assets\DataCenter\CoolingFan\Scripts\RotateFan.cs" />
     <Compile Include="Assets\DataCenter\EarthQuake\Scripts\Earthquake.cs" />
@@ -97,6 +97,7 @@
     <None Include="Assets\Audit report.txt" />
     <None Include="Assets\DataCenter\Gnome\Shader\GnomeShader.shader" />
     <None Include="ChangeLog.md" />
+    <None Include="Readme.md" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Git/VDC/VDC/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

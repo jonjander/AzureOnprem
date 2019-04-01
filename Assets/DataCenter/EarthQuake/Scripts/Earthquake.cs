@@ -118,8 +118,9 @@ public class Earthquake : MonoBehaviour {
         audioSources[0].clip = AlarmClip;
         audioSources[0].loop = true;
         audioSources[0].spatialBlend = 1;
+        audioSources[0].volume = 0.016f;
         audioSources[0].Play();
-        audioSources[0].volume = 0.12f;
+        
 
         //quake
         audioSources[1].clip = QuakeClip;
