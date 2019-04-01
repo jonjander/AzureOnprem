@@ -1,3 +1,10 @@
+## develop
+* Player is nevmesh obstacle
+* Fixed Cable script again
+* Balanced volume
+* Added projectile impact sound
+* Changed gnome sound trigger
+
 ## 0.1.7
 * Code refactoring
 * Added help text to login screen
