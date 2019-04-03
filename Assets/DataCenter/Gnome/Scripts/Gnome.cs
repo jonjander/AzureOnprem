@@ -236,7 +236,7 @@ class Gnome : MonoBehaviour
     private void Update()
     {
         var cLamp = FindClosestLamp();
-        if (cLamp != currentLamp && !eqScript.ActiveEarthquake)
+        if (cLamp != currentLamp && eqScript.State == EarthquakeStates.Off)
         {
             //Change lamp
             if (currentLamp == null)
