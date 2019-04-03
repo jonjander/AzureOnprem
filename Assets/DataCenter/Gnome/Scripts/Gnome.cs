@@ -127,19 +127,19 @@ class Gnome : MonoBehaviour
     public float AngelAlpha(float cameraAngle)
     {
         double mappedAlpha = Utils.Remap(cameraAngle, 40, 60, 0, 1);
-        return (float)Utils.flattern(mappedAlpha);
+        return (float)Utils.Flattern(mappedAlpha);
     }
 
     public float DistanceAlpha(float cameraDistance)
     {
         double distanceAlpha = Utils.Remap(cameraDistance, 9, 7.9f, 1, 0);
-        return (float)Utils.flattern(distanceAlpha);
+        return (float)Utils.Flattern(distanceAlpha);
     }
 
     public float DistanceAlpha(float cameraDistance, float max, float min)
     {
         var distanceAlpha = Utils.Remap(cameraDistance, max, min, 1, 0);
-        return (float)Utils.flattern(distanceAlpha);
+        return (float)Utils.Flattern(distanceAlpha);
     }
 
     private float GetCameraAngle()

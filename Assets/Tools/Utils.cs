@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,14 +21,14 @@ namespace Assets.Tools
             }
             return output;
         }
-        public static double flattern(double input)
+        public static double Flattern(double input)
         {
             double output = input;
             if (output < 0) { output = 0; }
             if (output > 1) { output = 1; }
             return output;
         }
-        public static double flattern(float input)
+        public static double Flattern(float input)
         {
             double output = (double)input;
             if (output < 0) { output = 0; }
