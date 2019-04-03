@@ -1,4 +1,8 @@
-## develop
+## dev
+* Updated earthquake code
+* Added prequake to earthquake
+
+## 0.2.0-alpha.6
 * Player is nevmesh obstacle
 * Fixed Cable script again
 * Balanced volume
