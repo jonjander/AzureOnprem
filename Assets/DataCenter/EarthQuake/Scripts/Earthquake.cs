@@ -91,6 +91,8 @@ public class Earthquake : MonoBehaviour {
             case EarthquakeStates.Blackout:
                 Blackout();
                 Quake();
+                SetQuakeVolume(1f);
+                StartAlarmSound(1f);
                 State = EarthquakeStates.Quaking;
                 break;
             case EarthquakeStates.Quaking:
@@ -106,6 +108,7 @@ public class Earthquake : MonoBehaviour {
                 break;
             case EarthquakeStates.CoolDown:
                 CoolDownQuake();
+                Quake();
                 if (quakeCoolDownTimer < quakeCoolDown * 0.25f)
                 {
                     RestoreLights();
