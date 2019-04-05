@@ -45,20 +45,17 @@ public class AdminScreen : MonoBehaviour {
 
     private void KeyInput(KeyCode key)
     {
-        var selectedSubscription = avalibleSubscriptions
-                .Where(o => o.SubscriptionId == selectedSubscriptionId)
-                .FirstOrDefault();
         int index = 0;
         if (key == KeyCode.Y && CurrentMenu == AdminScreenMenu.Loggedin)
         {
-            index = avalibleSubscriptions.IndexOf(selectedSubscription) - 1;
+            index = avalibleSubscriptions.IndexOf(GetSelectedSubscription()) - 1;
             index = LoopIndex(index);
             selectedSubscriptionId = avalibleSubscriptions[index].SubscriptionId;
 
         }
         else if (key == KeyCode.H && CurrentMenu == AdminScreenMenu.Loggedin)
         {
-            index = avalibleSubscriptions.IndexOf(selectedSubscription) + 1;
+            index = avalibleSubscriptions.IndexOf(GetSelectedSubscription()) + 1;
             index = LoopIndex(index);
             selectedSubscriptionId = avalibleSubscriptions[index].SubscriptionId;
         }
@@ -71,6 +68,13 @@ public class AdminScreen : MonoBehaviour {
         {
             CurrentMenu = AdminScreenMenu.Loggingin;
         }
+    }
+
+    private Subscription GetSelectedSubscription()
+    {
+        return avalibleSubscriptions
+                        .Where(o => o.SubscriptionId == selectedSubscriptionId)
+                        .FirstOrDefault();
     }
 
     private int LoopIndex(int index)
