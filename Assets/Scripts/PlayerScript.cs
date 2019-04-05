@@ -21,7 +21,7 @@ public class PlayerScript : MonoBehaviour {
         audioSource = GetComponent<AudioSource>();
 	}
 
-    IEnumerator Login()
+    private IEnumerator Login()
     {
         yield return new WaitForSeconds(UseSoundHit.length);
         GenerationScript.DoLogin();
@@ -76,6 +76,7 @@ public class PlayerScript : MonoBehaviour {
 
         if (Input.GetKeyDown("e") && IsNearComputerScreen())
         {
+            OnComputerScreenInput(KeyCode.E);
             StartCoroutine(Login());
         }
         else if (Input.GetKeyDown(KeyCode.Y) && IsNearComputerScreen())
