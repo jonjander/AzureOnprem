@@ -1,6 +1,8 @@
 ## dev
 * Updated earthquake code
 * Added prequake to earthquake
+* Fixed flurescent lamp placement
+* Changed intensity on flurescent lamp
 
 ## 0.2.0-alpha.6
 * Player is nevmesh obstacle

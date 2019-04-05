@@ -38,9 +38,16 @@ public class AdminScreen : MonoBehaviour {
 
     private void DisplaySubscriptions(List<Subscription> userSubscriptions)
     {
-        selectedSubscriptionId = userSubscriptions.FirstOrDefault().SubscriptionId;
-        avalibleSubscriptions = userSubscriptions;
-        CurrentMenu = AdminScreenMenu.Loggedin;
+        try
+        {
+            selectedSubscriptionId = userSubscriptions.FirstOrDefault().SubscriptionId;
+            avalibleSubscriptions = userSubscriptions;
+            CurrentMenu = AdminScreenMenu.Loggedin;
+        }
+        catch {
+            Debug.LogError("Fail to login");
+            CurrentMenu = AdminScreenMenu.LoginPrompt;
+        }
     }
 
     private void KeyInput(KeyCode key)
