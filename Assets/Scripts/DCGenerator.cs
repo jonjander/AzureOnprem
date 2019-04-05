@@ -38,12 +38,12 @@ public class DCGenerator : MonoBehaviour {
         azureManagementAPIHelper = new AzureManagementAPIHelper();
         AdminScreen.OnComputerLogin += GenerateDataCenterResources;
         col = 6;
-        row = 10;
+        row = 0;
         xOffset = 1.04f;
         zOffset = 2.84f;
     }
 
-    Vector3[] GetRackBounds()
+    private Vector3[] GetRackBounds()
     {
         var maxX = Racks.Max(r => r.transform.position.x);
         var maxZ = Racks.Max(r => r.transform.position.z);
@@ -105,17 +105,15 @@ public class DCGenerator : MonoBehaviour {
         start = bounds[0]; //Reset start
         for (int z = 0; z < row + 2; z++)
         {
-            if (z % 1 == 0)
-            {
-                var tempLight = Instantiate(Light);
-                var x = (start.x + xWall + (offset * 2)) / 2;
-                x = (bounds[1].x + bounds[0].x) / 2;
-                Mesh mesh = tempLight.GetComponentInChildren<MeshFilter>().mesh;
-                var exrents = mesh.bounds.extents;
-                tempLight.transform.position = new Vector3(x + exrents.x, 3, start.z + (zOffset / 2) + (zOffset / 4));
-                var lampScript = tempLight.GetComponent<FluorescentLamp>();
-                lampScript.isBroken = !!(UnityEngine.Random.Range(0, row + 3) == 1);
-            }
+            var tempLight = Instantiate(Light);
+            var x = (start.x + xWall + (offset * 2)) / 2;
+            x = (bounds[1].x + bounds[0].x) / 2;
+            Mesh mesh = tempLight.GetComponentInChildren<MeshFilter>().mesh;
+            var exrents = mesh.bounds.extents;
+            tempLight.transform.position = new Vector3(x + exrents.x, 3, start.z - zOffset + (zOffset / 2) + (zOffset / 4));
+            var lampScript = tempLight.GetComponent<FluorescentLamp>();
+            lampScript.isBroken = !!(UnityEngine.Random.Range(0, row + 3) == 1);
+            
             start += new Vector3(0, 0, zOffset);
         }
 
