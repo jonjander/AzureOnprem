@@ -18,6 +18,8 @@ TagManager:
   - CableConnector
   - PlayerHead
   - Hide
+  - Undefined
+  - WeaponRoot
   layers:
   - Default
   - TransparentFX
@@ -36,7 +38,7 @@ TagManager:
   - Floor
   - Cable
   - Gnome
-  - 
+  - Weapon
   - 
   - 
   - 

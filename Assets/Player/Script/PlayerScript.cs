@@ -8,16 +8,28 @@ public class PlayerScript : MonoBehaviour {
     //public GameObject Projectile;
     public AudioClip UseSoundHit;
     public AudioClip UseSoundMiss;
-    private AudioSource audioSource;
     public DCGenerator GenerationScript;
-    public Weapon CurrentWeapon;
-    
     public delegate void ComputerScreenInput(KeyCode key);
     public static event ComputerScreenInput OnComputerScreenInput;
-    
+
+    private AudioSource audioSource;
+    private GameObject currentWeaponGameObject;
+    private Weapon currentWeapon;
+    private IWeapon currentWeaponScript;
+
+    public Weapon CurrentWeapon
+    {
+        get => currentWeapon;
+        set
+        {
+            currentWeapon = value;
+            ChangeWeapon();
+        }
+    }
+
     // Use this for initialization
     void Start () {
-        CurrentWeapon = Weapons.FloppyDisk();
+        CurrentWeapon = Weapons.Shotgun();
         audioSource = GetComponent<AudioSource>();
 	}
 
@@ -33,43 +45,60 @@ public class PlayerScript : MonoBehaviour {
         if (Input.GetMouseButton(0))
         {
             bool shoot = false;
-            if (CurrentWeapon.fireMode == FireMode.FullAuto)
+            if (CurrentWeapon.FireMode == FireMode.FullAuto)
             {
-                CurrentWeapon.feedingTimer += Time.deltaTime;
-                if (CurrentWeapon.feedingTimer >= CurrentWeapon.rateOfFire)
+                CurrentWeapon.FeedingTimer += Time.deltaTime;
+                if (CurrentWeapon.FeedingTimer >= CurrentWeapon.RateOfFire)
                 {
                     //Fire
-                    CurrentWeapon.feeding = false;
-                    CurrentWeapon.feedingTimer = 0;
+                    CurrentWeapon.Feeding = false;
+                    CurrentWeapon.FeedingTimer = 0;
                     shoot = true;
                 } else
                 {
-                    CurrentWeapon.feeding = true;
+                    CurrentWeapon.Feeding = true;
                 }
-            } else if (CurrentWeapon.fireMode == FireMode.SingleAction && CurrentWeapon.feeding) {
-                CurrentWeapon.feeding = false;
+            } else if (CurrentWeapon.FireMode == FireMode.SingleAction && CurrentWeapon.Feeding) {
+                CurrentWeapon.Feeding = false;
                 shoot = true;
             }
 
             if (shoot) { 
-                var bullet = Instantiate(CurrentWeapon.projectilePrefab);
-
+                var bullet = Instantiate(CurrentWeapon.ProjectilePrefab);              
                 bullet.transform.position = Camera.main.transform.position - new Vector3(0, 0.2f, 0);
-                if (UnityEngine.Random.Range(0, 2) == 1) //randomly flip projectile
-                {
-                    bullet.transform.rotation = Quaternion.Euler(180, 0, 0);
-                }
-                var rg = bullet.GetComponent<Rigidbody>();
-                rg.mass = CurrentWeapon.projectileMass;
-                Vector3 pushDir = Camera.main.transform.forward;
 
+                switch (CurrentWeapon.Name)
+                {
+                    case "Floppy":
+                        if (UnityEngine.Random.Range(0, 2) == 1) //randomly flip projectile
+                        {
+                            bullet.transform.rotation = Quaternion.Euler(180, 0, 0);
+                        }
+                        var currentMaterial = currentWeaponScript.GetMaterial();
+                        var Script = bullet.GetComponent<IWeapon>();
+                        Script.SetMaterial(currentMaterial);
+
+                        ChangeWeapon();
+
+                        break;
+                    default:
+                        break;
+                }
+
+                #region bullet
+                var rg = bullet.GetComponent<Rigidbody>();
+                rg.mass = CurrentWeapon.ProjectileMass;
+                Vector3 pushDir = Camera.main.transform.forward;
                 rg.maxAngularVelocity = 180;
-                rg.AddForce(pushDir.normalized * rg.mass * CurrentWeapon.weaponPower, ForceMode.Impulse);
-                rg.AddTorque(CurrentWeapon.rotationVector, ForceMode.Impulse);
+                rg.AddForce(pushDir.normalized * rg.mass * CurrentWeapon.WeaponPower, ForceMode.Impulse);
+                rg.AddTorque(CurrentWeapon.RotationVector, ForceMode.Impulse);
+                #endregion
+
+                currentWeaponScript.Fire();
             }
         } else
         {
-            CurrentWeapon.feeding = true;
+            CurrentWeapon.Feeding = true;
         }
         
         // Does the ray intersect any objects excluding the player layer
@@ -102,13 +131,27 @@ public class PlayerScript : MonoBehaviour {
         else if (Input.GetKeyDown("3"))
         {
             CurrentWeapon = Weapons.FloppyDiskAuto();
-            CurrentWeapon.rateOfFire = 0.1f;
+            CurrentWeapon.RateOfFire = 0.1f;
+        }
+        else if (Input.GetKeyDown("4"))
+        {
+            CurrentWeapon = Weapons.Shotgun();
         }
 
+    }
 
-
-
-
+    private void ChangeWeapon()
+    {
+        if (currentWeaponGameObject != null)
+        {
+            Destroy(currentWeaponGameObject);
+        }
+        currentWeaponGameObject = Instantiate(CurrentWeapon.WeaponGameObject, Camera.main.transform);
+        currentWeaponScript = currentWeaponGameObject.GetComponent<IWeapon>();
+        currentWeaponScript.MakeKinematic();
+        currentWeaponGameObject.transform.localPosition = CurrentWeapon.WeaponLocalPosition;
+        currentWeaponGameObject.transform.localRotation = Quaternion.Euler(CurrentWeapon.WeaponLocalRoration);
+        
     }
 
     private bool IsNearComputerScreen()
