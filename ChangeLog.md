@@ -1,4 +1,4 @@
-## develop
+## 0.2.0-alpha.19
 * Added Shotgun
 * Added Shotgun animation
 * Added Floppy weapon
