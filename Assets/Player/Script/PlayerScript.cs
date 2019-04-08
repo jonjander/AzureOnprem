@@ -29,7 +29,7 @@ public class PlayerScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        CurrentWeapon = Weapons.Shotgun();
+        CurrentWeapon = Weapons.FloppyDisk();
         audioSource = GetComponent<AudioSource>();
 	}
 
@@ -70,9 +70,11 @@ public class PlayerScript : MonoBehaviour {
                             bullet.transform.rotation = Quaternion.Euler(180, 0, 0);
                         }
 
+                        rg.maxAngularVelocity = 120;
+                        rg.mass = CurrentWeapon.ProjectileMass;
                         rg.AddTorque(CurrentWeapon.RotationVector, ForceMode.Impulse);
                         rg.AddForce(pushDir.normalized * rg.mass * CurrentWeapon.WeaponPower, ForceMode.Impulse);
-                        ChangeWeapon();
+                        Destroy(currentWeaponGameObject);
 
                         break;
                     case WeaponType.Gun:
@@ -94,6 +96,10 @@ public class PlayerScript : MonoBehaviour {
                 break;
             case GunState.Reload:
                 currentWeaponScript.Reload();
+                if (CurrentWeapon.Type == WeaponType.Throwable)
+                {
+                    ChangeWeapon();
+                }
                 break;
             case GunState.Reloading:
                 
@@ -123,18 +129,13 @@ public class PlayerScript : MonoBehaviour {
         }
         else if (Input.GetKeyDown("1"))
         {
-            CurrentWeapon = Weapons.FloppyDiskAuto();
+            CurrentWeapon = Weapons.FloppyDisk();
         }
         else if (Input.GetKeyDown("2"))
         {
-            CurrentWeapon = Weapons.FloppyDisk();
+            CurrentWeapon = Weapons.FloppyDiskAuto();
         }
         else if (Input.GetKeyDown("3"))
-        {
-            CurrentWeapon = Weapons.FloppyDiskAuto();
-            CurrentWeapon.RateOfFire = 0.1f;
-        }
-        else if (Input.GetKeyDown("4"))
         {
             CurrentWeapon = Weapons.Shotgun();
         }

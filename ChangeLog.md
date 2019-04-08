@@ -1,4 +1,10 @@
-## dev
+## develop
+* Added Shotgun
+* Added Shotgun animation
+* Added Floppy weapon
+* new weapon mechanism
+
+## 0.2.0-alpha.16
 * Updated earthquake code
 * Added prequake to earthquake
 * Fixed flurescent lamp placement

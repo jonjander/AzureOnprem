@@ -11,12 +11,11 @@ public class Bullet : MonoBehaviour {
     public ParticleSystem CollitionEffect;
     public float Damage = 0f;
     public AudioClip ImpactSound;
-    
 
 	// Use this for initialization
 	void Start () {
         life = 20f;
-        
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -45,7 +44,10 @@ public class Bullet : MonoBehaviour {
                 Destroy(transform.gameObject);
             }
 
-            audioSource = gameObject.AddComponent<AudioSource>();
+            if (audioSource == null)
+            {
+                audioSource = gameObject.AddComponent<AudioSource>();
+            }
             audioSource.spatialBlend = 1;
             audioSource.volume = 0.6f;
             float volume = (float) Utils.Remap(collision.relativeVelocity.magnitude, 5, 20, 0f, 0.45f);

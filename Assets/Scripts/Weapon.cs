@@ -137,13 +137,13 @@ public static class Weapons
     {
         return new Weapon()
         {
-            MagSize = 0,
+            MagSize = 1,
             ReloadTime = 0,
-            FeedingTime = 0.1f,
+            FeedingTime = 0.05f,
             Type = WeaponType.Throwable,
             ProjectilePrefab = Resources.Load<GameObject>("Floppy"),
             WeaponPower = 12,
-            ProjectileMass = 0.3f,
+            ProjectileMass = 0.45f,
             RotationVector = new Vector3(Random.Range(0.2f, 100f), 1000, Random.Range(0.2f, 100f)),
             FireMode = FireMode.FullAuto,
             RateOfFire = 0.2f,
@@ -156,13 +156,13 @@ public static class Weapons
     {
         return new Weapon()
         {
-            MagSize = 0,
+            MagSize = 1,
             ReloadTime = 0,
-            FeedingTime = 0.1f,
+            FeedingTime = 0.15f,
             Type = WeaponType.Throwable,
             ProjectilePrefab = Resources.Load<GameObject>("Floppy"),
             WeaponPower = 12,
-            ProjectileMass = 0.35f,
+            ProjectileMass = 0.45f,
             RotationVector = new Vector3(Random.Range(0.2f, 100f), 1000, Random.Range(0.2f, 100f)),
             FireMode = FireMode.SingleAction,
             RateOfFire = 1f,
