@@ -7,4 +7,6 @@ public interface IWeapon
 
     Material GetMaterial();
     void SetMaterial(Material material);
+    void Reload();
+
 }

@@ -7,7 +7,9 @@ using UnityEngine;
 public class Shotgun : MonoBehaviour, IWeapon
 {
     private Rigidbody weaponRigidbody;
+    private Rigidbody weaponRootRigidbody;
     private Transform gun;
+    private Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -16,11 +18,16 @@ public class Shotgun : MonoBehaviour, IWeapon
         weaponRigidbody.maxAngularVelocity = 20f;
         gun = GetComponentsInChildren<Transform>()
             .First(r => r.gameObject.name == "Pipe");
+
+        animator = gameObject.GetComponentInChildren<Animator>();
     }
 
     private void GetRootRigidbody()
     {
         weaponRigidbody = GetComponentsInChildren<Rigidbody>()
+                    .Where(r => r.tag == "Weapon")
+                    .FirstOrDefault();
+        weaponRootRigidbody = GetComponentsInChildren<Rigidbody>()
                     .Where(r => r.tag == "WeaponRoot")
                     .FirstOrDefault();
     }
@@ -28,6 +35,8 @@ public class Shotgun : MonoBehaviour, IWeapon
     // Update is called once per frame
     void Update()
     {
+       
+       
     }
 
 
@@ -35,7 +44,7 @@ public class Shotgun : MonoBehaviour, IWeapon
     public void MakeKinematic(bool kine = true)
     {
         GetRootRigidbody();
-        weaponRigidbody.isKinematic = kine;
+        weaponRootRigidbody.isKinematic = kine;
     }
 
     public void Fire()
@@ -51,6 +60,11 @@ public class Shotgun : MonoBehaviour, IWeapon
         Debug.DrawLine(gun.position + offsetUp, gun.position + offsetUp - offsetForward, Color.red, 10f);
         muzzelflash.transform.position = gun.position + offsetUp - offsetForward;
         weaponRigidbody.AddTorque(transform.position.normalized - gun.right * power, ForceMode.Impulse);
+    }
+
+    public void Reload()
+    {
+        animator.Play("Reload");
     }
     public Material GetMaterial()
     {

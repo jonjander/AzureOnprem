@@ -11,7 +11,7 @@ using UnityEngine.Networking;
 
 namespace Assets.Scripts
 {
-    public class AzureManagementAPIHelper : MonoBehaviour
+    public class AzureManagementAPIHelper
     {
         public List<Subscription> Subscriptions;
         public delegate void SubscriptionLoadedAction(List<Subscription> loadedSubscriptions);

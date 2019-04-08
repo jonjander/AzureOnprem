@@ -25,6 +25,7 @@ public class FloppyScript : MonoBehaviour, IWeapon
     public void MakeKinematic(bool kine=true)
     {
         rb = GetComponent<Rigidbody>();
+        rb.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
         rb.isKinematic = kine;
     }
     public Material GetMaterial() => currentMaterial;
@@ -43,6 +44,10 @@ public class FloppyScript : MonoBehaviour, IWeapon
     public void Fire()
     {
 
+    }
+
+    public void Reload()
+    {
     }
 
     // Update is called once per frame

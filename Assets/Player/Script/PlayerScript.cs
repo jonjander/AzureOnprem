@@ -42,63 +42,64 @@ public class PlayerScript : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        if (Input.GetMouseButton(0))
+        GunState gunState = CurrentWeapon.UpdateTrigger(Input.GetMouseButton(0));
+        Debug.Log(gunState);
+        switch (gunState)
         {
-            bool shoot = false;
-            if (CurrentWeapon.FireMode == FireMode.FullAuto)
-            {
-                CurrentWeapon.FeedingTimer += Time.deltaTime;
-                if (CurrentWeapon.FeedingTimer >= CurrentWeapon.RateOfFire)
-                {
-                    //Fire
-                    CurrentWeapon.Feeding = false;
-                    CurrentWeapon.FeedingTimer = 0;
-                    shoot = true;
-                } else
-                {
-                    CurrentWeapon.Feeding = true;
-                }
-            } else if (CurrentWeapon.FireMode == FireMode.SingleAction && CurrentWeapon.Feeding) {
-                CurrentWeapon.Feeding = false;
-                shoot = true;
-            }
+            case GunState.Normal:
+                break;
+            case GunState.Fire:
+                GameObject bullet;
+                Rigidbody rg;
+                Vector3 pushDir = Camera.main.transform.forward;
 
-            if (shoot) { 
-                var bullet = Instantiate(CurrentWeapon.ProjectilePrefab);              
-                bullet.transform.position = Camera.main.transform.position - new Vector3(0, 0.2f, 0);
-
-                switch (CurrentWeapon.Name)
+                switch (CurrentWeapon.Type)
                 {
-                    case "Floppy":
+                    case WeaponType.Throwable:
+                        bullet = Instantiate(CurrentWeapon.ProjectilePrefab);
+                        bullet.transform.position = currentWeaponGameObject.transform.position;
+                        bullet.transform.rotation = currentWeaponGameObject.transform.rotation;
+                        Material currentMaterial = currentWeaponScript.GetMaterial();
+                        IWeapon script = bullet.GetComponent<IWeapon>();
+                        script.SetMaterial(currentMaterial);
+
+                        rg = bullet.GetComponent<Rigidbody>();
+                        rg.isKinematic = false;
                         if (UnityEngine.Random.Range(0, 2) == 1) //randomly flip projectile
                         {
                             bullet.transform.rotation = Quaternion.Euler(180, 0, 0);
                         }
-                        var currentMaterial = currentWeaponScript.GetMaterial();
-                        var Script = bullet.GetComponent<IWeapon>();
-                        Script.SetMaterial(currentMaterial);
 
+                        rg.AddTorque(CurrentWeapon.RotationVector, ForceMode.Impulse);
+                        rg.AddForce(pushDir.normalized * rg.mass * CurrentWeapon.WeaponPower, ForceMode.Impulse);
                         ChangeWeapon();
 
+                        break;
+                    case WeaponType.Gun:
+                        bullet = Instantiate(CurrentWeapon.ProjectilePrefab);
+                        rg = bullet.GetComponent<Rigidbody>();
+                        bullet.transform.position = Camera.main.transform.position - new Vector3(0, 0.2f, 0);
+
+                        rg.mass = CurrentWeapon.ProjectileMass;
+
+                        rg.maxAngularVelocity = 180;
+                        rg.AddForce(pushDir.normalized * rg.mass * CurrentWeapon.WeaponPower, ForceMode.Impulse);
                         break;
                     default:
                         break;
                 }
-
-                #region bullet
-                var rg = bullet.GetComponent<Rigidbody>();
-                rg.mass = CurrentWeapon.ProjectileMass;
-                Vector3 pushDir = Camera.main.transform.forward;
-                rg.maxAngularVelocity = 180;
-                rg.AddForce(pushDir.normalized * rg.mass * CurrentWeapon.WeaponPower, ForceMode.Impulse);
-                rg.AddTorque(CurrentWeapon.RotationVector, ForceMode.Impulse);
-                #endregion
-
                 currentWeaponScript.Fire();
-            }
-        } else
-        {
-            CurrentWeapon.Feeding = true;
+                break;
+            case GunState.Feeding:
+                break;
+            case GunState.Reload:
+                currentWeaponScript.Reload();
+                break;
+            case GunState.Reloading:
+                
+                break;
+            default:
+                break;
         }
         
         // Does the ray intersect any objects excluding the player layer
