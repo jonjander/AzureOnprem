@@ -16,7 +16,7 @@ GameObject:
   m_TagString: BrokenGlass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 0
 --- !u!4 &6888317381825707681
 Transform:
@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -136,7 +136,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -244,7 +244,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -352,7 +352,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -460,7 +460,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -568,7 +568,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -676,7 +676,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -784,7 +784,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -849,7 +849,7 @@ GameObject:
   m_TagString: BrokenGlass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 0
 --- !u!4 &6888317381825707697
 Transform:
@@ -890,7 +890,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -969,7 +969,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1077,7 +1077,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1185,7 +1185,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1293,7 +1293,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1401,7 +1401,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1510,7 +1510,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1631,7 +1631,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1739,7 +1739,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1847,7 +1847,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1955,7 +1955,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2063,7 +2063,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2171,7 +2171,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2279,7 +2279,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2387,7 +2387,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2495,7 +2495,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2603,7 +2603,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2711,7 +2711,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2819,7 +2819,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2927,7 +2927,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3035,7 +3035,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3143,7 +3143,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3251,7 +3251,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3316,7 +3316,7 @@ GameObject:
   m_TagString: BrokenGlass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 0
 --- !u!4 &6888317381825707743
 Transform:
@@ -3357,7 +3357,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3393,7 +3393,7 @@ GameObject:
   m_TagString: BrokenGlass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 0
 --- !u!4 &6888317381825707745
 Transform:
@@ -3434,7 +3434,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3470,7 +3470,7 @@ GameObject:
   m_TagString: BrokenGlass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 0
 --- !u!4 &6888317381825707747
 Transform:
@@ -3511,7 +3511,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3547,7 +3547,7 @@ GameObject:
   m_TagString: BrokenGlass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 0
 --- !u!4 &6888317381825707749
 Transform:
@@ -3588,7 +3588,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3624,7 +3624,7 @@ GameObject:
   m_TagString: BrokenGlass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 0
 --- !u!4 &6888317381825707751
 Transform:
@@ -3665,7 +3665,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3744,7 +3744,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3852,7 +3852,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3960,7 +3960,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4025,7 +4025,7 @@ GameObject:
   m_TagString: BrokenGlass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 0
 --- !u!4 &6888317381825707759
 Transform:
@@ -4066,7 +4066,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4102,7 +4102,7 @@ GameObject:
   m_TagString: BrokenGlass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 0
 --- !u!4 &6888317381825707761
 Transform:
@@ -4143,7 +4143,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4179,7 +4179,7 @@ GameObject:
   m_TagString: BrokenGlass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 0
 --- !u!4 &6888317381825707763
 Transform:
@@ -4220,7 +4220,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4299,7 +4299,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4407,7 +4407,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4515,7 +4515,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4623,7 +4623,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4688,7 +4688,7 @@ GameObject:
   m_TagString: BrokenGlass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 0
 --- !u!4 &6888317381825707773
 Transform:
@@ -4729,7 +4729,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4765,7 +4765,7 @@ GameObject:
   m_TagString: BrokenGlass
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 0
 --- !u!4 &6888317381825707775
 Transform:
@@ -4806,7 +4806,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8e32d04f8f2f77c4a89abe37707b48b4, type: 3}
+  - {fileID: 2100000, guid: 99d2bb4d5ad1f044a933115c38476bf0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
