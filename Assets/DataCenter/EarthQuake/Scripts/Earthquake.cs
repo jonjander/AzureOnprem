@@ -138,7 +138,7 @@ public class Earthquake : MonoBehaviour {
 
     private void PreQuake()
     {
-        Debug.Log("PreQuake");
+        //Debug.Log("PreQuake");
         preQuakeTimer += Time.deltaTime;
         if (preQuakeTimer >= preQuake)
         {
@@ -255,7 +255,7 @@ public class Earthquake : MonoBehaviour {
 
     private void Quake()
     {
-        Debug.Log("wak");
+        //Debug.Log("wak");
         float mag = (float)Utils.Remap(Magnitude, 0, 1, 0, 0.05f);
         player.transform.rotation = Quaternion.Euler(player.transform.rotation.eulerAngles.x, player.transform.rotation.eulerAngles.y, SinusGen(80f * mag, 400f));
 

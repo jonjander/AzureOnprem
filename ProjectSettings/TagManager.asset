@@ -21,6 +21,8 @@ TagManager:
   - Undefined
   - WeaponRoot
   - Weapon
+  - BrokenGlass
+  - Glass
   layers:
   - Default
   - TransparentFX

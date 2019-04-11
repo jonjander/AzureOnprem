@@ -43,7 +43,7 @@ public class PlayerScript : MonoBehaviour {
     void Update () {
 
         GunState gunState = CurrentWeapon.UpdateTrigger(Input.GetMouseButton(0));
-        Debug.Log(gunState);
+        //Debug.Log(gunState);
         switch (gunState)
         {
             case GunState.Normal:
