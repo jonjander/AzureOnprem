@@ -1,4 +1,7 @@
-## 0.2.0-alpha.22
+## 0.2.0-apha.24
+* Added shotgun shells
+
+## 0.2.0-alpha.23
 * Added shotgun safe
 * Added breakable glass
 * Added test Exit

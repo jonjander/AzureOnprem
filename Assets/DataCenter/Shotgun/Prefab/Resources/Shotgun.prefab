@@ -148,6 +148,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e29995d8fb05974448ff4d307f575ca1, type: 3}
   - {fileID: 8300000, guid: 89535a81021a11f4d8d747476e576eb6, type: 3}
   ReloadSound: {fileID: 8300000, guid: 0434181be6e4e8d41a0a377a4771ee3c, type: 3}
+  Shell: {fileID: 2834472034021645463, guid: 2c84bd649a8c60a4481ff5a36034482a, type: 3}
 --- !u!54 &6917120051937876576
 Rigidbody:
   m_ObjectHideFlags: 0

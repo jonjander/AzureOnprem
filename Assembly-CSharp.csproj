@@ -82,6 +82,7 @@
     <Compile Include="Assets\DataCenter\LoginDesk\Scripts\AdminScreen.cs" />
     <Compile Include="Assets\DataCenter\Safe\Scripts\BreakableGlass.cs" />
     <Compile Include="Assets\DataCenter\Safe\Scripts\Safe.cs" />
+    <Compile Include="Assets\DataCenter\Shotgun\Scrips\ShellScript.cs" />
     <Compile Include="Assets\DataCenter\Shotgun\Scrips\Shotgun.cs" />
     <Compile Include="Assets\Player\Bullet\Script\Bullet.cs" />
     <Compile Include="Assets\Player\Script\IWeapon.cs" />

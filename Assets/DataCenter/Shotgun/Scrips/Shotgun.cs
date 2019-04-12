@@ -13,10 +13,29 @@ public class Shotgun : MonoBehaviour, IWeapon
     private AudioSource soundSouce;
     public List<AudioClip> ShotSounds;
     public AudioClip ReloadSound;
+    public GameObject Shell;
+
+    private GameObject[] gunShells;
+    private Vector3 localShellPosition1;
+    private Vector3 localShellPosition2;
+    private float soundOffSetShell1;
+    private float soundOffSetShell2;
+    private float ejectorOffsetShells;
+    private Vector3 localShellRotation;
 
     // Start is called before the first frame update
     void Start()
     {
+        gunShells = new GameObject[2];
+        localShellPosition1 = new Vector3(0.00078f, -0.00212f, 0.00394f);
+        localShellPosition2 = new Vector3(-0.00077f, -0.00212f, 0.00394f);
+        soundOffSetShell1 = 0.682f;
+        soundOffSetShell2 = 0.932f;
+        ejectorOffsetShells = 0.417f;
+
+        localShellRotation = new Vector3(0, -180f, 0);
+        Shell = Resources.Load<GameObject>("Shell");
+
         GetRootRigidbody();
         weaponRigidbody.maxAngularVelocity = 20f;
         gun = GetComponentsInChildren<Transform>()
@@ -87,6 +106,61 @@ public class Shotgun : MonoBehaviour, IWeapon
         soundSouce.clip = ReloadSound;
         soundSouce.Play();
         animator.Play("Reload");
+
+        var shell1Done = false;
+        var shell2Done = false;
+        var ejected = false;
+        float clipTime = 0;
+        while (soundSouce.isPlaying)
+        {
+            clipTime += Time.deltaTime;
+            if (clipTime > ejectorOffsetShells && !ejected)
+            {
+                foreach (var shell in gunShells)
+                {
+                    try
+                    {
+                        shell.transform.parent = null;
+                        var shellRB = shell.GetComponent<Rigidbody>();
+                        shellRB.isKinematic = false;
+                        var ejectorForce = 0.22f;
+                        shellRB.velocity = weaponRigidbody.velocity;
+                        shellRB.AddForce(shellRB.transform.up.normalized * ejectorForce, ForceMode.Impulse);
+                        shellRB.AddTorque(new Vector3(
+                            0.0003f * UnityEngine.Random.Range(1f, 4f),
+                            0.0006f * UnityEngine.Random.Range(1f, 4f),
+                            0.002f * UnityEngine.Random.Range(1f, 4f)));
+                    }
+                    catch { }
+                    ejected = true;
+                }
+            }
+            if (clipTime > soundOffSetShell1 && !shell1Done)
+            {
+                shell1Done = true;
+                loadShell(localShellPosition1, localShellRotation, Shell, 0);
+            }
+            if (clipTime > soundOffSetShell2 && !shell2Done)
+            {
+                shell2Done = true;
+                loadShell(localShellPosition2, localShellRotation, Shell, 1);
+            }
+            yield return true;
+        }
+
+    }
+
+    private void loadShell(Vector3 localShellPosition, Vector3 localShellRotation, GameObject shell, int index)
+    {
+        var pipe = GetComponentsInChildren<Transform>()
+            .Where(s => s.name == "Pipe")
+            .FirstOrDefault();
+        var tmpShell = Instantiate(Shell, pipe.transform);
+        tmpShell.transform.localPosition = localShellPosition;
+        tmpShell.transform.localRotation = Quaternion.Euler(localShellRotation);
+        //Destroy(gunShells[index]);
+        tmpShell.GetComponent<Rigidbody>().isKinematic = true;
+        gunShells[index] = tmpShell;
     }
 
     public Material GetMaterial()
