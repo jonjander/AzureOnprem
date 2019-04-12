@@ -10,6 +10,9 @@ public class Shotgun : MonoBehaviour, IWeapon
     private Rigidbody weaponRootRigidbody;
     private Transform gun;
     private Animator animator;
+    private AudioSource soundSouce;
+    public List<AudioClip> ShotSounds;
+    public AudioClip ReloadSound;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +23,8 @@ public class Shotgun : MonoBehaviour, IWeapon
             .First(r => r.gameObject.name == "Pipe");
 
         animator = gameObject.GetComponentInChildren<Animator>();
+
+        soundSouce = GetComponent<AudioSource>();
     }
 
     private void GetRootRigidbody()
@@ -49,6 +54,10 @@ public class Shotgun : MonoBehaviour, IWeapon
 
     public void Fire()
     {
+        soundSouce.clip = ShotSounds
+            .OrderBy(d => Guid.NewGuid())
+            .FirstOrDefault();
+        soundSouce.Play();
         var power = 2000f;
         var flash = Resources.Load<ParticleSystem>("MuzzleFlash");
         var muzzelflash = Instantiate(flash);
@@ -64,8 +73,22 @@ public class Shotgun : MonoBehaviour, IWeapon
 
     public void Reload()
     {
+        StartCoroutine(ReloadingSequence());
+    }
+
+    private IEnumerator ReloadingSequence()
+    {
+        float wait = 0.7f;
+        while (wait > 0)
+        {
+            wait -= Time.deltaTime;
+            yield return true;
+        }
+        soundSouce.clip = ReloadSound;
+        soundSouce.Play();
         animator.Play("Reload");
     }
+
     public Material GetMaterial()
     {
         throw new NotImplementedException();

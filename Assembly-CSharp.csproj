@@ -73,6 +73,7 @@
     <Compile Include="Assets\DataCenter\Cable\Scripts\CableSegment.cs" />
     <Compile Include="Assets\DataCenter\CoolingFan\Scripts\RotateFan.cs" />
     <Compile Include="Assets\DataCenter\EarthQuake\Scripts\Earthquake.cs" />
+    <Compile Include="Assets\DataCenter\Exit\Scripts\GameExitScript.cs" />
     <Compile Include="Assets\DataCenter\Floppy\Scripts\FloppyScript.cs" />
     <Compile Include="Assets\DataCenter\FluorescentLamp\Scripts\FluorescentLamp.cs" />
     <Compile Include="Assets\DataCenter\Gnome\Scripts\Gnome.cs" />
