@@ -1,10 +1,10 @@
-## Develop
-* Added Shotgun safe
+## 0.2.0-alpha.22
+* Added shotgun safe
 * Added breakable glass
 * Added test Exit
 * Added floppy Sound
 * Added glass Sound
-* Added Shotgun sounds
+* Added shotgun sounds
 
 ## 0.2.0-alpha.19
 * Added Shotgun
