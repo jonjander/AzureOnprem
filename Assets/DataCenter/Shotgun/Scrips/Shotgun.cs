@@ -14,6 +14,7 @@ public class Shotgun : MonoBehaviour, IWeapon
     public List<AudioClip> ShotSounds;
     public AudioClip ReloadSound;
     public GameObject Shell;
+    public bool Locked;
 
     private GameObject[] gunShells;
     private Vector3 localShellPosition1;
@@ -138,19 +139,19 @@ public class Shotgun : MonoBehaviour, IWeapon
             if (clipTime > soundOffSetShell1 && !shell1Done)
             {
                 shell1Done = true;
-                loadShell(localShellPosition1, localShellRotation, Shell, 0);
+                LoadShell(localShellPosition1, localShellRotation, Shell, 0);
             }
             if (clipTime > soundOffSetShell2 && !shell2Done)
             {
                 shell2Done = true;
-                loadShell(localShellPosition2, localShellRotation, Shell, 1);
+                LoadShell(localShellPosition2, localShellRotation, Shell, 1);
             }
             yield return true;
         }
 
     }
 
-    private void loadShell(Vector3 localShellPosition, Vector3 localShellRotation, GameObject shell, int index)
+    private void LoadShell(Vector3 localShellPosition, Vector3 localShellRotation, GameObject shell, int index)
     {
         var pipe = GetComponentsInChildren<Transform>()
             .Where(s => s.name == "Pipe")
@@ -170,5 +171,15 @@ public class Shotgun : MonoBehaviour, IWeapon
     public void SetMaterial(Material material)
     {
         throw new NotImplementedException();
+    }
+
+    public void SetLock(bool enabled)
+    {
+        Locked = enabled;
+    }
+
+    public bool IsLocked()
+    {
+        return Locked;
     }
 }

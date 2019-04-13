@@ -7,13 +7,13 @@ public class BreakableGlass : MonoBehaviour
 
     public delegate void BreakableGlassAction();
     public event BreakableGlassAction OnGlassBreak;
-    public float life;
+    public float Life;
 
     private void OnCollisionEnter(Collision collision)
     {
-        life -= collision.relativeVelocity.magnitude;
-        Debug.Log("life " + life);
-        if (life <= 0)
+        Life -= collision.relativeVelocity.magnitude;
+        Debug.Log("life " + Life);
+        if (Life <= 0)
         {
             OnGlassBreak();
         }
@@ -22,7 +22,7 @@ public class BreakableGlass : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        life = 200f;
+        Life = 3000f;
     }
 
     // Update is called once per frame

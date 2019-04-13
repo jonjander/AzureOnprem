@@ -7,6 +7,7 @@ using UnityEngine;
 public class FloppyScript : MonoBehaviour, IWeapon
 {
     public List<Material> Materials;
+    public bool Locked;
     private Rigidbody rb;
 
     private Material currentMaterial;
@@ -54,5 +55,15 @@ public class FloppyScript : MonoBehaviour, IWeapon
     void Update()
     {
         
+    }
+
+    public void SetLock(bool enabled)
+    {
+        Locked = enabled;
+    }
+
+    public bool IsLocked()
+    {
+        return Locked;
     }
 }

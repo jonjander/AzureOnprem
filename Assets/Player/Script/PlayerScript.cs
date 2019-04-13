@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PlayerScript : MonoBehaviour {
@@ -17,6 +18,8 @@ public class PlayerScript : MonoBehaviour {
     private Weapon currentWeapon;
     private IWeapon currentWeaponScript;
 
+    private bool shotgunUnlocked;
+
     public Weapon CurrentWeapon
     {
         get => currentWeapon;
@@ -27,8 +30,11 @@ public class PlayerScript : MonoBehaviour {
         }
     }
 
+    
+
     // Use this for initialization
     void Start () {
+        shotgunUnlocked = false;
         CurrentWeapon = Weapons.FloppyDisk();
         audioSource = GetComponent<AudioSource>();
 	}
@@ -107,15 +113,25 @@ public class PlayerScript : MonoBehaviour {
             default:
                 break;
         }
-        
+
         // Does the ray intersect any objects excluding the player layer
 
         if (Input.GetKeyDown("e") && IsNearComputerScreen())
         {
             OnComputerScreenInput(KeyCode.E);
             StartCoroutine(Login());
+        } else if (Input.GetKeyDown("e") && IsNearShotgun())
+        {
+            if (!shotgunUnlocked)
+            {
+                PickUpWeapon();
+            }
+        } else {
+            audioSource.clip = UseSoundMiss;
+            audioSource.Play();
         }
-        else if (Input.GetKeyDown(KeyCode.Y) && IsNearComputerScreen())
+
+        if (Input.GetKeyDown(KeyCode.Y) && IsNearComputerScreen())
         {
             OnComputerScreenInput(KeyCode.Y);
         }
@@ -137,23 +153,51 @@ public class PlayerScript : MonoBehaviour {
         }
         else if (Input.GetKeyDown("3"))
         {
-            CurrentWeapon = Weapons.Shotgun();
+            if (shotgunUnlocked)
+            {
+                CurrentWeapon = Weapons.Shotgun();
+            }
         }
 
     }
 
-    private void ChangeWeapon()
+    private void PickUpWeapon()
+    {
+        var weapon = GameObject.FindGameObjectsWithTag("WeaponRoot")
+            .Where(s => s.name == "Shotgun")
+            .Select(g => new { wep = g, distance = (g.transform.position - transform.position).magnitude })
+            .OrderBy(f=> f.distance)
+            .FirstOrDefault();
+
+        var shotgunsInRange = weapon.wep;
+        var weaponScript = shotgunsInRange.GetComponent<IWeapon>();
+        if (shotgunsInRange && !weaponScript.IsLocked())
+        {
+            shotgunUnlocked = true;
+            SetCurrentWeapon(Weapons.Shotgun());
+            ChangeWeapon(true, shotgunsInRange);
+        }
+    }
+
+    private void ChangeWeapon(bool skipInstantiate = false, GameObject newWeaponGameObject = null)
     {
         if (currentWeaponGameObject != null)
         {
             Destroy(currentWeaponGameObject);
         }
-        currentWeaponGameObject = Instantiate(CurrentWeapon.WeaponGameObject, Camera.main.transform);
+        if (skipInstantiate)
+        {
+            currentWeaponGameObject = newWeaponGameObject;
+            currentWeaponGameObject.transform.parent = Camera.main.transform;
+        } else 
+        {
+            currentWeaponGameObject = Instantiate(CurrentWeapon.WeaponGameObject, Camera.main.transform);
+        }
         currentWeaponScript = currentWeaponGameObject.GetComponent<IWeapon>();
         currentWeaponScript.MakeKinematic();
         currentWeaponGameObject.transform.localPosition = CurrentWeapon.WeaponLocalPosition;
         currentWeaponGameObject.transform.localRotation = Quaternion.Euler(CurrentWeapon.WeaponLocalRoration);
-        
+
     }
 
     private bool IsNearComputerScreen()
@@ -162,15 +206,28 @@ public class PlayerScript : MonoBehaviour {
         bool rayIsHit = Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, Mathf.Infinity, layerMask);
 
         bool result = rayIsHit && hit.distance < 1.6f;
-        if (!result)
-        {
-            audioSource.clip = UseSoundMiss;
-            audioSource.Play();
-        } else
+        if (result)
         {
             audioSource.clip = UseSoundHit;
             audioSource.Play();
         }
         return result;
+    }
+
+    private bool IsNearShotgun()
+    {
+       var vectorLengths = GameObject.FindGameObjectsWithTag("WeaponRoot")
+            .Where(s => s.name == "Shotgun")
+            .Select(g => (g.transform.position - transform.position).magnitude)
+            .ToList();
+
+
+        bool result = vectorLengths.Min() < 1.5;
+        return result;
+    }
+
+    public void SetCurrentWeapon(Weapon weapon)
+    {
+        currentWeapon = weapon;
     }
 }

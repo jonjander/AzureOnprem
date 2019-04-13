@@ -26,6 +26,7 @@ public class DCGenerator : MonoBehaviour {
     public GameObject Cable;
     public GameObject CableLadder;
     public NavMeshSurface NavMeshSurface;
+    public GameObject DataCenterDoor;
 
     private AzureManagementAPIHelper azureManagementAPIHelper;
     private List<ResourceGroupObject> resoruceGroups;
@@ -65,8 +66,8 @@ public class DCGenerator : MonoBehaviour {
 
         for (int x = 0; x < xWall; x++)
         {
-            var tempWall = Instantiate(Wall);
-            tempWall.transform.position = start;
+            //var tempWall = Instantiate(Wall);
+            //tempWall.transform.position = start;
             start += new Vector3(1, 0, 0);
         }
 
@@ -88,16 +89,16 @@ public class DCGenerator : MonoBehaviour {
 
         for (int x = 0; x < zWall; x++)
         {
-            GameObject tempWall;
-            if (x == Mathf.Floor(zWall/2) || x == Mathf.Floor(zWall / 2) + 1)
-            {
-                tempWall = Instantiate(Door);
-            }
-            else {
-                tempWall = Instantiate(Wall);
-            }
-            tempWall.transform.position = start;
-            tempWall.transform.Rotate(Vector3.up, 90);
+            //GameObject tempWall;
+            //if (x == Mathf.Floor(zWall/2) || x == Mathf.Floor(zWall / 2) + 1)
+            //{
+            //    tempWall = Instantiate(Door);
+            //}
+            //else {
+            //    tempWall = Instantiate(Wall);
+            //}
+            //tempWall.transform.position = start;
+            //tempWall.transform.Rotate(Vector3.up, 90);
             start += new Vector3(0, 0, -1);
         }
 
@@ -185,6 +186,7 @@ public class DCGenerator : MonoBehaviour {
             DrawDatacenter();
             ConnectCables(Racks);
             UpdateMavMesh();
+            Destroy(DataCenterDoor);
         }
     }
 

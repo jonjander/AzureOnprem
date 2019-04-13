@@ -1,4 +1,10 @@
-## 0.2.0-apha.24
+## 0.2.0-alpha.25
+* Added New walls
+* Added data center door
+* Mounted safe to datacenter wall
+* Moved shotgun to safe
+
+## 0.2.0-alpha.24
 * Added shotgun shells
 
 ## 0.2.0-alpha.23

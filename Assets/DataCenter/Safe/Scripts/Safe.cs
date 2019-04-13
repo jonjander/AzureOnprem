@@ -8,6 +8,7 @@ public class Safe : MonoBehaviour
 
     private List<Transform> brokenGlass;
     private Transform glass;
+    public GameObject LockedWeapon;
     
 
     // Start is called before the first frame update
@@ -39,11 +40,14 @@ public class Safe : MonoBehaviour
         {
             gp.gameObject.SetActive(true);
             var tmpRb = gp.GetComponent<Rigidbody>();
-            tmpRb.AddTorque(new Vector3(20, 20, 50), ForceMode.Impulse);
-            var direction = Camera.main.transform.position - gp.position;
-            tmpRb.AddForce(direction.normalized * 3.2f, ForceMode.Impulse);
+            if (tmpRb != null)
+            {
+                tmpRb.AddTorque(new Vector3(20, 20, 50), ForceMode.Impulse);
+                var direction = Camera.main.transform.position - gp.position;
+                tmpRb.AddForce(direction.normalized * 3.2f, ForceMode.Impulse);
+            }
         }
-
+        LockedWeapon.GetComponent<IWeapon>().SetLock(false);
     }
 
 }
