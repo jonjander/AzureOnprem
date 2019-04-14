@@ -183,10 +183,10 @@ public class DCGenerator : MonoBehaviour {
 
                 iCol++;
             }
+            DestroyImmediate(DataCenterDoor);
             DrawDatacenter();
             ConnectCables(Racks);
             UpdateMavMesh();
-            Destroy(DataCenterDoor);
         }
     }
 

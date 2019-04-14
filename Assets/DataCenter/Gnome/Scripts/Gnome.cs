@@ -121,6 +121,7 @@ class Gnome : MonoBehaviour
         {
             eqScript.StartEarthQuake(UnityEngine.Random.Range(2, 14));
             IsVisible = false;
+            State = GnomeStates.FindHide;
         }
     }
 

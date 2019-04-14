@@ -1,5 +1,14 @@
+## 0.2.1
+* Update navmesh after door is open
+* Gnome find new hide after hit
+* Immediate destroy door
+
+## 0.2.0-alpha.27
+* Fixed navmesh
+
 ## 0.2.0-alpha.26
 * Added shotgun bullet
+* Added Exit
 * Fixed bullet life
 * Gnome flees on gun fire
 * Updated navmesh
