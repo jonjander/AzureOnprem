@@ -19,6 +19,7 @@ public class PlayerScript : MonoBehaviour {
     private IWeapon currentWeaponScript;
 
     private bool shotgunUnlocked;
+    private GameObject exit;
 
     public Weapon CurrentWeapon
     {
@@ -37,7 +38,8 @@ public class PlayerScript : MonoBehaviour {
         shotgunUnlocked = false;
         CurrentWeapon = Weapons.FloppyDisk();
         audioSource = GetComponent<AudioSource>();
-	}
+        exit = GameObject.FindGameObjectWithTag("Exit");
+    }
 
     private IEnumerator Login()
     {
@@ -47,6 +49,7 @@ public class PlayerScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        CheckExitGame();
 
         GunState gunState = CurrentWeapon.UpdateTrigger(Input.GetMouseButton(0));
         //Debug.Log(gunState);
@@ -198,6 +201,20 @@ public class PlayerScript : MonoBehaviour {
         currentWeaponGameObject.transform.localPosition = CurrentWeapon.WeaponLocalPosition;
         currentWeaponGameObject.transform.localRotation = Quaternion.Euler(CurrentWeapon.WeaponLocalRoration);
 
+    }
+
+    private void CheckExitGame()
+    {
+        if (Vector3.Distance(transform.position, exit.transform.position) < 0.85f)
+        {
+            #if UNITY_EDITOR
+                        UnityEditor.EditorApplication.isPlaying = false;
+            #elif UNITY_WEBPLAYER
+                             Application.OpenURL(webplayerQuitURL);
+            #else
+                             Application.Quit();
+            #endif
+        }
     }
 
     private bool IsNearComputerScreen()

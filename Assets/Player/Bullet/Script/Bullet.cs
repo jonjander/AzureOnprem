@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        life = 20f;
+        life = 30f;
         audioSource = gameObject.AddComponent<AudioSource>();
     }
 	
@@ -28,6 +28,7 @@ public class Bullet : MonoBehaviour {
                 Destroy(transform.gameObject);
             }
         }
+        
 	}
 
     private void OnCollisionEnter(Collision collision)
@@ -39,10 +40,6 @@ public class Bullet : MonoBehaviour {
             float size = (float)Utils.Remap(collision.relativeVelocity.magnitude, 5, 20, 0.017f, 0.046f);
             ParticleSystem effect = Instantiate(CollitionEffect, transform.position, new Quaternion());
             effect.transform.localScale = new Vector3(size, size, size);
-            if (Damage > 80f)
-            {
-                Destroy(transform.gameObject);
-            }
 
             if (audioSource == null)
             {
@@ -54,6 +51,11 @@ public class Bullet : MonoBehaviour {
             audioSource.volume = volume;
             audioSource.clip = ImpactSound;
             audioSource.Play();
+
+            if (Damage >= 80)
+            {
+                life = 0.3f;
+            }
         }
 
         //Donot destroy on layers

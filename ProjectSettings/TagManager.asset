@@ -23,6 +23,7 @@ TagManager:
   - Weapon
   - BrokenGlass
   - Glass
+  - Exit
   layers:
   - Default
   - TransparentFX

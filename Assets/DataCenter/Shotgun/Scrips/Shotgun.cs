@@ -89,6 +89,9 @@ public class Shotgun : MonoBehaviour, IWeapon
         Debug.DrawLine(gun.position + offsetUp, gun.position + offsetUp - offsetForward, Color.red, 10f);
         muzzelflash.transform.position = gun.position + offsetUp - offsetForward;
         weaponRigidbody.AddTorque(transform.position.normalized - gun.right * power, ForceMode.Impulse);
+
+        //Scare gnome
+        GameObject.Find("Gnome").GetComponent<Gnome>().FleeNow();
     }
 
     public void Reload()

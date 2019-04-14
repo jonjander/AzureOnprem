@@ -233,6 +233,15 @@ class Gnome : MonoBehaviour
         return targetAlpha;
     }
 
+    public void FleeNow()
+    {
+        if (State == GnomeStates.PlayerContact)
+        {
+            State = GnomeStates.Flee;
+        }
+        
+    }
+
     private void Update()
     {
         var cLamp = FindClosestLamp();

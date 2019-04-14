@@ -1,3 +1,9 @@
+## 0.2.0-alpha.26
+* Added shotgun bullet
+* Fixed bullet life
+* Gnome flees on gun fire
+* Updated navmesh
+
 ## 0.2.0-alpha.25
 * Added New walls
 * Added data center door
