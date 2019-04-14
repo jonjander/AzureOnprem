@@ -1,19 +1,21 @@
-﻿using Assets.Tools;
+using Assets.Tools;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour {
 
-    bool lifeTimer = false;
-    float life;
+    private bool lifeTimer = false;
+    private float life;
+    private AudioSource audioSource;
     public ParticleSystem CollitionEffect;
-    public float damage = 0f;
+    public float Damage = 0f;
+    public AudioClip ImpactSound;
 
 	// Use this for initialization
 	void Start () {
-        life = 20f;
-
+        life = 30f;
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -23,24 +25,36 @@ public class Bullet : MonoBehaviour {
             life -= Time.deltaTime;
             if (life < 0)
             {
-                
                 Destroy(transform.gameObject);
             }
         }
+        
 	}
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.relativeVelocity.magnitude > 5f)
         {
-            damage += collision.relativeVelocity.magnitude;
+            Damage += collision.relativeVelocity.magnitude;
 
-            var Size = (float)Utils.Remap(collision.relativeVelocity.magnitude, 5, 20, 0.017f, 0.046f);
-            var effect = Instantiate(CollitionEffect, transform.position, new Quaternion());
-            effect.transform.localScale = new Vector3(Size, Size, Size);
-            if (damage > 80f)
+            float size = (float)Utils.Remap(collision.relativeVelocity.magnitude, 5, 20, 0.017f, 0.046f);
+            ParticleSystem effect = Instantiate(CollitionEffect, transform.position, new Quaternion());
+            effect.transform.localScale = new Vector3(size, size, size);
+
+            if (audioSource == null)
             {
-                Destroy(transform.gameObject);
+                audioSource = gameObject.AddComponent<AudioSource>();
+            }
+            audioSource.spatialBlend = 1;
+            audioSource.volume = 0.6f;
+            float volume = (float) Utils.Remap(collision.relativeVelocity.magnitude, 5, 20, 0f, 0.45f);
+            audioSource.volume = volume;
+            audioSource.clip = ImpactSound;
+            audioSource.Play();
+
+            if (Damage >= 80)
+            {
+                life = 0.3f;
             }
         }
 

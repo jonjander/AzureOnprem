@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -53,6 +53,7 @@ public class FluorescentLamp : MonoBehaviour {
 
         if (!isBroken)
         {
+            _light.intensity = 1.7f;
             if (audioSource.clip != NormalSound)
             {
                 audioSource.clip = NormalSound;
@@ -69,6 +70,7 @@ public class FluorescentLamp : MonoBehaviour {
         }
         else
         {
+            _light.intensity = 1.3f;
             if (audioSource.clip != BrokenSound)
             {
                 audioSource.clip = BrokenSound;

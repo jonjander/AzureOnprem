@@ -48,28 +48,5 @@ class WaterEditorUtility
 		AnimationCurve curve = new AnimationCurve(new Keyframe(0, 0.0f, 1.0f, 1.0f), new Keyframe(1, 1.0f, 1.0f, 1.0f));
 		curve = EditorGUILayout.CurveField(new GUIContent (name), curve, color, new Rect (0.0f,0.0f,1.0f,1.0f));
 
-		//if (GUI.changed) {
-		//	AnimationCurveChanged(((WaterBase)serObj.targetObject).sharedMaterial, curve);
-			//((WaterBase)serObj.targetObject).gameObject.SendMessage ("AnimationCurveChanged", SendMessageOptions.DontRequireReceiver);
-	   //}
 	}
-	/*
-	public static void AnimationCurveChanged(Material sharedMaterial, AnimationCurve fresnelCurve)
-	{
-		Debug.Log("AnimationCurveChanged");
-		Texture2D fresnel = (Texture2D)sharedMaterial.GetTexture("_Fresnel");
-		if(!fresnel)
-			fresnel = new Texture2D(256,1);
-			
-		for (int i = 0; i < 256; i++)
-		{
-			float val = Mathf.Clamp01(fresnelCurve.Evaluate((float)i)/255.0f);
-			Debug.Log(""+(((float)i)/255.0f) +": "+val);
-			fresnel.SetPixel(i, 0, new Color(val,val,val,val));
-		}
-		fresnel.Apply();
-		
-		sharedMaterial.SetTexture("_Fresnel", fresnel);
-		
-	}	*/
 }

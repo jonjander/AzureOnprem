@@ -404,8 +404,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 0.32
-  MaxDistance: 2
+  MinDistance: 0.71
+  MaxDistance: 6.46
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -500,6 +500,7 @@ MonoBehaviour:
   LampTubes: []
   NormalSound: {fileID: 8300000, guid: 3f4c7706c6c56ca4e87f9f2ab26dc34d, type: 3}
   BrokenSound: {fileID: 8300000, guid: 4835824c4ad00e549bdbe93d28a5c568, type: 3}
+  CustomTime: 0
 --- !u!1 &1758137834613804
 GameObject:
   m_ObjectHideFlags: 0

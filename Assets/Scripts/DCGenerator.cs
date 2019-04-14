@@ -26,6 +26,7 @@ public class DCGenerator : MonoBehaviour {
     public GameObject Cable;
     public GameObject CableLadder;
     public NavMeshSurface NavMeshSurface;
+    public GameObject DataCenterDoor;
 
     private AzureManagementAPIHelper azureManagementAPIHelper;
     private List<ResourceGroupObject> resoruceGroups;
@@ -38,12 +39,12 @@ public class DCGenerator : MonoBehaviour {
         azureManagementAPIHelper = new AzureManagementAPIHelper();
         AdminScreen.OnComputerLogin += GenerateDataCenterResources;
         col = 6;
-        row = 10;
+        row = 0;
         xOffset = 1.04f;
         zOffset = 2.84f;
     }
 
-    Vector3[] GetRackBounds()
+    private Vector3[] GetRackBounds()
     {
         var maxX = Racks.Max(r => r.transform.position.x);
         var maxZ = Racks.Max(r => r.transform.position.z);
@@ -65,8 +66,8 @@ public class DCGenerator : MonoBehaviour {
 
         for (int x = 0; x < xWall; x++)
         {
-            var tempWall = Instantiate(Wall);
-            tempWall.transform.position = start;
+            //var tempWall = Instantiate(Wall);
+            //tempWall.transform.position = start;
             start += new Vector3(1, 0, 0);
         }
 
@@ -88,16 +89,16 @@ public class DCGenerator : MonoBehaviour {
 
         for (int x = 0; x < zWall; x++)
         {
-            GameObject tempWall;
-            if (x == Mathf.Floor(zWall/2) || x == Mathf.Floor(zWall / 2) + 1)
-            {
-                tempWall = Instantiate(Door);
-            }
-            else {
-                tempWall = Instantiate(Wall);
-            }
-            tempWall.transform.position = start;
-            tempWall.transform.Rotate(Vector3.up, 90);
+            //GameObject tempWall;
+            //if (x == Mathf.Floor(zWall/2) || x == Mathf.Floor(zWall / 2) + 1)
+            //{
+            //    tempWall = Instantiate(Door);
+            //}
+            //else {
+            //    tempWall = Instantiate(Wall);
+            //}
+            //tempWall.transform.position = start;
+            //tempWall.transform.Rotate(Vector3.up, 90);
             start += new Vector3(0, 0, -1);
         }
 
@@ -105,17 +106,15 @@ public class DCGenerator : MonoBehaviour {
         start = bounds[0]; //Reset start
         for (int z = 0; z < row + 2; z++)
         {
-            if (z % 1 == 0)
-            {
-                var tempLight = Instantiate(Light);
-                var x = (start.x + xWall + (offset * 2)) / 2;
-                x = (bounds[1].x + bounds[0].x) / 2;
-                Mesh mesh = tempLight.GetComponentInChildren<MeshFilter>().mesh;
-                var exrents = mesh.bounds.extents;
-                tempLight.transform.position = new Vector3(x + exrents.x, 3, start.z + (zOffset / 2) + (zOffset / 4));
-                var lampScript = tempLight.GetComponent<FluorescentLamp>();
-                lampScript.isBroken = !!(UnityEngine.Random.Range(0, row + 3) == 1);
-            }
+            var tempLight = Instantiate(Light);
+            var x = (start.x + xWall + (offset * 2)) / 2;
+            x = (bounds[1].x + bounds[0].x) / 2;
+            Mesh mesh = tempLight.GetComponentInChildren<MeshFilter>().mesh;
+            var exrents = mesh.bounds.extents;
+            tempLight.transform.position = new Vector3(x + exrents.x, 3, start.z - zOffset + (zOffset / 2) + (zOffset / 4));
+            var lampScript = tempLight.GetComponent<FluorescentLamp>();
+            lampScript.isBroken = !!(UnityEngine.Random.Range(0, row + 3) == 1);
+            
             start += new Vector3(0, 0, zOffset);
         }
 
@@ -184,6 +183,7 @@ public class DCGenerator : MonoBehaviour {
 
                 iCol++;
             }
+            DestroyImmediate(DataCenterDoor);
             DrawDatacenter();
             ConnectCables(Racks);
             UpdateMavMesh();

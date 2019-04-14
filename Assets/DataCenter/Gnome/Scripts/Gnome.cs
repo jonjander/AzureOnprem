@@ -59,17 +59,15 @@ class Gnome : MonoBehaviour
 
         Vector3 center = new Vector3(textureCollider.center.x, textureCollider.center.y, textureCollider.center.z);
 
-        var margin = 0.05f;
+        float margin = 0.05f;
         Vector3 vertex1 = new Vector3(center.x + size.x / 2 - margin, center.y - size.y / 2 + margin, center.z + size.z / 2 - margin);
         Vector3 vertex2 = new Vector3(center.x - size.x / 2 + margin, center.y - size.y / 2 + margin, center.z - size.z / 2 + margin);
         Vector3 vertex3 = new Vector3(center.x + size.x / 2 - margin, center.y + size.y / 2 - margin, center.z + size.z / 2 - margin);
         Vector3 vertex4 = new Vector3(center.x - size.x / 2 + margin, center.y + size.y / 2 - margin, center.z - size.z / 2 + margin);
-
         Vector3 vertex5 = new Vector3(center.x + size.x / 4 - margin, center.y - size.y / 4 + margin, center.z + size.z / 4 - margin);
         Vector3 vertex6 = new Vector3(center.x - size.x / 4 + margin, center.y - size.y / 4 + margin, center.z - size.z / 4 + margin);
         Vector3 vertex7 = new Vector3(center.x + size.x / 4 - margin, center.y + size.y / 4 - margin, center.z + size.z / 4 - margin);
         Vector3 vertex8 = new Vector3(center.x - size.x / 4 + margin, center.y + size.y / 4 - margin, center.z - size.z / 4 + margin);
-
         Vector3 vertex9 = new Vector3(center.x + size.x / 2 - margin, center.y, center.z + size.z / 2 - margin);
         Vector3 vertex10 = new Vector3(center.x - size.x / 2 + margin, center.y, center.z - size.z / 2 + margin);
 
@@ -123,25 +121,26 @@ class Gnome : MonoBehaviour
         {
             eqScript.StartEarthQuake(UnityEngine.Random.Range(2, 14));
             IsVisible = false;
+            State = GnomeStates.FindHide;
         }
     }
 
     public float AngelAlpha(float cameraAngle)
     {
         double mappedAlpha = Utils.Remap(cameraAngle, 40, 60, 0, 1);
-        return (float)Utils.flattern(mappedAlpha);
+        return (float)Utils.Flattern(mappedAlpha);
     }
 
     public float DistanceAlpha(float cameraDistance)
     {
         double distanceAlpha = Utils.Remap(cameraDistance, 9, 7.9f, 1, 0);
-        return (float)Utils.flattern(distanceAlpha);
+        return (float)Utils.Flattern(distanceAlpha);
     }
 
     public float DistanceAlpha(float cameraDistance, float max, float min)
     {
         var distanceAlpha = Utils.Remap(cameraDistance, max, min, 1, 0);
-        return (float)Utils.flattern(distanceAlpha);
+        return (float)Utils.Flattern(distanceAlpha);
     }
 
     private float GetCameraAngle()
@@ -183,6 +182,8 @@ class Gnome : MonoBehaviour
         textureCollider = GetComponent<BoxCollider>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         audioSource = GetComponent<AudioSource>();
+        audioSource.spatialBlend = 1;
+        audioSource.panStereo = 0;
         SyncLamp = FindClosestLamp().GetComponent<FluorescentLamp>();
         agent = GetComponent<NavMeshAgent>();
         State = GnomeStates.FindHide;
@@ -233,10 +234,19 @@ class Gnome : MonoBehaviour
         return targetAlpha;
     }
 
+    public void FleeNow()
+    {
+        if (State == GnomeStates.PlayerContact)
+        {
+            State = GnomeStates.Flee;
+        }
+        
+    }
+
     private void Update()
     {
         var cLamp = FindClosestLamp();
-        if (cLamp != currentLamp && !eqScript.ActiveEarthquake)
+        if (cLamp != currentLamp && eqScript.State == EarthquakeStates.Off)
         {
             //Change lamp
             if (currentLamp == null)
@@ -266,11 +276,11 @@ class Gnome : MonoBehaviour
             audioSource.clip = Voices
                 .OrderBy(s => Guid.NewGuid())
                 .FirstOrDefault();
-            if (IsVisible)
+            if (IsVisible || (agent.remainingDistance < 0.1f && State == GnomeStates.InHideHidden )) 
             {
+                
                 audioSource.Play();
             }
-            audioSource.panStereo = UnityEngine.Random.Range(0, 2) == 0 ? -1 : 1;
         }
 
         switch (State)

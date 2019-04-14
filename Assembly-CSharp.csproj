@@ -8,8 +8,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{76CA0D1A-C873-31AF-8F3E-F11FA9179252}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -70,23 +69,29 @@
     <Compile Include="Assets\Azure\Subscription\SubscriptionPolicies.cs" />
     <Compile Include="Assets\Azure\Subscription\SubscriptionRootObject.cs" />
     <Compile Include="Assets\Azure\Tags.cs" />
-    <Compile Include="Assets\DataCenter\Cable\Scripts\cabelGenerator.cs" />
+    <Compile Include="Assets\DataCenter\Cable\Scripts\CabelGenerator.cs" />
     <Compile Include="Assets\DataCenter\Cable\Scripts\CableSegment.cs" />
     <Compile Include="Assets\DataCenter\CoolingFan\Scripts\RotateFan.cs" />
     <Compile Include="Assets\DataCenter\EarthQuake\Scripts\Earthquake.cs" />
-    <Compile Include="Assets\DataCenter\Floppy\Scripts\FloppyColor.cs" />
+    <Compile Include="Assets\DataCenter\Exit\Scripts\GameExitScript.cs" />
+    <Compile Include="Assets\DataCenter\Floppy\Scripts\FloppyScript.cs" />
     <Compile Include="Assets\DataCenter\FluorescentLamp\Scripts\FluorescentLamp.cs" />
     <Compile Include="Assets\DataCenter\Gnome\Scripts\Gnome.cs" />
     <Compile Include="Assets\DataCenter\Gnome\Scripts\HideArea.cs" />
     <Compile Include="Assets\DataCenter\Gnome\Scripts\HideParent.cs" />
     <Compile Include="Assets\DataCenter\LoginDesk\Scripts\AdminScreen.cs" />
+    <Compile Include="Assets\DataCenter\Safe\Scripts\BreakableGlass.cs" />
+    <Compile Include="Assets\DataCenter\Safe\Scripts\Safe.cs" />
+    <Compile Include="Assets\DataCenter\Shotgun\Scrips\ShellScript.cs" />
+    <Compile Include="Assets\DataCenter\Shotgun\Scrips\Shotgun.cs" />
     <Compile Include="Assets\Player\Bullet\Script\Bullet.cs" />
+    <Compile Include="Assets\Player\Script\IWeapon.cs" />
+    <Compile Include="Assets\Player\Script\PlayerScript.cs" />
     <Compile Include="Assets\Scripts\Admin.cs" />
     <Compile Include="Assets\Scripts\AzureManagementAPI.cs" />
     <Compile Include="Assets\Scripts\DCGenerator.cs" />
     <Compile Include="Assets\Scripts\GameCamera.cs" />
     <Compile Include="Assets\Scripts\LoginHelper.cs" />
-    <Compile Include="Assets\Scripts\PlayerScript.cs" />
     <Compile Include="Assets\Scripts\ResoruceGroup.cs" />
     <Compile Include="Assets\Scripts\Resource.cs" />
     <Compile Include="Assets\Scripts\SpecialLight.cs" />
@@ -96,7 +101,6 @@
     <None Include="Assets\StreamingAssets\Microsoft.IdentityModel.Clients.ActiveDirectory.xml" />
     <None Include="Assets\Audit report.txt" />
     <None Include="Assets\DataCenter\Gnome\Shader\GnomeShader.shader" />
-    <None Include="ChangeLog.md" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Git/VDC/VDC/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

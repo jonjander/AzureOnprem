@@ -18,6 +18,12 @@ TagManager:
   - CableConnector
   - PlayerHead
   - Hide
+  - Undefined
+  - WeaponRoot
+  - Weapon
+  - BrokenGlass
+  - Glass
+  - Exit
   layers:
   - Default
   - TransparentFX
@@ -36,8 +42,8 @@ TagManager:
   - Floor
   - Cable
   - Gnome
-  - 
-  - 
+  - Weapon
+  - WeaponProp
   - 
   - 
   - 
