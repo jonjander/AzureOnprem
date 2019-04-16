@@ -91,7 +91,7 @@ public class Shotgun : MonoBehaviour, IWeapon
         weaponRigidbody.AddTorque(transform.position.normalized - gun.right * power, ForceMode.Impulse);
 
         //Scare gnome
-        GameObject.Find("Gnome").GetComponent<Gnome>().FleeNow();
+        GameObject.Find("Gnome").GetComponent<Gnome>().HideNow();
     }
 
     public void Reload()

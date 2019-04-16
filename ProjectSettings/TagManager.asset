@@ -24,6 +24,7 @@ TagManager:
   - BrokenGlass
   - Glass
   - Exit
+  - Peek
   layers:
   - Default
   - TransparentFX
@@ -44,7 +45,7 @@ TagManager:
   - Gnome
   - Weapon
   - WeaponProp
-  - 
+  - GnomeImagination
   - 
   - 
   - 

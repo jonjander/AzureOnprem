@@ -9,6 +9,8 @@ using UnityEngine.AI;
 
 public enum GnomeStates
 {
+    Peek,
+    MovingToPeekLocation,
     FindHide,
     MoveHidden,
     PlayerContact,
@@ -26,7 +28,7 @@ class Gnome : MonoBehaviour
     private float targetAlpha = 0f;
     private Vector3 startPos;
     private AudioSource audioSource;
-    private GameObject newHide;
+    private GameObject agentTargetDestination;
     private float agentSpeed;
     private Earthquake eqScript;
     private FluorescentLamp currentLamp;
@@ -42,7 +44,8 @@ class Gnome : MonoBehaviour
     public float RangeThreshold;
     public float CameraAngle;
     public float CameraDistance;
-
+    private float updatePath;
+    private GameObject gnomeImagination;
 
     bool ImInCamera()
     {
@@ -50,15 +53,48 @@ class Gnome : MonoBehaviour
         return GeometryUtility.TestPlanesAABB(planes, textureCollider.bounds) ? true : false;
     }
 
+
+    
+
     bool ImBehindObject()
     {
-
-        Vector3 gnomePos = textureCollider.transform.position;
-
         Vector3 size = textureCollider.size;
-
         Vector3 center = new Vector3(textureCollider.center.x, textureCollider.center.y, textureCollider.center.z);
 
+        List<Vector3> rayTargets = CreateRayTargets(size, center, textureCollider);
+
+        Vector3 camPos = Camera.main.transform.position;
+
+        var hits = rayTargets.Where(tar =>
+        {
+            Vector3 heading = tar - camPos;
+            bool isHit = Physics.Raycast(camPos, heading, out RaycastHit hit);
+
+            if (!isHit)
+            {
+                //Debug.DrawRay(CamPos, heading, Color.red);
+                return false;
+            }
+            else
+            {
+                var dwarfHit = hit.collider.gameObject.layer == LayerMask.NameToLayer("Gnome");
+                if (dwarfHit)
+                {
+                    Debug.DrawRay(camPos, heading, Color.green);
+                }
+                else
+                {
+                    Debug.DrawRay(camPos, heading, Color.red);
+                }
+                return dwarfHit;
+            }
+        });
+
+        return hits.Count() == 0;
+    }
+
+    private List<Vector3> CreateRayTargets(Vector3 size, Vector3 center, Collider collider)
+    {
         float margin = 0.05f;
         Vector3 vertex1 = new Vector3(center.x + size.x / 2 - margin, center.y - size.y / 2 + margin, center.z + size.z / 2 - margin);
         Vector3 vertex2 = new Vector3(center.x - size.x / 2 + margin, center.y - size.y / 2 + margin, center.z - size.z / 2 + margin);
@@ -74,45 +110,18 @@ class Gnome : MonoBehaviour
         float rayLength = size.y / 2;
 
         var rayTargets = new List<Vector3>(){
-            textureCollider.transform.TransformPoint(vertex1),
-            textureCollider.transform.TransformPoint(vertex2),
-            textureCollider.transform.TransformPoint(vertex3),
-            textureCollider.transform.TransformPoint(vertex4),
-            textureCollider.transform.TransformPoint(vertex5),
-            textureCollider.transform.TransformPoint(vertex6),
-            textureCollider.transform.TransformPoint(vertex7),
-            textureCollider.transform.TransformPoint(vertex8),
-            textureCollider.transform.TransformPoint(vertex9),
-            textureCollider.transform.TransformPoint(vertex10),
+            collider.transform.TransformPoint(vertex1),
+            collider.transform.TransformPoint(vertex2),
+            collider.transform.TransformPoint(vertex3),
+            collider.transform.TransformPoint(vertex4),
+            collider.transform.TransformPoint(vertex5),
+            collider.transform.TransformPoint(vertex6),
+            collider.transform.TransformPoint(vertex7),
+            collider.transform.TransformPoint(vertex8),
+            collider.transform.TransformPoint(vertex9),
+            collider.transform.TransformPoint(vertex10),
         };
-
-        Vector3 camPos = Camera.main.transform.position;
-
-        var hits = rayTargets.Where(tar =>
-        {
-            Vector3 heading = tar - camPos;
-            bool isHit = Physics.Raycast(camPos, heading, out RaycastHit hit);
-            
-            if (!isHit)
-            {
-                //Debug.DrawRay(CamPos, heading, Color.red);
-                return false;
-            }
-            else
-            {
-                var dwarfHit = hit.collider.gameObject.layer == LayerMask.NameToLayer("Gnome");
-                if (dwarfHit)
-                {
-                    Debug.DrawRay(camPos, heading, Color.green);
-                } else
-                {
-                    Debug.DrawRay(camPos, heading, Color.red);
-                }
-                return dwarfHit;
-            }
-        });
-        
-        return hits.Count() == 0;
+        return rayTargets;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -189,24 +198,112 @@ class Gnome : MonoBehaviour
         State = GnomeStates.FindHide;
         agentSpeed = agent.speed;
         eqScript = GameObject.FindObjectOfType<Earthquake>();
+        updatePath = 1f;
+
+        gnomeImagination = Resources.Load<GameObject>("GnomeImagination");
     }
 
-    private bool Move()
+    private List<HideResult> ImagineGnomeLocations()
+    {
+        List<GameObject> allHidePlaces = GameObject.FindGameObjectsWithTag("Hide").ToList();
+        var camPos = Camera.main.transform.position;
+        List<HideResult> hideResults = new List<HideResult>();
+        List<BoxCollider> gnomeImaginations = new List<BoxCollider>();
+
+
+        Debug.Log("update");
+        foreach (var hideP in allHidePlaces)
+        {
+            var tempGnome = Instantiate(gnomeImagination);
+            BoxCollider tempImaginationGnome = tempGnome.GetComponent<BoxCollider>();
+            tempImaginationGnome.transform.position = hideP.transform.position;
+            Vector3 playerHeading = Camera.main.transform.position - hideP.transform.position;
+            Vector3 lookRotation = Quaternion.LookRotation(playerHeading, Vector3.up).eulerAngles;
+            tempImaginationGnome.transform.rotation = Quaternion.Euler(new Vector3(0, lookRotation.y, 0));
+
+            Vector3 size = tempImaginationGnome.size;
+            Vector3 center = new Vector3(tempImaginationGnome.center.x, tempImaginationGnome.center.y, tempImaginationGnome.center.z);
+
+            List<Vector3> rayTargets = CreateRayTargets(size, center, tempImaginationGnome);
+
+
+            var hits = rayTargets.Where(tar =>
+            {
+                Vector3 heading = tar - camPos;
+                bool isHit = Physics.Raycast(camPos, heading, out RaycastHit hit);
+
+                if (!isHit)
+                {
+                    //Debug.DrawRay(CamPos, heading, Color.red);
+                    return false;
+                }
+                else
+                {
+                    var dwarfHit = hit.collider.gameObject.layer == LayerMask.NameToLayer("GnomeImagination");
+                    if (dwarfHit)
+                    {
+                        Debug.DrawRay(camPos, heading, Color.green);
+                    }
+                    else
+                    {
+                        Debug.DrawRay(camPos, heading, Color.red);
+                    }
+                    return dwarfHit;
+                }
+            });
+            var distanceToHide = Vector3.Distance(hideP.transform.position, transform.position);
+            hideResults.Add(new HideResult(hideP, hits.Count(), distanceToHide));
+            Destroy(tempGnome);
+        }
+        
+
+        return hideResults;
+    }
+
+    private bool MoveTo(bool near, bool blocked)
     {
         try
         {
-            List<GameObject> hidePlaces = GameObject.FindGameObjectsWithTag("Hide").ToList();
-
-            newHide = hidePlaces.Select(s =>
+            List<HideResult> newHideLocation;
+            if (blocked)
             {
-                var distance = Vector3.Distance(Camera.main.transform.position, s.transform.position);
-                return new { HidePlace = s, distance };
-            })
-                .OrderByDescending(s => s.distance)
-                .FirstOrDefault()
-                .HidePlace;
+                newHideLocation = ImagineGnomeLocations()
+                    .Where(s => s.NumberOfHits == 0)
+                    .ToList();
+                Debug.Log("move to blocked area" + newHideLocation.Count());
+            }
+            else
+            {
+                newHideLocation = ImagineGnomeLocations()
+                    .Where(s => s.NumberOfHits > 3)
+                    .ToList();
+            }
 
-            agent.SetDestination(newHide.transform.position);
+            if (newHideLocation.Count() == 0)
+            {
+                Debug.LogError("Cannot find hide Blocked " + blocked);
+            }
+
+            if (near)
+            {
+                agentTargetDestination = newHideLocation
+                   .OrderBy(s => s.Distance)
+                   .Take(2)
+                   .OrderBy(s => Guid.NewGuid())
+                   .FirstOrDefault()
+                   .Target;
+            }
+            else
+            {
+                agentTargetDestination = newHideLocation
+                   .OrderByDescending(s => s.Distance)
+                   .Take(2)
+                   .OrderBy(s => Guid.NewGuid())
+                   .FirstOrDefault()
+                   .Target;
+            }
+
+            agent.SetDestination(agentTargetDestination.transform.position);
             return true;
         }
         catch {
@@ -234,17 +331,42 @@ class Gnome : MonoBehaviour
         return targetAlpha;
     }
 
-    public void FleeNow()
+    public void HideNow()
     {
         if (State == GnomeStates.PlayerContact)
         {
-            State = GnomeStates.Flee;
+            State = GnomeStates.FindHide;
         }
         
     }
 
     private void Update()
     {
+
+        #region update path
+        if (updatePath <= 0)
+        {
+            updatePath = 1f;
+            if (State == GnomeStates.Flee)
+            {
+                NavMeshPath path = agent.path;
+                var pathPossible = agent.CalculatePath(agentTargetDestination.transform.position, path);
+                if (pathPossible)
+                {
+                    Debug.Log("Calculated new path");
+                    agent.path = path;
+                }
+                else
+                {
+                    Debug.LogWarning("Failed to calculate path");
+                    IsVisible = false;
+                }
+            }
+            
+        }
+        updatePath -= Time.deltaTime;
+        #endregion
+
         var cLamp = FindClosestLamp();
         if (cLamp != currentLamp && eqScript.State == EarthquakeStates.Off)
         {
@@ -266,7 +388,7 @@ class Gnome : MonoBehaviour
         CameraAngle = GetCameraAngle();
         CameraDistance = GetCameraDistance();
 
-        if (newHide == null)
+        if (agentTargetDestination == null)
         {
             State = GnomeStates.Flee;
         }
@@ -286,9 +408,10 @@ class Gnome : MonoBehaviour
         switch (State)
         {
             case GnomeStates.FindHide:
-                if (!Move())
+                if (!MoveTo(true, true))
                 {
                     IsVisible = false;
+                    Debug.LogError("Unable to find hide");
                     break;
                 }
                 State = GnomeStates.Flee;
@@ -324,23 +447,34 @@ class Gnome : MonoBehaviour
                 break;
             case GnomeStates.Flee:
                 //Become invisible
-                if (!Move())
-                {
-                    IsVisible = false;
-                    break;
-                }
                 var change = FreezPosition - GetCameraDistance();
-                agent.speed += change;
+                agent.speed += Time.deltaTime * Math.Abs(change);
                 if (!ImInCamera() || !spriteRenderer.isVisible || ImBehindObject())
                 {
                     IsVisible = false;
+                    MoveTo(false, true);
                     State = GnomeStates.MoveHidden;
                     agent.speed = agentSpeed;
                 }
-
+                else
+                {
+                    if (agent.remainingDistance < 0.2f)
+                    {
+                        State = GnomeStates.FindHide;
+                    }
+                }
                 break;
             case GnomeStates.InHideHidden:
-
+                MoveTo(true, false);
+                State = GnomeStates.MovingToPeekLocation;
+                break;
+            case GnomeStates.MovingToPeekLocation:
+                if (agent.remainingDistance < 0.2f)
+                {
+                    State = GnomeStates.Peek;
+                }
+                break;
+            case GnomeStates.Peek:
                 if (!ImInCamera() && !IsVisible && CameraDistance > RangeThreshold )
                 {
                     if (!OffScreenReset)
@@ -363,11 +497,31 @@ class Gnome : MonoBehaviour
         }
         var a = 1;
 
+
         spriteRenderer.enabled = IsVisible;
         var camRot = Camera.main.transform.rotation;
         transform.rotation = Quaternion.Euler(0, camRot.eulerAngles.y, 0);
 
         spriteRenderer.color = new Color(7f / 255, 6f / 255, 6f / 255, a);
 
+    }
+
+    private GameObject FindNearestPeek()
+    {
+        throw new NotImplementedException();
+    }
+}
+
+
+public class HideResult {
+    public GameObject Target;
+    public int NumberOfHits;
+    public float Distance;
+
+    public HideResult(GameObject target, int numberOfHits, float distance)
+    {
+        Target = target;
+        NumberOfHits = numberOfHits;
+        Distance = distance;
     }
 }

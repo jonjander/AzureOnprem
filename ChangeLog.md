@@ -1,3 +1,6 @@
+## Develop
+* Updated gnome behavior
+
 ## 0.2.1
 * Update navmesh after door is open
 * Gnome find new hide after hit
