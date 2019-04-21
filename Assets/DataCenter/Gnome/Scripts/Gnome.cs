@@ -128,9 +128,16 @@ class Gnome : MonoBehaviour
     {
         if (other.tag == "Bullet")
         {
-            eqScript.StartEarthQuake(UnityEngine.Random.Range(2, 14));
-            IsVisible = false;
-            State = GnomeStates.FindHide;
+            var colliderVelocity = other
+                .transform.parent
+                .transform.parent
+                .GetComponent<Rigidbody>().velocity;
+            Debug.Log("bullet velo" + colliderVelocity.magnitude);
+            if (colliderVelocity.magnitude > 5f) //do not hit gnome in low velocity
+            {
+                eqScript.StartEarthQuake(UnityEngine.Random.Range(2, 14));
+                State = GnomeStates.FindHide;
+            }
         }
     }
 
@@ -255,7 +262,6 @@ class Gnome : MonoBehaviour
             hideResults.Add(new HideResult(hideP, hits.Count(), distanceToHide));
             Destroy(tempGnome);
         }
-        
 
         return hideResults;
     }

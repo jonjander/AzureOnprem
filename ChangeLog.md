@@ -1,5 +1,7 @@
-## Develop
+## 0.3.0-alpha.6
 * Updated gnome behavior
+* Fix gnome hit by bullet at zero velocity
+* Added locks to racks
 
 ## 0.2.1
 * Update navmesh after door is open

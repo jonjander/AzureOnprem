@@ -124,6 +124,8 @@ public class Resource : MonoBehaviour {
         SetLeds();
     }
 
+
+
     private void SetLeds()
     {
         try

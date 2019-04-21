@@ -1,4 +1,5 @@
 using Assets.Azure;
+using Assets.Azure.Lock;
 using Assets.Azure.Resource;
 using Newtonsoft.Json;
 using System;
@@ -17,7 +18,9 @@ public class ResoruceGroup : MonoBehaviour
     public Tags Tags;
     public List<List<ResourceObject>> Servers;
     public bool ResourcesObjectsLoaded = false;
+    public bool HaveLocks;
 
+    private GameObject ResourceGroupLock;
     private List<GameObject> resources;
     private float top;
     private float step;
@@ -46,6 +49,7 @@ public class ResoruceGroup : MonoBehaviour
 
     private void Start()
     {
+        HaveLocks = false;
         maxUSize = 25;
         top = 1.9f;
         step = 0.071f;
@@ -182,6 +186,39 @@ public class ResoruceGroup : MonoBehaviour
         InstanciateResources(serverKinds);
     }
 
+    private IEnumerator GetLocks(string userAccessToken, string subscription)
+    {
+        string azureUrl = "https://management.azure.com/subscriptions/" + subscription + "/resourceGroups/" + name + "/providers/Microsoft.Authorization/locks?api-version=2015-01-01";
+        UnityWebRequest request = UnityWebRequest.Get(azureUrl);
+
+        request.method = UnityWebRequest.kHttpVerbGET;
+        request.SetRequestHeader("Content-Type", "application/json; utf-8");
+        request.SetRequestHeader("Authorization", userAccessToken);
+
+        yield return request.SendWebRequest();
+        string jsonString = request.downloadHandler.text;
+        List<Lock> locks = JsonConvert.DeserializeObject<LockRoot>(jsonString).Value;
+        HaveLocks = locks.Count > 0;
+        if (HaveLocks && ResourceGroupLock == null)
+        {
+            var resourceLock = Resources.Load<GameObject>("Lock");
+            ResourceGroupLock = Instantiate(resourceLock);
+            ResourceGroupLock.transform.parent = transform;
+            ResourceGroupLock.transform.localPosition = new Vector3(-0.3364153f, 1.0555f, -0.01067209f);
+            LockAllResourcesInRack();
+        }
+
+    }
+
+    private void LockAllResourcesInRack()
+    {
+        var rigidbodys = GetComponentsInChildren<Rigidbody>();
+        foreach (Rigidbody item in rigidbodys)
+        {
+            item.isKinematic = true;
+        }
+    }
+
     private List<List<ResourceObject>> ConvertResourcesToServers(List<GameObject> serverKinds, List<ResourceObject> resourceObects)
     {
         List<string> groupableResources = new List<string>()
@@ -252,6 +289,7 @@ public class ResoruceGroup : MonoBehaviour
     internal void Load(string accessToken, string subscription, List<GameObject> serverKinds)
     {
         StartCoroutine(GetResoruceGroupResources(accessToken, subscription, serverKinds));
+        StartCoroutine(GetLocks(accessToken, subscription));
     }
 }
 

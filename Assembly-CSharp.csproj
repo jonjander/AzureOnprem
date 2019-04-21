@@ -60,6 +60,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Azure\Lock\Lock.cs" />
+    <Compile Include="Assets\Azure\Lock\LockRoot.cs" />
     <Compile Include="Assets\Azure\Resource\ResourceObject.cs" />
     <Compile Include="Assets\Azure\Resource\ResourceObjectRootObject.cs" />
     <Compile Include="Assets\Azure\ResourceGroupObject.cs" />
