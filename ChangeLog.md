@@ -1,5 +1,7 @@
 ## Develop
 * Ilo LEDs
+* Fixed lock position
+* Added more NIC LEDs
 
 ## 0.3.0-alpha.6
 * Updated gnome behavior
