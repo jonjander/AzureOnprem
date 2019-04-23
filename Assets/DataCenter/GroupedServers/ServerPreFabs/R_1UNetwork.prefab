@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 108666373336341086}
   - component: {fileID: 114904383286907366}
   m_Layer: 0
-  m_Name: LED (2)
+  m_Name: LEDNic (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4437991374865698}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &108666373336341086
 Light:
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 108752608400144332}
   - component: {fileID: 114282958682657420}
   m_Layer: 0
-  m_Name: LED (1)
+  m_Name: LEDNic (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,7 +124,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4437991374865698}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &108752608400144332
 Light:
@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 108125752819300086}
   - component: {fileID: 114109774124659106}
   m_Layer: 0
-  m_Name: LED (10)
+  m_Name: LEDNic (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -218,7 +218,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4437991374865698}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &108125752819300086
 Light:
@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 108751571170595334}
   - component: {fileID: 114438554281292224}
   m_Layer: 0
-  m_Name: LED
+  m_Name: LEDNic (0)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -312,7 +312,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4437991374865698}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &108751571170595334
 Light:
@@ -412,6 +412,7 @@ Transform:
   - {fileID: 4816479253690506}
   - {fileID: 4282887665086668}
   - {fileID: 4935302284401092}
+  - {fileID: 8083886208596766053}
   - {fileID: 4986994611115978}
   - {fileID: 4844834720178552}
   - {fileID: 4656334635338276}
@@ -533,7 +534,7 @@ GameObject:
   - component: {fileID: 108162026668425648}
   - component: {fileID: 114224564209721386}
   m_Layer: 0
-  m_Name: LED (12)
+  m_Name: LEDPwr (0)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -627,7 +628,7 @@ GameObject:
   - component: {fileID: 108055965638461130}
   - component: {fileID: 114258129463405574}
   m_Layer: 0
-  m_Name: LED (7)
+  m_Name: LEDNic (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -645,7 +646,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4437991374865698}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &108055965638461130
 Light:
@@ -721,7 +722,7 @@ GameObject:
   - component: {fileID: 108460148288139318}
   - component: {fileID: 114377185579244414}
   m_Layer: 0
-  m_Name: LED (6)
+  m_Name: LEDNic (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -739,7 +740,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4437991374865698}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &108460148288139318
 Light:
@@ -815,7 +816,7 @@ GameObject:
   - component: {fileID: 108428256413455422}
   - component: {fileID: 114988499711237734}
   m_Layer: 0
-  m_Name: LED (11)
+  m_Name: LEDNic (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -833,7 +834,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4437991374865698}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &108428256413455422
 Light:
@@ -909,7 +910,7 @@ GameObject:
   - component: {fileID: 108124313325530566}
   - component: {fileID: 114753859303963690}
   m_Layer: 0
-  m_Name: LED (4)
+  m_Name: LEDNic (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -927,7 +928,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4437991374865698}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &108124313325530566
 Light:
@@ -1003,7 +1004,7 @@ GameObject:
   - component: {fileID: 108212552299198222}
   - component: {fileID: 114312175579754982}
   m_Layer: 0
-  m_Name: LED (9)
+  m_Name: LEDNic (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1021,7 +1022,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4437991374865698}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &108212552299198222
 Light:
@@ -1097,7 +1098,7 @@ GameObject:
   - component: {fileID: 108835234713186022}
   - component: {fileID: 114868257198013692}
   m_Layer: 0
-  m_Name: LED (5)
+  m_Name: LEDNic (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1115,7 +1116,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4437991374865698}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &108835234713186022
 Light:
@@ -1282,7 +1283,7 @@ GameObject:
   - component: {fileID: 108907508294339930}
   - component: {fileID: 114875089508028606}
   m_Layer: 0
-  m_Name: LED (3)
+  m_Name: LEDNic (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1300,7 +1301,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4437991374865698}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &108907508294339930
 Light:
@@ -1467,7 +1468,7 @@ GameObject:
   - component: {fileID: 108550982719419490}
   - component: {fileID: 114868740671125744}
   m_Layer: 0
-  m_Name: LED (8)
+  m_Name: LEDNic (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1485,7 +1486,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4437991374865698}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &108550982719419490
 Light:
@@ -1578,7 +1579,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4437991374865698}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &82504468787264526
 AudioSource:
@@ -1676,3 +1677,97 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &8091118942803117233
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8083886208596766053}
+  - component: {fileID: 1660379372277368609}
+  - component: {fileID: 8756608189063171920}
+  m_Layer: 0
+  m_Name: LEDIlo (0)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8083886208596766053
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8091118942803117233}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.68, y: 0.022, z: 0.010099411}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4437991374865698}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &1660379372277368609
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8091118942803117233}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 0, g: 0.5019608, b: 1, a: 1}
+  m_Intensity: 10
+  m_Range: 0.022413254
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
+--- !u!114 &8756608189063171920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8091118942803117233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317fadcfad9d6854c8491b70855c21c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Led: {fileID: 0}
+  LedColor: {r: 0, g: 0.5019608, b: 1, a: 0}
+  Mode: 3
+  RandomMin: 0.04
+  RandomMax: 0.9
+  IntervalOff: 0.9
+  IntervalOn: 0.02
+  TagName: Ilo
+  TagValue: 0
+  SyncLed: {fileID: 0}
+  Flip: 0
+  LedFlip: 0

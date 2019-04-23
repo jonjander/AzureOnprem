@@ -14,6 +14,6 @@ namespace Assets.Azure
         [JsonProperty(PropertyName = "environment")]
         public string Environment { get; set; }
         [JsonProperty(PropertyName = "iLo")]
-        public string ILo { get; set; }
+        public string Ilo { get; set; }
     }
 }

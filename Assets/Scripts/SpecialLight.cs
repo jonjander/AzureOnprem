@@ -22,7 +22,6 @@ public class SpecialLight : MonoBehaviour {
         Led = GetComponent<Light>();
         Led.color = LedColor;
         LedFlip = UnityEngine.Random.Range(RandomMin, RandomMax);
-        
     }
 	
 	// Update is called once per frame

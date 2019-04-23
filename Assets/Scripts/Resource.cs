@@ -16,8 +16,7 @@ public class Resource : MonoBehaviour {
     public List<TextMesh> DisplayText = new List<TextMesh>();
 
     private AudioSource audioSource;
-    private MeshRenderer resourceMeshRenderer;
-    
+
     // Use this for initialization
     void Start () {
         DisplayText = GetComponentsInChildren<TextMesh>().ToList();
@@ -122,9 +121,33 @@ public class Resource : MonoBehaviour {
     {
         SetText();
         SetLeds();
+        UpdateIlo();
     }
 
+    private void UpdateIlo()
+    {
+        List<string> iloTags = RefObject
+            .Where(t=>t.Tags != null)
+            .Where(t=>t.Tags.Ilo != null)
+            .Select(i=>i.Tags.Ilo)
+            .ToList();
 
+        var iloState = false;
+
+        foreach (var item in iloTags)
+        {
+            iloState |= (item.ToLower() == "true" || item == "1");
+        }
+
+        var iloLEDs = GetComponentsInChildren<SpecialLight>()
+            .Where(n => n.Mode == SpecialLight.LightModes.Tag)
+            .Where(n => n.TagName == "Ilo")
+            .ToList();
+        foreach (var item in iloLEDs)
+        {
+            item.TagValue = iloState;
+        }
+    }
 
     private void SetLeds()
     {

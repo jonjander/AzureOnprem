@@ -204,7 +204,8 @@ public class ResoruceGroup : MonoBehaviour
             var resourceLock = Resources.Load<GameObject>("Lock");
             ResourceGroupLock = Instantiate(resourceLock);
             ResourceGroupLock.transform.parent = transform;
-            ResourceGroupLock.transform.localPosition = new Vector3(-0.3364153f, 1.0555f, -0.01067209f);
+            //lock position
+            ResourceGroupLock.transform.localPosition = new Vector3(-0.371f, 1.056f, -0.011f);
             LockAllResourcesInRack();
         }
 
