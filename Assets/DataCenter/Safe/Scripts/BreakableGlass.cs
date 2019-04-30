@@ -22,7 +22,7 @@ public class BreakableGlass : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Life = 3000f;
+        Life = 1500f;
     }
 
     // Update is called once per frame

@@ -1,8 +1,10 @@
-## Develop
+## 0.3.0-alpha.13
 * Ilo LEDs
 * Fixed lock position
 * Added more NIC LEDs
 * Added limit max number of cables
+* Change projectile power for shotgun
+* Safe glass is easier to break
 
 ## 0.3.0-alpha.6
 * Updated gnome behavior
