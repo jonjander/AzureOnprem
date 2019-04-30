@@ -34,8 +34,10 @@ public class DCGenerator : MonoBehaviour {
     private int row;
     private float xOffset;
     private float zOffset;
+    private int maximumNumberOfCables;
     // Use this for initialization
     void Start () {
+        maximumNumberOfCables = 20;
         azureManagementAPIHelper = new AzureManagementAPIHelper();
         AdminScreen.OnComputerLogin += GenerateDataCenterResources;
         col = 6;
@@ -194,21 +196,26 @@ public class DCGenerator : MonoBehaviour {
 
     private void ConnectCables(List<GameObject> racks)
     {
-        racks = racks.OrderBy(s => Guid.NewGuid()).Take((int)(racks.Count() / 2.5f)).ToList();
-        foreach (var item in racks)
+        var totalCables = 0;
+        racks = racks.OrderBy(s => Guid.NewGuid()).Take(maximumNumberOfCables).ToList();
+        foreach (GameObject item in racks)
         {
-            //Connect Cables
-            var cable = Instantiate(Cable);
-            var cabelGeneratorScript = cable.GetComponent<CabelGenerator>();
-            cabelGeneratorScript.StartPoint.GetComponent<Rigidbody>().isKinematic = true;
-            var closestConnector = FindClosestCableConnection(item.transform);
-            cabelGeneratorScript.StartPoint.transform.position = closestConnector.transform.position;
-            var endConnectionJoint = cabelGeneratorScript.EndPoint.GetComponent<ConfigurableJoint>();
-            GameObject topOfRack = new List<GameObject>(GameObject.FindGameObjectsWithTag("RackTop")).Find(g => g.transform.IsChildOf(item.transform));
-            GameObject topOfRackConnector = new List<GameObject>(GameObject.FindGameObjectsWithTag("CabelConnector")).Find(g => g.transform.IsChildOf(item.transform));
-            cabelGeneratorScript.EndPoint.transform.position = topOfRackConnector.transform.position;
-            endConnectionJoint.connectedBody = topOfRack.GetComponent<Rigidbody>();
-            endConnectionJoint.anchor = Vector3.zero;
+            if (totalCables <= maximumNumberOfCables)
+            {
+                //Connect Cables
+                totalCables++;
+                var cable = Instantiate(Cable);
+                var cabelGeneratorScript = cable.GetComponent<CabelGenerator>();
+                cabelGeneratorScript.StartPoint.GetComponent<Rigidbody>().isKinematic = true;
+                var closestConnector = FindClosestCableConnection(item.transform);
+                cabelGeneratorScript.StartPoint.transform.position = closestConnector.transform.position;
+                var endConnectionJoint = cabelGeneratorScript.EndPoint.GetComponent<ConfigurableJoint>();
+                GameObject topOfRack = new List<GameObject>(GameObject.FindGameObjectsWithTag("RackTop")).Find(g => g.transform.IsChildOf(item.transform));
+                GameObject topOfRackConnector = new List<GameObject>(GameObject.FindGameObjectsWithTag("CabelConnector")).Find(g => g.transform.IsChildOf(item.transform));
+                cabelGeneratorScript.EndPoint.transform.position = topOfRackConnector.transform.position;
+                endConnectionJoint.connectedBody = topOfRack.GetComponent<Rigidbody>();
+                endConnectionJoint.anchor = Vector3.zero;
+            }
         }
     }
 

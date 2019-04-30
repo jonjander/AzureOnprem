@@ -2,6 +2,7 @@
 * Ilo LEDs
 * Fixed lock position
 * Added more NIC LEDs
+* Added limit max number of cables
 
 ## 0.3.0-alpha.6
 * Updated gnome behavior
