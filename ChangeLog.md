@@ -1,5 +1,8 @@
 ## Develop
 * Fix Gnome can only get hit when visible
+* Fix cable break
+* Fix resource not member of Rack
+* Fix make resoruce kinematic when locked
 
 ## 0.3.0-alpha.13
 * Ilo LEDs

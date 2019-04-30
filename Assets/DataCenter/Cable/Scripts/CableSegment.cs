@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,7 +18,7 @@ public class CableSegment : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Rigidbody.velocity.magnitude > 4f)
+		if (Rigidbody.velocity.magnitude > 7f)
         {
             Destroy(gameObject);
         }

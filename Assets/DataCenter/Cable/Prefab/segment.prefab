@@ -42,7 +42,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1362168824853174}
   serializedVersion: 2
-  m_Mass: 0.03
+  m_Mass: 0.02
   m_Drag: 0.08
   m_AngularDrag: 0.08
   m_UseGravity: 1
@@ -61,7 +61,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 6.7137896e-17, z: -5.7019215}
+  m_ConnectedAnchor: {x: -4.6943674, y: 6.7228965e-17, z: -5.7481785}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -139,8 +139,8 @@ ConfigurableJoint:
   m_ProjectionAngle: 180
   m_ConfiguredInWorldSpace: 0
   m_SwapBodies: 0
-  m_BreakForce: 350
-  m_BreakTorque: 350
+  m_BreakForce: 1500
+  m_BreakTorque: 1500
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
   m_MassScale: 1

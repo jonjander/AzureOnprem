@@ -75,7 +75,7 @@ public class ResoruceGroup : MonoBehaviour
                 }
                 else
                 {
-                    var tempResource = Instantiate(resourceTemplate);
+                    var tempResource = Instantiate(resourceTemplate, transform);
                     var script = tempResource.GetComponent<Resource>();
 
                     tempResource.transform.position = transform.position + new Vector3(0, top - (script.USize * step) - (step * i), 0);

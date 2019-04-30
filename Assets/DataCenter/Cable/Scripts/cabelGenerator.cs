@@ -32,6 +32,7 @@ public class CabelGenerator : MonoBehaviour
         for (int i = 0; i < NumberOfSegments; i++)
         {
             var tmpSegment = Instantiate(Segment, transform);
+            tmpSegment.GetComponent<Rigidbody>().isKinematic = true;
             tmpSegment.transform.position = StartPoint.transform.position + (direction * (i * segmentLen));
             tmpSegment.transform.rotation = Quaternion.LookRotation(direction, Vector3.up) * Quaternion.Euler(0, 90, 0); ;
             var hj = tmpSegment.GetComponent<ConfigurableJoint>();
@@ -51,6 +52,10 @@ public class CabelGenerator : MonoBehaviour
             segments.Add(tmpSegment);
         }
         endJoint.connectedBody = segments[segments.Count - 1].GetComponent<Rigidbody>();
+        foreach (GameObject item in segments)
+        {
+            item.GetComponent<Rigidbody>().isKinematic = false;
+        }
     }
 
     // Update is called once per frame
