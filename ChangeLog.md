@@ -1,3 +1,6 @@
+## Develop
+* Fix Gnome can only get hit when visible
+
 ## 0.3.0-alpha.13
 * Ilo LEDs
 * Fixed lock position
