@@ -126,13 +126,13 @@ class Gnome : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Bullet")
+        if (other.tag == "Bullet" && IsVisible)
         {
             var colliderVelocity = other
                 .transform.parent
                 .transform.parent
                 .GetComponent<Rigidbody>().velocity;
-            Debug.Log("bullet velo" + colliderVelocity.magnitude);
+            //Debug.Log("bullet velo" + colliderVelocity.magnitude);
             if (colliderVelocity.magnitude > 5f) //do not hit gnome in low velocity
             {
                 eqScript.StartEarthQuake(UnityEngine.Random.Range(2, 14));
