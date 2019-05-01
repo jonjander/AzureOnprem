@@ -128,10 +128,26 @@ class Gnome : MonoBehaviour
     {
         if (other.tag == "Bullet" && IsVisible)
         {
-            var colliderVelocity = other
-                .transform.parent
-                .transform.parent
-                .GetComponent<Rigidbody>().velocity;
+            Vector3 colliderVelocity;
+            try
+            {
+
+                if (other.transform.parent == null)
+                {
+                    colliderVelocity = other.GetComponent<Rigidbody>().velocity;
+                }
+                else
+                {
+                    colliderVelocity = other
+                        .transform.parent
+                        .transform.parent
+                        .GetComponent<Rigidbody>().velocity;
+                }
+            }
+            catch {
+                colliderVelocity = other.GetComponentInParent<Rigidbody>().velocity;
+            }
+            
             //Debug.Log("bullet velo" + colliderVelocity.magnitude);
             if (colliderVelocity.magnitude > 5f) //do not hit gnome in low velocity
             {

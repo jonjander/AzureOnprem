@@ -4,54 +4,54 @@ using UnityEngine;
 
 public class CableSegment : MonoBehaviour {
 
-    Rigidbody Rigidbody;
-    public float sleepTimer;
-    public float cooldownTimer;
-    public bool sleeping;
+    private Rigidbody rigidbody;
+    public float SleepTimer;
+    public float CooldownTimer;
+    public bool Sleeping;
 
     // Use this for initialization
     void Start () {
-        Rigidbody = GetComponent<Rigidbody>();
-        sleepTimer = 0.0f;
-        cooldownTimer = 0.0f;
+        rigidbody = GetComponent<Rigidbody>();
+        SleepTimer = 0.0f;
+        CooldownTimer = 0.0f;
     }
 	
 	// Update is called once per frame
 	void Update () {
-		if (Rigidbody.velocity.magnitude > 9f)
+		if (rigidbody.velocity.magnitude > 9f)
         {
             Destroy(gameObject);
         }
 
         
-        if (Rigidbody.velocity.magnitude < 0.01f)
+        if (rigidbody.velocity.magnitude < 0.01f)
         {
-            if (cooldownTimer > 0)
+            if (CooldownTimer > 0)
             {
-                cooldownTimer -= Time.deltaTime;
+                CooldownTimer -= Time.deltaTime;
             }
             else
             {
-                cooldownTimer = 1.0f;
-                sleepTimer = 0.5f;
+                CooldownTimer = 1.0f;
+                SleepTimer = 0.5f;
             }
         }
 
-        if (sleeping)
+        if (Sleeping)
         {
-            Rigidbody.Sleep();
+            rigidbody.Sleep();
         } else
         {
-            Rigidbody.WakeUp();
+            rigidbody.WakeUp();
         }
 
-        if (sleepTimer > 0)
+        if (SleepTimer > 0)
         {
-            sleepTimer -= Time.deltaTime;
-            sleeping = true;
+            SleepTimer -= Time.deltaTime;
+            Sleeping = true;
         } else
         {
-            sleeping = false;
+            Sleeping = false;
         }
         
         

@@ -35,8 +35,14 @@ public class DCGenerator : MonoBehaviour {
     private float xOffset;
     private float zOffset;
     private int maximumNumberOfCables;
+    private List<GameObject> dataCenterProps;
+    private List<GameObject> cableList;
+    private bool isClean;
+
     // Use this for initialization
     void Start () {
+        dataCenterProps = new List<GameObject>();
+        cableList = new List<GameObject>();
         maximumNumberOfCables = 20;
         azureManagementAPIHelper = new AzureManagementAPIHelper();
         AdminScreen.OnComputerLogin += GenerateDataCenterResources;
@@ -44,6 +50,7 @@ public class DCGenerator : MonoBehaviour {
         row = 0;
         xOffset = 1.04f;
         zOffset = 2.84f;
+        isClean = true;
     }
 
     private Vector3[] GetRackBounds()
@@ -68,8 +75,7 @@ public class DCGenerator : MonoBehaviour {
 
         for (int x = 0; x < xWall; x++)
         {
-            //var tempWall = Instantiate(Wall);
-            //tempWall.transform.position = start;
+            //Skip xWall
             start += new Vector3(1, 0, 0);
         }
 
@@ -79,6 +85,7 @@ public class DCGenerator : MonoBehaviour {
             tempWall.transform.position = start;
             tempWall.transform.Rotate(Vector3.up, -90);
             start += new Vector3(0, 0, 1);
+            dataCenterProps.Add(tempWall);
         }
 
         for (int x = 0; x < xWall; x++)
@@ -87,20 +94,12 @@ public class DCGenerator : MonoBehaviour {
             tempWall.transform.position = start;
             tempWall.transform.Rotate(Vector3.up, 180);
             start += new Vector3(-1, 0, 0);
+            dataCenterProps.Add(tempWall);
         }
 
         for (int x = 0; x < zWall; x++)
         {
-            //GameObject tempWall;
-            //if (x == Mathf.Floor(zWall/2) || x == Mathf.Floor(zWall / 2) + 1)
-            //{
-            //    tempWall = Instantiate(Door);
-            //}
-            //else {
-            //    tempWall = Instantiate(Wall);
-            //}
-            //tempWall.transform.position = start;
-            //tempWall.transform.Rotate(Vector3.up, 90);
+            //skip zwall
             start += new Vector3(0, 0, -1);
         }
 
@@ -118,6 +117,7 @@ public class DCGenerator : MonoBehaviour {
             lampScript.isBroken = !!(UnityEngine.Random.Range(0, row + 3) == 1);
             
             start += new Vector3(0, 0, zOffset);
+            dataCenterProps.Add(tempLight);
         }
 
         //CableLadder
@@ -130,6 +130,7 @@ public class DCGenerator : MonoBehaviour {
             var x = (start.x + (offset * 2));
             tempCableLadder.transform.position = start + new Vector3(x, 0, 0);
             start += new Vector3(0, 0, clBounds.z);
+            dataCenterProps.Add(tempCableLadder);
         }
     }
  
@@ -149,7 +150,7 @@ public class DCGenerator : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         
-        if (DataIsLoaded)
+        if (DataIsLoaded && isClean)
         {
             DataIsLoaded = false;
             Racks = new List<GameObject>();
@@ -189,7 +190,31 @@ public class DCGenerator : MonoBehaviour {
             DrawDatacenter();
             ConnectCables(Racks);
             UpdateMavMesh();
+            isClean = false;
         }
+        if (DataIsLoaded && !isClean)
+        {
+            CleanDatacenter();
+        }
+    }
+
+    private void CleanDatacenter()
+    {
+        foreach (var item in cableList)
+        {
+            item.GetComponent<CabelGenerator>().DetachCable();
+            DestroyImmediate(item);
+        }
+        
+        foreach (var item in dataCenterProps)
+        {
+            DestroyImmediate(item);
+        }
+        foreach (var item in Racks)
+        {
+            DestroyImmediate(item);
+        }
+        isClean = true;
     }
 
     private void UpdateMavMesh() => NavMeshSurface.BuildNavMesh();
@@ -204,8 +229,8 @@ public class DCGenerator : MonoBehaviour {
             {
                 //Connect Cables
                 totalCables++;
-                var cable = Instantiate(Cable);
-                var cabelGeneratorScript = cable.GetComponent<CabelGenerator>();
+                var tmpCable = Instantiate(Cable);
+                var cabelGeneratorScript = tmpCable.GetComponent<CabelGenerator>();
                 cabelGeneratorScript.StartPoint.GetComponent<Rigidbody>().isKinematic = true;
                 var closestConnector = FindClosestCableConnection(item.transform);
                 cabelGeneratorScript.StartPoint.transform.position = closestConnector.transform.position;
@@ -216,6 +241,7 @@ public class DCGenerator : MonoBehaviour {
                 cabelGeneratorScript.EndPoint.transform.parent = topOfRackConnector.transform;
                 endConnectionJoint.connectedBody = topOfRack.GetComponent<Rigidbody>();
                 endConnectionJoint.anchor = Vector3.zero;
+                cableList.Add(tmpCable);
             }
         }
     }

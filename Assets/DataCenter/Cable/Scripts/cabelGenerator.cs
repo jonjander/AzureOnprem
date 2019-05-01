@@ -61,6 +61,11 @@ public class CabelGenerator : MonoBehaviour
         }
     }
 
+    public void DetachCable()
+    {
+        EndPoint.transform.parent = transform;
+    }
+
     // Update is called once per frame
     void Update()
     {

@@ -438,7 +438,7 @@ PrefabInstance:
     - target: {fileID: 153571219966152404, guid: 91f5773662437494b94bcdebdae46233,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -9.14
+      value: -9.040001
       objectReference: {fileID: 0}
     - target: {fileID: 153571219966152404, guid: 91f5773662437494b94bcdebdae46233,
         type: 3}
@@ -506,6 +506,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Axis.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2365862783675913583, guid: 91f5773662437494b94bcdebdae46233,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -12.075001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2365862783675913583, guid: 91f5773662437494b94bcdebdae46233,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 2.041
+      objectReference: {fileID: 0}
+    - target: {fileID: 2365862783675913583, guid: 91f5773662437494b94bcdebdae46233,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: -8.71
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91f5773662437494b94bcdebdae46233, type: 3}

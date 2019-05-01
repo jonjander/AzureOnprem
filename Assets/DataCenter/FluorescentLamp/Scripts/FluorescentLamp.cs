@@ -63,6 +63,8 @@ public class FluorescentLamp : MonoBehaviour {
             {
                 SetTubesState(true);
                 _light.enabled = true;
+            }
+            if (_light.color != Color.white) {
                 _light.color = Color.white;
             }
             NextState = States.Normal;

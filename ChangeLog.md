@@ -3,6 +3,12 @@
 * Fix cable end joint
 * Fix cable end change transform to rack top
 * Changed cable break limit
+* Detach cable from rack before cleanup
+* Added datacenter cleanup before load
+* Fix light not restored color
+* Fixed gnome cannot find Rigidbody of collider
+* Fix Gunflash can collide with gnome
+* Fixed shotgun bullet have more life
 
 ## 0.3.0-alpha.13
 * Fix Gnome can only get hit when visible

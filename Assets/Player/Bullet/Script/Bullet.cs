@@ -52,7 +52,7 @@ public class Bullet : MonoBehaviour {
             audioSource.clip = ImpactSound;
             audioSource.Play();
 
-            if (Damage >= 80)
+            if (Damage >= 120)
             {
                 life = 0.3f;
             }
