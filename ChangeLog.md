@@ -9,6 +9,8 @@
 * Fixed gnome cannot find Rigidbody of collider
 * Fix Gunflash can collide with gnome
 * Fixed shotgun bullet have more life
+* Fixed player able to login in any prompt
+* Added login screen reset timer for BSOD
 
 ## 0.3.0-alpha.13
 * Fix Gnome can only get hit when visible

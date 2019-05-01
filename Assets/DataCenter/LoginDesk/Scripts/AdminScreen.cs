@@ -25,10 +25,12 @@ public class AdminScreen : MonoBehaviour {
     private List<Subscription> avalibleSubscriptions;
     private string selectedSubscriptionId;
     private bool cursorFlip;
+    private float errorResetTimer;
     
 
     // Use this for initialization
     void Start () {
+        errorResetTimer = 0;
         CurrentMenu = AdminScreenMenu.LoginPrompt;
         computerOutputText = GetComponentInChildren<TextMesh>();
         computerOutputText.text = ">_";
@@ -50,7 +52,7 @@ public class AdminScreen : MonoBehaviour {
         }
     }
 
-    private void KeyInput(KeyCode key)
+    private bool KeyInput(KeyCode key)
     {
         int index = 0;
         if (key == KeyCode.Y && CurrentMenu == AdminScreenMenu.Loggedin)
@@ -58,23 +60,27 @@ public class AdminScreen : MonoBehaviour {
             index = avalibleSubscriptions.IndexOf(GetSelectedSubscription()) - 1;
             index = LoopIndex(index);
             selectedSubscriptionId = avalibleSubscriptions[index].SubscriptionId;
-
+            return true;
         }
         else if (key == KeyCode.H && CurrentMenu == AdminScreenMenu.Loggedin)
         {
             index = avalibleSubscriptions.IndexOf(GetSelectedSubscription()) + 1;
             index = LoopIndex(index);
             selectedSubscriptionId = avalibleSubscriptions[index].SubscriptionId;
+            return true;
         }
         else if (key == KeyCode.Return && CurrentMenu == AdminScreenMenu.Loggedin)
         {
             OnComputerLogin(selectedSubscriptionId);
             CurrentMenu = AdminScreenMenu.Error;
+            return true;
         }
         else if (key == KeyCode.E && CurrentMenu == AdminScreenMenu.LoginPrompt)
         {
             CurrentMenu = AdminScreenMenu.Loggingin;
+            return true;
         }
+        return false;
     }
 
     private Subscription GetSelectedSubscription()
@@ -143,6 +149,15 @@ public class AdminScreen : MonoBehaviour {
             case AdminScreenMenu.Error:
                 computerOutputText.text = ":(" + Environment.NewLine
                 + "0x00000FF2";
+                if (errorResetTimer > 7f)
+                {
+                    CurrentMenu = AdminScreenMenu.LoginPrompt;
+                    errorResetTimer = 0;
+                }
+                else
+                {
+                    errorResetTimer += Time.deltaTime;
+                }
                 break;
             default:
                 break;

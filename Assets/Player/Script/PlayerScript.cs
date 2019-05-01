@@ -10,7 +10,7 @@ public class PlayerScript : MonoBehaviour {
     public AudioClip UseSoundHit;
     public AudioClip UseSoundMiss;
     public DCGenerator GenerationScript;
-    public delegate void ComputerScreenInput(KeyCode key);
+    public delegate bool ComputerScreenInput(KeyCode key);
     public static event ComputerScreenInput OnComputerScreenInput;
 
     private AudioSource audioSource;
@@ -121,8 +121,10 @@ public class PlayerScript : MonoBehaviour {
 
         if (Input.GetKeyDown("e") && IsNearComputerScreen())
         {
-            OnComputerScreenInput(KeyCode.E);
-            StartCoroutine(Login());
+            if (OnComputerScreenInput(KeyCode.E))
+            {
+                StartCoroutine(Login());
+            }
         } else if (Input.GetKeyDown("e") && IsNearShotgun())
         {
             if (!shotgunUnlocked)
