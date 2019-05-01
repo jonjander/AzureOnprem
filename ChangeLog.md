@@ -1,4 +1,4 @@
-## Develop
+## 0.3.1
 * Fix cable collide with default
 * Fix cable end joint
 * Fix cable end change transform to rack top
