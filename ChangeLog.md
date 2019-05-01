@@ -1,4 +1,10 @@
 ## Develop
+* Fix cable collide with default
+* Fix cable end joint
+* Fix cable end change transform to rack top
+* Changed cable break limit
+
+## 0.3.0-alpha.13
 * Fix Gnome can only get hit when visible
 * Fix cable break
 * Fix resource not member of Rack

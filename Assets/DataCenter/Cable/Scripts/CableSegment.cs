@@ -18,7 +18,7 @@ public class CableSegment : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Rigidbody.velocity.magnitude > 7f)
+		if (Rigidbody.velocity.magnitude > 9f)
         {
             Destroy(gameObject);
         }

@@ -12,14 +12,17 @@ public class CabelGenerator : MonoBehaviour
     public GameObject Segment;
 
     private List<GameObject> segments;
-    private HingeJoint endJoint;
+    private ConfigurableJoint endJoint;
     private float segmentLen;
+    private List<ConfigurableJoint> endJoints;
 
     // Use this for initialization
     void Start()
     {
         segmentLen = 0.187f;
-        endJoint = EndPoint.GetComponent<HingeJoint>();
+        endJoints = EndPoint.GetComponentsInChildren<ConfigurableJoint>()
+            .ToList();
+        endJoint = endJoints[0];
         segments = new List<GameObject>();
         CableLength = Vector3.Distance(StartPoint.transform.position, EndPoint.transform.position);
         NumberOfSegments = (int)Mathf.Round(CableLength / segmentLen);
