@@ -11,6 +11,7 @@
 * Fixed shotgun bullet have more life
 * Fixed player able to login in any prompt
 * Added login screen reset timer for BSOD
+* Fix lock colliding with resources and rack
 
 ## 0.3.0-alpha.13
 * Fix Gnome can only get hit when visible
