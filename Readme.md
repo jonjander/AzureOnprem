@@ -1,7 +1,7 @@
 # Project AzureOnprem
 This project is a fun demonstation of how one can use Azure Resource Management API's. The project started of as a joke but turned into something bigger. If you like me work with Azure and also have Unity and/or C# experiance, please feel free to contribute to this project or just share your thoughts and ideas.
 
-## prerequisites
+## Prerequisites
 * Microsoft Azure subscription
 * At least read access to one resource group
 
