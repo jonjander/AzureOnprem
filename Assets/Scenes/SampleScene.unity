@@ -930,16 +930,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1031425495842920832, guid: 3c637ce7e7e6bf54689cc8ce5ce73068,
-        type: 3}
-      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1031425495842920832, guid: 3c637ce7e7e6bf54689cc8ce5ce73068,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c637ce7e7e6bf54689cc8ce5ce73068, type: 3}
 --- !u!1 &973559362
