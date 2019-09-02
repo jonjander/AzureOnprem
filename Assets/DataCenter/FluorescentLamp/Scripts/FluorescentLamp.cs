@@ -53,7 +53,7 @@ public class FluorescentLamp : MonoBehaviour {
 
         if (!isBroken)
         {
-            _light.intensity = 1.7f;
+            _light.intensity = 2.0f;
             if (audioSource.clip != NormalSound)
             {
                 audioSource.clip = NormalSound;
@@ -72,7 +72,7 @@ public class FluorescentLamp : MonoBehaviour {
         }
         else
         {
-            _light.intensity = 1.3f;
+            _light.intensity = 1.5f;
             if (audioSource.clip != BrokenSound)
             {
                 audioSource.clip = BrokenSound;
@@ -104,13 +104,13 @@ public class FluorescentLamp : MonoBehaviour {
                     SetTubesState(true);
                     _light.color = Color.cyan;
                     _light.enabled = true;
-                    _light.intensity = 1;
+                    _light.intensity = 1.2f;
                     NextStepTimer = 0.03f;
                     NextState = States.FastFlicker;
                     break;
                 case States.FastFlicker:
                     _light.color = Color.white;
-                    _light.intensity = 0.5f;
+                    _light.intensity = 0.7f;
                     var onStage = fastFlicker();
                     _light.enabled = onStage;
                     SetTubesState(onStage);
