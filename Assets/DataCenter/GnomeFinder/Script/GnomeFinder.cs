@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,7 +27,7 @@ public class GnomeFinder : MonoBehaviour
             {
                 var sA = startAngle;
                 var ma = moveAngle * f;
-                Vector2 aDir = new Vector2(Mathf.Cos(startAngle + ma - margin),             Mathf.Sin(startAngle + ma - margin));
+                Vector2 aDir = new Vector2(Mathf.Cos(startAngle + ma - margin),              Mathf.Sin(startAngle + ma - margin));
                 Vector2 bDir = new Vector2(Mathf.Cos(startAngle + ma +  moveAngle + margin), Mathf.Sin(startAngle + ma + moveAngle + margin));
 
                 var sS = start + (len * s);
@@ -89,7 +90,11 @@ public class GnomeFinder : MonoBehaviour
                 {
                     if (i > segment)
                     {
-                        return Color.black;
+                        //return Color.black;
+                        return (new List<Color> { Color.black, Color.grey })
+                        .OrderBy(y => Guid.NewGuid())
+                        .FirstOrDefault();
+
                     } else
                     {
                         return Color.grey;
