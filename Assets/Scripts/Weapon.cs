@@ -191,4 +191,25 @@ public static class Weapons
         };
     }
 
+    public static Weapon GnomeFinder()
+    {
+        return new Weapon()
+        {
+            MagSize = 0,
+            ReloadTime = 1,
+            FeedingTime = 1f,
+            Type = WeaponType.Melee,
+            ProjectilePrefab = null,
+            WeaponPower = 12,
+            ProjectileMass = 0f,
+            RotationVector = Vector3.zero,
+            FireMode = FireMode.SingleAction,
+            RateOfFire = 2f,
+            WeaponGameObject = Resources.Load<GameObject>("GnomeFinder"),
+            WeaponLocalPosition = new Vector3(0.0286f, -0.723f, 0.4932f),
+            WeaponLocalRoration = new Vector3(5.895f, 1.685f, -2.192f)
+        };
+    }
+
+    
 }

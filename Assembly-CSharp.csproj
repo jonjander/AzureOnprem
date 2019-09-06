@@ -82,6 +82,7 @@
     <Compile Include="Assets\DataCenter\Gnome\Scripts\HideArea.cs" />
     <Compile Include="Assets\DataCenter\Gnome\Scripts\HideParent.cs" />
     <Compile Include="Assets\DataCenter\GnomeFinder\Script\GnomeFinder.cs" />
+    <Compile Include="Assets\DataCenter\GnomeFinder\Script\MeeleGnomeFinder.cs" />
     <Compile Include="Assets\DataCenter\LoginDesk\Scripts\AdminScreen.cs" />
     <Compile Include="Assets\DataCenter\Safe\Scripts\BreakableGlass.cs" />
     <Compile Include="Assets\DataCenter\Safe\Scripts\Safe.cs" />

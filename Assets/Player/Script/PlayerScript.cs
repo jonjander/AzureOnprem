@@ -163,6 +163,10 @@ public class PlayerScript : MonoBehaviour {
                 CurrentWeapon = Weapons.Shotgun();
             }
         }
+        else if (Input.GetKeyDown("4"))
+        {
+            CurrentWeapon = Weapons.GnomeFinder();
+        }
 
     }
 
