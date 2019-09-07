@@ -23,7 +23,6 @@ public class DCGenerator : MonoBehaviour {
     public GameObject Wall;
     public GameObject Door;
     public GameObject Light;
-    public GameObject Cable;
     public GameObject CableLadder;
     public NavMeshSurface NavMeshSurface;
     public GameObject DataCenterDoor;
@@ -222,6 +221,7 @@ public class DCGenerator : MonoBehaviour {
     private void ConnectCables(List<GameObject> racks)
     {
         var totalCables = 0;
+        var CablePrefab = Resources.Load<GameObject>("Cable");
         racks = racks.OrderBy(s => Guid.NewGuid()).Take(maximumNumberOfCables).ToList();
         foreach (GameObject item in racks)
         {
@@ -229,7 +229,7 @@ public class DCGenerator : MonoBehaviour {
             {
                 //Connect Cables
                 totalCables++;
-                var tmpCable = Instantiate(Cable);
+                var tmpCable = Instantiate(CablePrefab);
                 var cabelGeneratorScript = tmpCable.GetComponent<CabelGenerator>();
                 cabelGeneratorScript.StartPoint.GetComponent<Rigidbody>().isKinematic = true;
                 var closestConnector = FindClosestCableConnection(item.transform);

@@ -157,9 +157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5a7dc4c1be47e49bc625203f089fd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sleepTimer: 0
-  cooldownTimer: 0
-  sleeping: 0
+  SleepTimer: 0
+  CooldownTimer: 0
+  Sleeping: 0
 --- !u!1 &1610628840193244
 GameObject:
   m_ObjectHideFlags: 0
