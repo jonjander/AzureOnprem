@@ -1,3 +1,8 @@
+## 0.3.4
+* Added gnome finder
+* Added random server gap
+* Fixed resource lock sprite location
+
 ## 0.3.1
 * Fix cable collide with default
 * Fix cable end joint
