@@ -244,7 +244,7 @@ public class ResoruceGroup : MonoBehaviour
             ResourceGroupLock = Instantiate(resourceLock);
             ResourceGroupLock.transform.parent = transform;
             //lock position
-            ResourceGroupLock.transform.localPosition = new Vector3(-0.371f, 1.056f, -0.011f);
+            ResourceGroupLock.transform.localPosition = new Vector3(-0.371f, 1.056f, 0.001f);
             LockAllResourcesInRack();
         }
 
