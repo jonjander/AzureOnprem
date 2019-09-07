@@ -18,7 +18,6 @@ public class PlayerScript : MonoBehaviour {
     private Weapon currentWeapon;
     private IWeapon currentWeaponScript;
 
-    private bool shotgunUnlocked;
     private GameObject exit;
 
     public Weapon CurrentWeapon
@@ -35,8 +34,7 @@ public class PlayerScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        shotgunUnlocked = false;
-        CurrentWeapon = Weapons.FloppyDisk();
+        CurrentWeapon = Weapons.FloppyDisk;
         audioSource = GetComponent<AudioSource>();
         exit = GameObject.FindGameObjectWithTag("Exit");
     }
@@ -127,9 +125,16 @@ public class PlayerScript : MonoBehaviour {
             }
         } else if (Input.GetKeyDown("e") && IsNearShotgun())
         {
-            if (!shotgunUnlocked)
+            if (!Weapons.Shotgun.IsPicked)
             {
-                PickUpWeapon();
+                PickUpWeapon(Weapons.Shotgun);
+            }
+        }
+        else if (Input.GetKeyDown("e") && IsNearGnomeFinder())
+        {
+            if (!Weapons.GnomeFinder.IsPicked)
+            {
+                PickUpWeapon(Weapons.GnomeFinder);
             }
         } else {
             audioSource.clip = UseSoundMiss;
@@ -150,43 +155,48 @@ public class PlayerScript : MonoBehaviour {
         }
         else if (Input.GetKeyDown("1"))
         {
-            CurrentWeapon = Weapons.FloppyDisk();
+            CurrentWeapon = Weapons.FloppyDisk;
         }
         else if (Input.GetKeyDown("2"))
         {
-            CurrentWeapon = Weapons.FloppyDiskAuto();
+            CurrentWeapon = Weapons.FloppyDiskAuto;
         }
         else if (Input.GetKeyDown("3"))
         {
-            if (shotgunUnlocked)
+            if (Weapons.Shotgun.IsPicked)
             {
-                CurrentWeapon = Weapons.Shotgun();
+                CurrentWeapon = Weapons.Shotgun;
             }
         }
         else if (Input.GetKeyDown("4"))
         {
-            CurrentWeapon = Weapons.GnomeFinder();
+            if (Weapons.GnomeFinder.IsPicked)
+            {
+                CurrentWeapon = Weapons.GnomeFinder;
+            }
         }
 
     }
 
-    private void PickUpWeapon()
+    private void PickUpWeapon(Weapon selectedWeapon)
     {
         var weapon = GameObject.FindGameObjectsWithTag("WeaponRoot")
-            .Where(s => s.name == "Shotgun")
+            .Where(s => s.name == selectedWeapon.Name)
             .Select(g => new { wep = g, distance = (g.transform.position - transform.position).magnitude })
             .OrderBy(f=> f.distance)
             .FirstOrDefault();
 
-        var shotgunsInRange = weapon.wep;
-        var weaponScript = shotgunsInRange.GetComponent<IWeapon>();
-        if (shotgunsInRange && !weaponScript.IsLocked())
+        var weaponInRange = weapon.wep;
+        var weaponScript = weaponInRange.GetComponent<IWeapon>();
+        if (weaponInRange && !weaponScript.IsLocked())
         {
-            shotgunUnlocked = true;
-            SetCurrentWeapon(Weapons.Shotgun());
-            ChangeWeapon(true, shotgunsInRange);
+            selectedWeapon.IsPicked = true;
+            SetCurrentWeapon(selectedWeapon);
+            ChangeWeapon(true, weaponInRange);
         }
     }
+
+
 
     private void ChangeWeapon(bool skipInstantiate = false, GameObject newWeaponGameObject = null)
     {
@@ -243,8 +253,16 @@ public class PlayerScript : MonoBehaviour {
             .Where(s => s.name == "Shotgun")
             .Select(g => (g.transform.position - transform.position).magnitude)
             .ToList();
+        bool result = vectorLengths.Min() < 1.5;
+        return result;
+    }
 
-
+    private bool IsNearGnomeFinder()
+    {
+        var vectorLengths = GameObject.FindGameObjectsWithTag("WeaponRoot")
+            .Where(s => s.name == "GnomeFinder")
+            .Select(g => (g.transform.position - transform.position).magnitude)
+            .ToList();
         bool result = vectorLengths.Min() < 1.5;
         return result;
     }

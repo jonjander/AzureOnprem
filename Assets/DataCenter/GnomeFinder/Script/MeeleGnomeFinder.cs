@@ -20,7 +20,7 @@ public class MeeleGnomeFinder : MonoBehaviour, IWeapon
 
     public bool IsLocked()
     {
-        throw new NotImplementedException();
+        return false;
     }
 
     public void MakeKinematic(bool kine = true)

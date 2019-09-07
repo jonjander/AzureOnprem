@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 4984740237633232622}
   m_Layer: 0
   m_Name: GnomeFinder
-  m_TagString: Untagged
+  m_TagString: WeaponRoot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,7 +143,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!114 &4984740237633232622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,7 +281,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   ScannerOfset: {x: 0, y: -0.57, z: 0}
-  cameraRotationOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1001 &4203160200290976879
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -353,6 +352,10 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300002, guid: 28f92780edb4ac94ca37d7a0e2255962, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 28f92780edb4ac94ca37d7a0e2255962, type: 3}
     - target: {fileID: 2300004, guid: 28f92780edb4ac94ca37d7a0e2255962, type: 3}
       propertyPath: m_ReceiveShadows
       value: 0

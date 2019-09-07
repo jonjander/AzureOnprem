@@ -10,13 +10,11 @@ public class GnomeFinder : MonoBehaviour
 
     public List<Mesh> Segments;
     public Vector3 ScannerOfset;
-    public Quaternion cameraRotationOffset;
 
     // Start is called before the first frame update
     void Start()
     {
         ScannerOfset =  new Vector3(0, -0.25f, 0);
-        cameraRotationOffset = Quaternion.Euler(new Vector3(0f, 0, 0));
         Segments = new List<Mesh>();
         // Create Vector2 vertices
         var startAngle = 45f;
@@ -124,7 +122,6 @@ public class GnomeFinder : MonoBehaviour
         var maxDistance = 15f;
 
         var scannerPos = transform.position + ScannerOfset;
-        var rotationCorrection = Weapons.GnomeFinder().WeaponLocalRoration;
         var correction =  transform.forward; //new Vector3(-rotationCorrection.x, -rotationCorrection.y, -rotationCorrection.z)
 
         var layer = 1 << LayerMask.NameToLayer("GnomeCollider");

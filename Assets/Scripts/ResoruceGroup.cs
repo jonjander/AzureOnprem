@@ -62,10 +62,48 @@ public class ResoruceGroup : MonoBehaviour
         {
             resources = new List<GameObject>();
 
+            //pre test fit
+            bool addSpace = false;
+            var totalSize = 0;
+            foreach (var item in Servers)
+            {
+                GameObject resourceTemplate = FindServerTemplate(resourceTemplates, item);
+                var templateSize = resourceTemplate.GetComponent<Resource>().USize;
+                totalSize += templateSize;
+            }
+            if (totalSize + 1 < maxUSize)
+            {
+                addSpace = true;
+            }
+
+            var o = 0;
             var i = 0;
             foreach (var item in Servers)
             {
                 GameObject resourceTemplate = FindServerTemplate(resourceTemplates, item);
+
+                if (addSpace && o == 0 && UnityEngine.Random.Range(0,100) < 12)
+                {
+                    o++;
+                    addSpace = false;
+                    var existingPda = GameObject.Find("GnomeFinder");
+                    if (existingPda == null)
+                    {
+                        if (UnityEngine.Random.Range(0, 100) < 20)
+                        {
+                            var pda = Resources.Load<GameObject>("GnomeFinder");
+                            var gnomeFinder = Instantiate(pda, transform);
+                            var rotation = new Vector3(-89.60101f, 50.321f, -21.258f);
+                            gnomeFinder.name = "GnomeFinder";
+                            gnomeFinder.transform.position = transform.position + new Vector3(0f, top - (step) - (step * i), 0f);
+                            
+                            gnomeFinder.transform.localPosition = new Vector3(0.023f, gnomeFinder.transform.localPosition.y + 0.24f, 0.493f);
+                            gnomeFinder.transform.rotation = transform.rotation * Quaternion.Euler(rotation);
+                        
+                        }
+                    }
+
+                }
 
                 //Test if fit
                 var templateSize = resourceTemplate.GetComponent<Resource>().USize;
@@ -78,7 +116,7 @@ public class ResoruceGroup : MonoBehaviour
                     var tempResource = Instantiate(resourceTemplate, transform);
                     var script = tempResource.GetComponent<Resource>();
 
-                    tempResource.transform.position = transform.position + new Vector3(0, top - (script.USize * step) - (step * i), 0);
+                    tempResource.transform.position = transform.position + new Vector3(0, top - (script.USize * step) - (step * (i + o)), 0);
                     tempResource.transform.rotation = transform.rotation;
                     tempResource.name = item.First().Name;
 
@@ -94,7 +132,8 @@ public class ResoruceGroup : MonoBehaviour
                     }
 
                     resources.Add(tempResource);
-                    i += script.USize;
+                    i += script.USize + o;
+                    o = 0;
                 }
             }
         }
@@ -216,7 +255,10 @@ public class ResoruceGroup : MonoBehaviour
         var rigidbodys = GetComponentsInChildren<Rigidbody>();
         foreach (Rigidbody item in rigidbodys)
         {
-            item.isKinematic = true;
+            if (item.gameObject.name != "GnomeFinder")
+            {
+                item.isKinematic = true;
+            }
         }
     }
 

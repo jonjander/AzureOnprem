@@ -14,6 +14,8 @@ public class Weapon
     public float ReloadTime;
     public int MagSize;
     public int Ammo;
+    public bool IsPicked;
+    public string Name;
     
     public GameObject WeaponGameObject;
     public Vector3 WeaponLocalPosition;
@@ -132,11 +134,9 @@ public enum WeaponType
 
 public static class Weapons
 {
-    
-    public static Weapon FloppyDiskAuto()
+    public static Weapon FloppyDiskAuto = new Weapon()
     {
-        return new Weapon()
-        {
+        Name = "DisplayFloppy",
             MagSize = 1,
             ReloadTime = 0,
             FeedingTime = 0.05f,
@@ -149,13 +149,12 @@ public static class Weapons
             RateOfFire = 0.2f,
             WeaponGameObject = Resources.Load<GameObject>("DisplayFloppy"),
             WeaponLocalPosition = new Vector3(0.16f, -0.148f, 0.345f),
-            WeaponLocalRoration = new Vector3(42.175f, 97.394f, 100.96f)
+            WeaponLocalRoration = new Vector3(42.175f, 97.394f, 100.96f),
+            IsPicked = true
         };
-    }
-    public static Weapon FloppyDisk()
-    {
-        return new Weapon()
+    public static Weapon FloppyDisk = new Weapon()
         {
+            Name = "DisplayFloppy",
             MagSize = 1,
             ReloadTime = 0,
             FeedingTime = 0.15f,
@@ -168,13 +167,13 @@ public static class Weapons
             RateOfFire = 1f,
             WeaponGameObject = Resources.Load<GameObject>("DisplayFloppy"),
             WeaponLocalPosition = new Vector3(0.16f, -0.148f, 0.345f),
-            WeaponLocalRoration = new Vector3(42.175f, 97.394f, 100.96f)
+            WeaponLocalRoration = new Vector3(42.175f, 97.394f, 100.96f),
+            IsPicked = true
         };
-    }
-    public static Weapon Shotgun()
-    {
-        return new Weapon()
+    
+    public static Weapon Shotgun = new Weapon()
         {
+            Name = "Shotgun",
             MagSize = 2,
             ReloadTime = 2f,
             FeedingTime = 0.1f,
@@ -187,14 +186,14 @@ public static class Weapons
             RateOfFire = 1f,
             WeaponGameObject = Resources.Load<GameObject>("Shotgun"),
             WeaponLocalPosition = new Vector3(0.26f, -0.196f, 0.38f),
-            WeaponLocalRoration = new Vector3(0, 180f, 0)
+            WeaponLocalRoration = new Vector3(0, 180f, 0),
+            IsPicked = false
         };
-    }
+    
 
-    public static Weapon GnomeFinder()
-    {
-        return new Weapon()
+    public static Weapon GnomeFinder = new Weapon()
         {
+            Name = "GnomeFinder",
             MagSize = 0,
             ReloadTime = 1,
             FeedingTime = 1f,
@@ -207,9 +206,10 @@ public static class Weapons
             RateOfFire = 2f,
             WeaponGameObject = Resources.Load<GameObject>("GnomeFinder"),
             WeaponLocalPosition = new Vector3(0.0286f, -0.723f, 0.4932f),
-            WeaponLocalRoration = new Vector3(5.895f, 1.685f, -2.192f)
+            WeaponLocalRoration = new Vector3(5.895f, 1.685f, -2.192f),
+            IsPicked = false
         };
-    }
+    
 
     
 }
