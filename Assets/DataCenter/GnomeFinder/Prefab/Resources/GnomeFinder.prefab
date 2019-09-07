@@ -281,6 +281,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   ScannerOfset: {x: 0, y: -0.57, z: 0}
+  cameraRotationOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1001 &4203160200290976879
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -334,6 +335,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 28f92780edb4ac94ca37d7a0e2255962, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 28f92780edb4ac94ca37d7a0e2255962, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 28f92780edb4ac94ca37d7a0e2255962, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300002, guid: 28f92780edb4ac94ca37d7a0e2255962, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300002, guid: 28f92780edb4ac94ca37d7a0e2255962, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300004, guid: 28f92780edb4ac94ca37d7a0e2255962, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300004, guid: 28f92780edb4ac94ca37d7a0e2255962, type: 3}
+      propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

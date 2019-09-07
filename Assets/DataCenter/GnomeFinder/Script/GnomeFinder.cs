@@ -124,11 +124,8 @@ public class GnomeFinder : MonoBehaviour
         var maxDistance = 15f;
 
         var scannerPos = transform.position + ScannerOfset;
-        var rotationCorrection = -Weapons.GnomeFinder().WeaponLocalRoration;
-
-        
-        var correction = Quaternion.Euler(rotationCorrection) * transform.forward;
-        var ScannerDirection = correction.normalized;
+        var rotationCorrection = Weapons.GnomeFinder().WeaponLocalRoration;
+        var correction =  transform.forward; //new Vector3(-rotationCorrection.x, -rotationCorrection.y, -rotationCorrection.z)
 
         var layer = 1 << LayerMask.NameToLayer("GnomeCollider");
 
@@ -136,12 +133,12 @@ public class GnomeFinder : MonoBehaviour
         var offsetMultiplayer = 1.5f;
         for (int i = 0; i < 10; i++)
         {
-            var ray = new Ray(scannerPos,Quaternion.AngleAxis((offsetMultiplayer * offSet) + (offsetMultiplayer * i), transform.up) * ScannerDirection * maxDistance);
+            var ray = new Ray(scannerPos,Quaternion.AngleAxis((offsetMultiplayer * offSet) + (offsetMultiplayer * i), transform.up) * correction * maxDistance);
             var hit = Physics.Raycast(ray, out RaycastHit raycastHit, maxDistance, layer);
             if (hit)
             {
                 var distance = Vector3.Distance(scannerPos, raycastHit.point);
-                Debug.DrawRay(scannerPos, Quaternion.AngleAxis((offsetMultiplayer * offSet) + (offsetMultiplayer * i), transform.up) * ScannerDirection * distance, Color.yellow);
+                Debug.DrawRay(scannerPos, Quaternion.AngleAxis((offsetMultiplayer * offSet) + (offsetMultiplayer * i), transform.up) * correction * distance, Color.yellow);
                 Debug.Log(raycastHit.distance);
 
                 var segments = (int)Mathf.Floor((raycastHit.distance / maxDistance) * 8f);
@@ -149,7 +146,7 @@ public class GnomeFinder : MonoBehaviour
             }
             else
             {
-                Debug.DrawRay(scannerPos, Quaternion.AngleAxis((offsetMultiplayer * offSet) + (offsetMultiplayer * i), transform.up) * ScannerDirection * maxDistance, Color.magenta);
+                Debug.DrawRay(scannerPos, Quaternion.AngleAxis((offsetMultiplayer * offSet) + (offsetMultiplayer * i), transform.up) * correction * maxDistance, Color.magenta);
                 SetSegment(0, i, hit);
             }
             
