@@ -253,8 +253,7 @@ public class PlayerScript : MonoBehaviour {
             .Where(s => s.name == "Shotgun")
             .Select(g => (g.transform.position - transform.position).magnitude)
             .ToList();
-        bool result = vectorLengths.Min() < 1.5;
-        return result;
+        return vectorLengths.Count > 0 ? vectorLengths.Min() < 1.5 : false;
     }
 
     private bool IsNearGnomeFinder()
@@ -263,8 +262,7 @@ public class PlayerScript : MonoBehaviour {
             .Where(s => s.name == "GnomeFinder")
             .Select(g => (g.transform.position - transform.position).magnitude)
             .ToList();
-        bool result = vectorLengths.Min() < 1.5;
-        return result;
+        return vectorLengths.Count > 0 ? vectorLengths.Min() < 1.5 : false;
     }
 
     public void SetCurrentWeapon(Weapon weapon)

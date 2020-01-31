@@ -53,7 +53,7 @@ public class FluorescentLamp : MonoBehaviour {
 
         if (!isBroken)
         {
-            _light.intensity = 2.0f;
+            _light.intensity = 2.4f;
             if (audioSource.clip != NormalSound)
             {
                 audioSource.clip = NormalSound;

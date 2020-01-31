@@ -77,6 +77,7 @@ public class Shotgun : MonoBehaviour, IWeapon
         soundSouce.clip = ShotSounds
             .OrderBy(d => Guid.NewGuid())
             .FirstOrDefault();
+        soundSouce.volume = 0.35f;
         soundSouce.Play();
         var power = 2000f;
         var flash = Resources.Load<ParticleSystem>("MuzzleFlash");
@@ -108,6 +109,7 @@ public class Shotgun : MonoBehaviour, IWeapon
             yield return true;
         }
         soundSouce.clip = ReloadSound;
+        soundSouce.volume = 0.15f;
         soundSouce.Play();
         animator.Play("Reload");
 

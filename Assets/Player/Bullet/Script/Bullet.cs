@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour {
 
     private bool lifeTimer = false;
     private float life;
+    private Rigidbody rb;
     private AudioSource audioSource;
     public ParticleSystem CollitionEffect;
     public float Damage = 0f;
@@ -16,6 +17,7 @@ public class Bullet : MonoBehaviour {
 	void Start () {
         life = 30f;
         audioSource = gameObject.AddComponent<AudioSource>();
+        rb = GetComponent<Rigidbody>();
     }
 	
 	// Update is called once per frame
@@ -36,6 +38,8 @@ public class Bullet : MonoBehaviour {
         if (collision.relativeVelocity.magnitude > 5f)
         {
             Damage += collision.relativeVelocity.magnitude;
+            rb.velocity = rb.velocity / 2;
+            rb.angularVelocity = rb.angularVelocity / 2;
 
             float size = (float)Utils.Remap(collision.relativeVelocity.magnitude, 5, 20, 0.017f, 0.046f);
             ParticleSystem effect = Instantiate(CollitionEffect, transform.position, new Quaternion());
@@ -55,6 +59,10 @@ public class Bullet : MonoBehaviour {
             if (Damage >= 120)
             {
                 life = 0.3f;
+            }
+            if (Damage > 1000)
+            {
+                Destroy(transform.gameObject);
             }
         }
 
