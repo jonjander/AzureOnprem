@@ -1,3 +1,11 @@
+## 0.3.6
+* Fixed weapon sounds
+* Fixed lights
+* Fixed proximity exeptions
+* Updated to 2019 project
+* Fixed cable shadows
+* Fixed bullets stuck in ground
+
 ## 0.3.4
 * Added gnome finder
 * Added random server gap
