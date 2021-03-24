@@ -14,7 +14,7 @@ This code will issue an user access token to "https://management.azure.com/" on 
 # How to build
 1. Build **.\VDC.Login\VDC.Login.sln**
 2. Copy the **.\VDC.Login\VDC.Login\bin\Debug** files to **.\VDC\Assets\StreamingAssets**
-3. Open the project in Unity 2018.3
+3. Open the project in Unity 2019.2.8fi
 4. Build the game for Windows
 
 ## Limitaitons

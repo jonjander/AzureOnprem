@@ -1,3 +1,7 @@
+## 0.3.7
+* Fixed cable class
+* Update to 2019.2.8f
+
 ## 0.3.6
 * Fixed weapon sounds
 * Fixed lights
