@@ -2,6 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Assets.Scripts;
+using Microsoft.Identity.Client;
 using UnityEngine;
 
 public class PlayerScript : MonoBehaviour {
@@ -12,6 +15,10 @@ public class PlayerScript : MonoBehaviour {
     public DCGenerator GenerationScript;
     public delegate bool ComputerScreenInput(KeyCode key);
     public static event ComputerScreenInput OnComputerScreenInput;
+
+    public delegate void UserCodeInput(string userCode);
+    public static event UserCodeInput OnUserCodeGenerated;
+
 
     private AudioSource audioSource;
     private GameObject currentWeaponGameObject;
@@ -30,8 +37,6 @@ public class PlayerScript : MonoBehaviour {
         }
     }
 
-    
-
     // Use this for initialization
     void Start () {
         CurrentWeapon = Weapons.FloppyDisk;
@@ -42,8 +47,35 @@ public class PlayerScript : MonoBehaviour {
     private IEnumerator Login()
     {
         yield return new WaitForSeconds(UseSoundHit.length);
-        GenerationScript.DoLogin();
+        var task = DoLogin();
+        while (!task.IsCanceled && !task.IsCompleted && !task.IsFaulted)
+        {
+            yield return new WaitForSeconds(0.01f);
+        }
     }
+    public async Task DoLogin()
+    {
+        //AccessToken = LoginHelper.GetToken();
+        IPublicClientApplication publicClientApplication = PublicClientApplicationBuilder
+            .Create("1950a258-227b-4e31-a9cf-717495945fc2")
+            .WithTenantId("common")
+            .WithRedirectUri("urn:ietf:wg:oauth:2.0:oob")
+            .Build();
+        var accounts = await publicClientApplication.GetAccountsAsync();
+        string[] scopes = new string[] { "https://management.azure.com/.default" };
+
+        var deviceCode = await publicClientApplication.AcquireTokenWithDeviceCode(scopes,
+         callback =>
+         {
+             OnUserCodeGenerated(callback.UserCode);
+             return Task.FromResult(0);
+         }
+        ).ExecuteAsync();
+
+
+        StartCoroutine(AzureManagementAPIHelper.GetSubscriptions(deviceCode.AccessToken));
+    }
+
 
     // Update is called once per frame
     void Update () {

@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+using static PlayerScript;
 
 public enum AdminScreenMenu
 {
@@ -35,7 +35,15 @@ public class AdminScreen : MonoBehaviour {
         computerOutputText = GetComponentInChildren<TextMesh>();
         computerOutputText.text = ">_";
         AzureManagementAPIHelper.OnSubscriptionLoaded += DisplaySubscriptions;
-        PlayerScript.OnComputerScreenInput += KeyInput;
+        OnComputerScreenInput += KeyInput;
+        OnUserCodeGenerated += PrintUserCode;
+    }
+
+    private void PrintUserCode(string userCode)
+    {
+        computerOutputText.text = "goto login.microsoftonline.com/common/oauth2/deviceauth" + Environment.NewLine;
+        computerOutputText.text = $"Enter {userCode}" + Environment.NewLine;
+        computerOutputText.text += ">";
     }
 
     private void DisplaySubscriptions(List<Subscription> userSubscriptions)
@@ -83,12 +91,9 @@ public class AdminScreen : MonoBehaviour {
         return false;
     }
 
-    private Subscription GetSelectedSubscription()
-    {
-        return avalibleSubscriptions
+    private Subscription GetSelectedSubscription() => avalibleSubscriptions
                         .Where(o => o.SubscriptionId == selectedSubscriptionId)
                         .FirstOrDefault();
-    }
 
     private int LoopIndex(int index)
     {

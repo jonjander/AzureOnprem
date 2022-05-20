@@ -11,12 +11,12 @@ using UnityEngine.Networking;
 
 namespace Assets.Scripts
 {
-    public class AzureManagementAPIHelper
+    public static class AzureManagementAPIHelper
     {
-        public List<Subscription> Subscriptions;
+        public static List<Subscription> Subscriptions = new List<Subscription>();
         public delegate void SubscriptionLoadedAction(List<Subscription> loadedSubscriptions);
         public static event SubscriptionLoadedAction OnSubscriptionLoaded;
-        public IEnumerator GetSubscriptions(string userAccessToken)
+        public static IEnumerator GetSubscriptions(string userAccessToken)
         {
             var apiUrl = "https://management.azure.com/subscriptions?api-version=2014-04-01";
 

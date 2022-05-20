@@ -7,6 +7,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Networking;
@@ -27,7 +28,6 @@ public class DCGenerator : MonoBehaviour {
     public NavMeshSurface NavMeshSurface;
     public GameObject DataCenterDoor;
 
-    private AzureManagementAPIHelper azureManagementAPIHelper;
     private List<ResourceGroupObject> resoruceGroups;
     private int col;
     private int row;
@@ -43,7 +43,6 @@ public class DCGenerator : MonoBehaviour {
         dataCenterProps = new List<GameObject>();
         cableList = new List<GameObject>();
         maximumNumberOfCables = 20;
-        azureManagementAPIHelper = new AzureManagementAPIHelper();
         AdminScreen.OnComputerLogin += GenerateDataCenterResources;
         col = 6;
         row = 0;
@@ -133,11 +132,7 @@ public class DCGenerator : MonoBehaviour {
         }
     }
  
-    public void DoLogin()
-    {
-        AccessToken = LoginHelper.GetToken();
-        StartCoroutine(azureManagementAPIHelper.GetSubscriptions(AccessToken));
-    }
+    
 
     public void GenerateDataCenterResources(string selectedSubscriptionId)
     {
