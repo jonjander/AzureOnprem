@@ -18,20 +18,20 @@ namespace UnityStandardAssets.Utility
             Deactivate = 5  // Decativate target GameObject
         }
 
-        public Mode action = Mode.Activate;         // The action to accomplish
-        public Object target;                       // The game object to affect. If none, the trigger work on this game object
-        public GameObject source;
-        public int triggerCount = 1;
-        public bool repeatTrigger = false;
+        public Mode Action = Mode.Activate;         // The action to accomplish
+        public Object Target;                       // The game object to affect. If none, the trigger work on this game object
+        public GameObject Source;
+        public int TriggerCount = 1;
+        public bool RepeatTrigger = false;
 
 
         private void DoActivateTrigger()
         {
-            triggerCount--;
+            TriggerCount--;
 
-            if (triggerCount == 0 || repeatTrigger)
+            if (TriggerCount == 0 || RepeatTrigger)
             {
-                Object currentTarget = target ?? gameObject;
+                Object currentTarget = Target ?? gameObject;
                 Behaviour targetBehaviour = currentTarget as Behaviour;
                 GameObject targetGameObject = currentTarget as GameObject;
                 if (targetBehaviour != null)
@@ -39,7 +39,7 @@ namespace UnityStandardAssets.Utility
                     targetGameObject = targetBehaviour.gameObject;
                 }
 
-                switch (action)
+                switch (Action)
                 {
                     case Mode.Trigger:
                         if (targetGameObject != null)
@@ -48,13 +48,13 @@ namespace UnityStandardAssets.Utility
                         }
                         break;
                     case Mode.Replace:
-                        if (source != null)
+                        if (Source != null)
                         {
                             if (targetGameObject != null)
                             {
-                                Instantiate(source, targetGameObject.transform.position,
+                                Instantiate(Source, targetGameObject.transform.position,
                                             targetGameObject.transform.rotation);
-                                DestroyObject(targetGameObject);
+                                Destroy(targetGameObject);
                             }
                         }
                         break;

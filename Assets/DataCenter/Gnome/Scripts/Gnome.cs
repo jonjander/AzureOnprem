@@ -24,7 +24,7 @@ class Gnome : MonoBehaviour
     private NavMeshAgent agent;
     private BoxCollider textureCollider;
     private SpriteRenderer spriteRenderer;
-    private float checkSeen = 0f;
+    //private float checkSeen = 0f;
     private float targetAlpha = 0f;
     private Vector3 startPos;
     private AudioSource audioSource;

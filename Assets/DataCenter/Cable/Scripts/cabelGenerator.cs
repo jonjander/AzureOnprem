@@ -17,7 +17,7 @@ public class CabelGenerator : MonoBehaviour
     private List<ConfigurableJoint> endJoints;
 
     // Use this for initialization
-    void Start()
+    private void Start()
     {
         segmentLen = 0.187f;
         endJoints = EndPoint.GetComponentsInChildren<ConfigurableJoint>()
@@ -67,7 +67,7 @@ public class CabelGenerator : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
 
     }

@@ -14,14 +14,14 @@ public class Bullet : MonoBehaviour {
     public AudioClip ImpactSound;
 
 	// Use this for initialization
-	void Start () {
+	public void Start () {
         life = 30f;
         audioSource = gameObject.AddComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    public void Update () {
 		if (lifeTimer)
         {
             life -= Time.deltaTime;
