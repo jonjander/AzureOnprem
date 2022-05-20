@@ -7,7 +7,17 @@ using Assets.Scripts;
 using Microsoft.Identity.Client;
 using UnityEngine;
 
-public class PlayerScript : MonoBehaviour {
+public static class SB
+{
+    public static string UserCode = null;
+
+    public delegate void UserCodeInput(string userCode);
+    public static event UserCodeInput OnUserCodeGenerated;
+    public static void Set(string str) => UserCode = str;
+} 
+
+public class PlayerScript : MonoBehaviour
+{
 
     //public GameObject Projectile;
     public AudioClip UseSoundHit;
@@ -16,8 +26,8 @@ public class PlayerScript : MonoBehaviour {
     public delegate bool ComputerScreenInput(KeyCode key);
     public static event ComputerScreenInput OnComputerScreenInput;
 
-    public delegate void UserCodeInput(string userCode);
-    public static event UserCodeInput OnUserCodeGenerated;
+    //public delegate void UserCodeInput(string userCode);
+    //public static event UserCodeInput OnUserCodeGenerated;
 
 
     private AudioSource audioSource;
@@ -38,7 +48,8 @@ public class PlayerScript : MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         CurrentWeapon = Weapons.FloppyDisk;
         audioSource = GetComponent<AudioSource>();
         exit = GameObject.FindGameObjectWithTag("Exit");
@@ -47,38 +58,49 @@ public class PlayerScript : MonoBehaviour {
     private IEnumerator Login()
     {
         yield return new WaitForSeconds(UseSoundHit.length);
-        var task = DoLogin();
-        while (!task.IsCanceled && !task.IsCompleted && !task.IsFaulted)
+
+        var tcs = new TaskCompletionSource<string>();
+        Task.Run(async () =>
         {
-            yield return new WaitForSeconds(0.01f);
-        }
+            Debug.Log("Task started");
+            tcs.SetResult(await DoLogin());
+            Debug.Log("Task stopped");
+        });
+        tcs.Task.ConfigureAwait(true).GetAwaiter().OnCompleted(() =>
+        {
+            Debug.Log($"Login ok");
+            DCGenerator.AccessToken = tcs.Task.Result;
+            StartCoroutine(AzureManagementAPIHelper.GetSubscriptions(tcs.Task.Result));
+        });
+        //var task = DoLogin().ConfigureAwait(true).GetAwaiter();
+        //yield return new WaitUntil(() => task.IsCompleted);
     }
-    public async Task DoLogin()
+    public async Task<string> DoLogin()
     {
-        //AccessToken = LoginHelper.GetToken();
         IPublicClientApplication publicClientApplication = PublicClientApplicationBuilder
             .Create("1950a258-227b-4e31-a9cf-717495945fc2")
             .WithTenantId("common")
             .WithRedirectUri("urn:ietf:wg:oauth:2.0:oob")
             .Build();
-        var accounts = await publicClientApplication.GetAccountsAsync();
         string[] scopes = new string[] { "https://management.azure.com/.default" };
 
-        var deviceCode = await publicClientApplication.AcquireTokenWithDeviceCode(scopes,
-         callback =>
-         {
-             OnUserCodeGenerated(callback.UserCode);
-             return Task.FromResult(0);
-         }
+        var deviceCode = await publicClientApplication.AcquireTokenWithDeviceCode(scopes, 
+            callback =>
+            {
+                SB.Set(callback.UserCode);
+                return Task.CompletedTask;
+            }
         ).ExecuteAsync();
 
 
-        StartCoroutine(AzureManagementAPIHelper.GetSubscriptions(deviceCode.AccessToken));
+       
+        return deviceCode.AccessToken;
     }
 
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         CheckExitGame();
 
         GunState gunState = CurrentWeapon.UpdateTrigger(Input.GetMouseButton(0));
@@ -141,7 +163,7 @@ public class PlayerScript : MonoBehaviour {
                 }
                 break;
             case GunState.Reloading:
-                
+
                 break;
             default:
                 break;
@@ -155,7 +177,8 @@ public class PlayerScript : MonoBehaviour {
             {
                 StartCoroutine(Login());
             }
-        } else if (Input.GetKeyDown("e") && IsNearShotgun())
+        }
+        else if (Input.GetKeyDown("e") && IsNearShotgun())
         {
             if (!Weapons.Shotgun.IsPicked)
             {
@@ -168,7 +191,9 @@ public class PlayerScript : MonoBehaviour {
             {
                 PickUpWeapon(Weapons.GnomeFinder);
             }
-        } else {
+        }
+        else
+        {
             audioSource.clip = UseSoundMiss;
             audioSource.Play();
         }
@@ -215,7 +240,7 @@ public class PlayerScript : MonoBehaviour {
         var weapon = GameObject.FindGameObjectsWithTag("WeaponRoot")
             .Where(s => s.name == selectedWeapon.Name)
             .Select(g => new { wep = g, distance = (g.transform.position - transform.position).magnitude })
-            .OrderBy(f=> f.distance)
+            .OrderBy(f => f.distance)
             .FirstOrDefault();
 
         var weaponInRange = weapon.wep;
@@ -240,7 +265,8 @@ public class PlayerScript : MonoBehaviour {
         {
             currentWeaponGameObject = newWeaponGameObject;
             currentWeaponGameObject.transform.parent = Camera.main.transform;
-        } else 
+        }
+        else
         {
             currentWeaponGameObject = Instantiate(CurrentWeapon.WeaponGameObject, Camera.main.transform);
         }
@@ -255,13 +281,13 @@ public class PlayerScript : MonoBehaviour {
     {
         if (Vector3.Distance(transform.position, exit.transform.position) < 0.85f)
         {
-            #if UNITY_EDITOR
-                        UnityEditor.EditorApplication.isPlaying = false;
-            #elif UNITY_WEBPLAYER
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#elif UNITY_WEBPLAYER
                              Application.OpenURL(webplayerQuitURL);
-            #else
+#else
                              Application.Quit();
-            #endif
+#endif
         }
     }
 
@@ -281,10 +307,10 @@ public class PlayerScript : MonoBehaviour {
 
     private bool IsNearShotgun()
     {
-       var vectorLengths = GameObject.FindGameObjectsWithTag("WeaponRoot")
-            .Where(s => s.name == "Shotgun")
-            .Select(g => (g.transform.position - transform.position).magnitude)
-            .ToList();
+        var vectorLengths = GameObject.FindGameObjectsWithTag("WeaponRoot")
+             .Where(s => s.name == "Shotgun")
+             .Select(g => (g.transform.position - transform.position).magnitude)
+             .ToList();
         return vectorLengths.Count > 0 ? vectorLengths.Min() < 1.5 : false;
     }
 

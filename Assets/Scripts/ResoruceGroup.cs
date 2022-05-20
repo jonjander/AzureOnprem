@@ -237,7 +237,7 @@ public class ResoruceGroup : MonoBehaviour
         yield return request.SendWebRequest();
         string jsonString = request.downloadHandler.text;
         List<Lock> locks = JsonConvert.DeserializeObject<LockRoot>(jsonString).Value;
-        HaveLocks = locks.Count > 0;
+        HaveLocks = (locks?.Count ?? 0) > 0;
         if (HaveLocks && ResourceGroupLock == null)
         {
             var resourceLock = Resources.Load<GameObject>("Lock");

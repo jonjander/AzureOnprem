@@ -24,7 +24,7 @@ namespace Assets.Scripts
 
             request.method = UnityWebRequest.kHttpVerbGET;
             request.SetRequestHeader("Content-Type", "application/json; utf-8");
-            request.SetRequestHeader("Authorization", userAccessToken);
+            request.SetRequestHeader("Authorization", $"Bearer {userAccessToken}");
 
             yield return request.SendWebRequest();
             var jsonString = request.downloadHandler.text;

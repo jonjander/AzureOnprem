@@ -17,7 +17,7 @@ public class DCGenerator : MonoBehaviour {
     public List<GameObject> Racks;
     public GameObject RackTemplate;
     
-    public string AccessToken = "";
+    public static string AccessToken = "";
     public string Subscription = "";
     public List<GameObject> ServerKinds;
     public bool DataIsLoaded = false;
@@ -248,7 +248,7 @@ public class DCGenerator : MonoBehaviour {
 
         request.method = UnityWebRequest.kHttpVerbGET;
         request.SetRequestHeader("Content-Type", "application/json; utf-8");
-        request.SetRequestHeader("Authorization", userAccessToken);
+        request.SetRequestHeader("Authorization", $"Bearer {userAccessToken}");
 
         yield return request.SendWebRequest();
         var jsonString = request.downloadHandler.text;

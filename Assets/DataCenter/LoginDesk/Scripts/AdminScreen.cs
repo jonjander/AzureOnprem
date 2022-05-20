@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using UnityEngine;
 using static PlayerScript;
 
@@ -26,7 +27,6 @@ public class AdminScreen : MonoBehaviour {
     private string selectedSubscriptionId;
     private bool cursorFlip;
     private float errorResetTimer;
-    
 
     // Use this for initialization
     void Start () {
@@ -36,13 +36,14 @@ public class AdminScreen : MonoBehaviour {
         computerOutputText.text = ">_";
         AzureManagementAPIHelper.OnSubscriptionLoaded += DisplaySubscriptions;
         OnComputerScreenInput += KeyInput;
-        OnUserCodeGenerated += PrintUserCode;
     }
 
     private void PrintUserCode(string userCode)
     {
-        computerOutputText.text = "goto login.microsoftonline.com/common/oauth2/deviceauth" + Environment.NewLine;
-        computerOutputText.text = $"Enter {userCode}" + Environment.NewLine;
+
+        computerOutputText.text = "Goto:" + Environment.NewLine;
+        computerOutputText.text += "login.microsoftonline.com/common/oauth2/deviceauth" + Environment.NewLine;
+        computerOutputText.text += $"Enter {userCode}" + Environment.NewLine;
         computerOutputText.text += ">";
     }
 
@@ -134,7 +135,10 @@ public class AdminScreen : MonoBehaviour {
                 }
                 break;
             case AdminScreenMenu.Loggingin:
-                computerOutputText.text = ">_ E";
+                if (!string.IsNullOrEmpty(SB.UserCode))
+                    PrintUserCode(SB.UserCode);
+                else
+                    computerOutputText.text = ">_ E";
                 break;
             case AdminScreenMenu.Loggedin:
                 var subscriptionOutput = avalibleSubscriptions.Select(s =>
