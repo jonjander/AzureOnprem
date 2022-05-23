@@ -42,7 +42,7 @@ public class AdminScreen : MonoBehaviour {
     {
 
         computerOutputText.text = "Goto:" + Environment.NewLine;
-        computerOutputText.text += "login.microsoftonline.com/common/oauth2/deviceauth" + Environment.NewLine;
+        computerOutputText.text += "https://aka.ms/devicelogin" + Environment.NewLine;
         computerOutputText.text += $"Enter {userCode}" + Environment.NewLine;
         computerOutputText.text += ">";
     }
